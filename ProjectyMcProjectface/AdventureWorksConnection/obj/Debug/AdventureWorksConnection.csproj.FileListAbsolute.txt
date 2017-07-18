@@ -1,0 +1,9 @@
+C:\Users\Student1\Documents\GitHub\RepositoryMcRepositoryface\ProjectyMcProjectface\AdventureWorksConnection\bin\Debug\AdventureWorksConnection.exe.config
+C:\Users\Student1\Documents\GitHub\RepositoryMcRepositoryface\ProjectyMcProjectface\AdventureWorksConnection\bin\Debug\AdventureWorksConnection.exe
+C:\Users\Student1\Documents\GitHub\RepositoryMcRepositoryface\ProjectyMcProjectface\AdventureWorksConnection\bin\Debug\AdventureWorksConnection.pdb
+C:\Users\Student1\Documents\GitHub\RepositoryMcRepositoryface\ProjectyMcProjectface\AdventureWorksConnection\obj\Debug\AdventureWorksConnection.exe
+C:\Users\Student1\Documents\GitHub\RepositoryMcRepositoryface\ProjectyMcProjectface\AdventureWorksConnection\obj\Debug\AdventureWorksConnection.pdb
+C:\Users\Student1\Documents\GitHub\RepositoryMcRepositoryface\ProjectyMcProjectface\AdventureWorksConnection\bin\Debug\EntityFramework.dll
+C:\Users\Student1\Documents\GitHub\RepositoryMcRepositoryface\ProjectyMcProjectface\AdventureWorksConnection\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Student1\Documents\GitHub\RepositoryMcRepositoryface\ProjectyMcProjectface\AdventureWorksConnection\bin\Debug\EntityFramework.xml
+C:\Users\Student1\Documents\GitHub\RepositoryMcRepositoryface\ProjectyMcProjectface\AdventureWorksConnection\bin\Debug\EntityFramework.SqlServer.xml

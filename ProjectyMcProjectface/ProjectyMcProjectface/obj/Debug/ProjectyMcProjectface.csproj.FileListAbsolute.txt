@@ -69,3 +69,6 @@ C:\Users\Student1\Documents\GitHub\RepositoryMcRepositoryface\ProjectyMcProjectf
 C:\Users\Student1\Documents\GitHub\RepositoryMcRepositoryface\ProjectyMcProjectface\ProjectyMcProjectface\bin\EntityFramework.SqlServer.dll
 C:\Users\Student1\Documents\GitHub\RepositoryMcRepositoryface\ProjectyMcProjectface\ProjectyMcProjectface\bin\EntityFramework.xml
 C:\Users\Student1\Documents\GitHub\RepositoryMcRepositoryface\ProjectyMcProjectface\ProjectyMcProjectface\bin\EntityFramework.SqlServer.xml
+C:\Users\Student1\Documents\GitHub\RepositoryMcRepositoryface\ProjectyMcProjectface\ProjectyMcProjectface\bin\AdventureWorksConnection.exe
+C:\Users\Student1\Documents\GitHub\RepositoryMcRepositoryface\ProjectyMcProjectface\ProjectyMcProjectface\bin\AdventureWorksConnection.pdb
+C:\Users\Student1\Documents\GitHub\RepositoryMcRepositoryface\ProjectyMcProjectface\ProjectyMcProjectface\bin\AdventureWorksConnection.exe.config
