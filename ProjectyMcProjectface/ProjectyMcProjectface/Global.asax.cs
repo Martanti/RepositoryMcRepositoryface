@@ -14,7 +14,9 @@ namespace ProjectyMcProjectface
     {
         protected void Application_Start()
         {
+            //Add any pending Database migrations to the database
             Database.SetInitializer(new MigrateDatabaseToLatestVersion<InternalDBModel, Configuration>());
+
             AreaRegistration.RegisterAllAreas();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);

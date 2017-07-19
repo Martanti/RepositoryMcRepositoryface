@@ -72,3 +72,5 @@ C:\Users\Student1\Documents\GitHub\RepositoryMcRepositoryface\ProjectyMcProjectf
 C:\Users\Student1\Documents\GitHub\RepositoryMcRepositoryface\ProjectyMcProjectface\ProjectyMcProjectface\bin\AdventureWorksConnection.exe
 C:\Users\Student1\Documents\GitHub\RepositoryMcRepositoryface\ProjectyMcProjectface\ProjectyMcProjectface\bin\AdventureWorksConnection.pdb
 C:\Users\Student1\Documents\GitHub\RepositoryMcRepositoryface\ProjectyMcProjectface\ProjectyMcProjectface\bin\AdventureWorksConnection.exe.config
+C:\Users\Student1\Documents\GitHub\RepositoryMcRepositoryface\ProjectyMcProjectface\ProjectyMcProjectface\obj\Debug\ProjectyMcProjectface.Migrations.TestMigration.resources
+C:\Users\Student1\Documents\GitHub\RepositoryMcRepositoryface\ProjectyMcProjectface\ProjectyMcProjectface\obj\Debug\ProjectyMcProjectface.csproj.GenerateResource.Cache

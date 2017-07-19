@@ -10,7 +10,7 @@ namespace ProjectyMcProjectface.Migrations
         public Configuration()
         {
             AutomaticMigrationsEnabled = true;
-            ContextKey = "ProjectyMcProjectface.InternalDBModel";
+            AutomaticMigrationDataLossAllowed = true;
         }
 
         protected override void Seed(ProjectyMcProjectface.InternalDBModel context)
