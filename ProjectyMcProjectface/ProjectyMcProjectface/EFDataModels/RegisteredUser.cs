@@ -15,7 +15,7 @@ namespace ProjectyMcProjectface
         public string UserName { get; set; }
 
         [Required]
-        [StringLength(50)]
+        [StringLength(64)]
         public string PassWord { get; set; }
     }
 }

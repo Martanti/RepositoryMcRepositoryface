@@ -17,6 +17,10 @@ namespace ProjectyMcProjectface
             //Add any pending Database migrations to the database
             Database.SetInitializer(new MigrateDatabaseToLatestVersion<InternalDBModel, Configuration>());
 
+            //For DB Testing purposes only =>
+            InternalDBModel.RegisterUser("Karolis", "Hello");
+            //<=
+
             AreaRegistration.RegisterAllAreas();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
