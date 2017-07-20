@@ -8,8 +8,6 @@ C:\Users\Student1\Documents\GitHub\RepositoryMcRepositoryface\ProjectyMcProjectf
 C:\Users\Student1\Documents\GitHub\RepositoryMcRepositoryface\ProjectyMcProjectface\AdventureWorksConnection\bin\Debug\EntityFramework.xml
 C:\Users\Student1\Documents\GitHub\RepositoryMcRepositoryface\ProjectyMcProjectface\AdventureWorksConnection\bin\Debug\EntityFramework.SqlServer.xml
 C:\Users\Student1\Documents\GitHub\RepositoryMcRepositoryface\ProjectyMcProjectface\AdventureWorksConnection\obj\Debug\AdventureWorksConnection.csprojResolveAssemblyReference.cache
-C:\Users\Student1\Documents\GitHub\RepositoryMcRepositoryface\ProjectyMcProjectface\AdventureWorksConnection\bin\Debug\SqlServerTypes\x64\msvcr120.dll
-C:\Users\Student1\Documents\GitHub\RepositoryMcRepositoryface\ProjectyMcProjectface\AdventureWorksConnection\bin\Debug\SqlServerTypes\x64\SqlServerSpatial140.dll
 C:\Users\Student1\Documents\GitHub\RepositoryMcRepositoryface\ProjectyMcProjectface\AdventureWorksConnection\bin\Debug\SqlServerTypes\x86\msvcr120.dll
 C:\Users\Student1\Documents\GitHub\RepositoryMcRepositoryface\ProjectyMcProjectface\AdventureWorksConnection\bin\Debug\SqlServerTypes\x86\SqlServerSpatial140.dll
 C:\Users\Student1\Documents\GitHub\RepositoryMcRepositoryface\ProjectyMcProjectface\AdventureWorksConnection\bin\Debug\Microsoft.SqlServer.Types.dll

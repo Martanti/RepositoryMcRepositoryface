@@ -39,8 +39,38 @@ namespace AnotherOne
             {
                 RestoreDatabase("NorthWind", @".\SQLExpress", @"C:\DBBackup\Northwind.bak", @"C:\DBBackup\Northwind.mdf", @"C:\DBBackup\Northwind.ldf");
             }
+            else if(executionType.Trim().ToLower() == "l")
+            {
+                Console.Write(@"Enter complete server name, for example '.\SQLExpress': ");
+                string serverName = Console.ReadLine();
+                Console.Write(@"Enter the path of the .bak file: ");
+                string backupPath = Console.ReadLine();
+
+            }
 
             Console.ReadKey();
+        }
+        static void GetListOfLogicalFiles(string serverInstance, string backupPath)
+        {
+            ServerConnection srvConn = new ServerConnection();
+            srvConn.ServerInstance = serverInstance;
+            srvConn.LoginSecure = true;
+
+            Server server = new Server(srvConn);
+
+            Restore res = new Restore();
+            DataTable dt;
+            DataRow[] foundrows;
+
+            res.Devices.AddDevice(backupPath, DeviceType.File);
+            dt = res.ReadFileList(server);
+
+            foundrows = dt.Select();
+
+            foreach (DataRow r in foundrows)
+            {
+                Console.WriteLine(r["LogicalName"].ToString());
+            }
         }
         static void RestoreDatabase(string DBName, string serverInstance, string backupFilePath, string mdfPath, string ldfPath)
         {
