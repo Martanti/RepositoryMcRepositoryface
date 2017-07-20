@@ -25,7 +25,34 @@ namespace ProjectyMcProjectface
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
-                      "~/Content/site.css"));
+                      "~/Content/Site.css"));
+
+            bundles.Add(new ScriptBundle("~/bundles/plugins-flot").Include(
+                    "~/Scripts/excanvas.min.js",
+                    "~/Scripts/flot-data.js",
+                    "~/Scripts/jquery.flot.js",
+                    "~/Scripts/jquery.flot.pie.js",
+                    "~/Scripts/jquery.flot.resize.js",
+                    "~/Scripts/jquery.flot.tooltip.min.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/plugins-morris").Include(
+                "~/Scripts/morris.js",
+                "~/Scripts/morris.min.js",
+                "~/Scripts/morris-data.js",
+                "~/Scripts/raphael.min.js"));
+
+            bundles.Add(new StyleBundle("~/Content/pluginCss").Include(
+                "~/Content/morris.css",
+                /*
+                "~/Content/bootstrap-rtl.css",
+                "~/Content/bootstrap-rtl.min.css",
+                */
+                "~/Content/bootstrap.min.css",
+                "~/Content/sb-admin.css"/*,
+                "~/Content/sb-admin-rtl.css",
+                "~/Content/font-awesome.css",
+                "~/Content/font-awesome.min.css"*/));
+
         }
     }
 }
