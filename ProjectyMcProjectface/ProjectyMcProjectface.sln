@@ -7,6 +7,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjectyMcProjectface", "Pr
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdventureWorksConnection", "AdventureWorksConnection\AdventureWorksConnection.csproj", "{3FF560DC-E58B-4DBB-AEE4-EF7263EDBF2B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InstallAdventureWorksDb", "InstallAdventureWorksDb\InstallAdventureWorksDb.csproj", "{CFDC3474-5575-4A84-9749-FE3A8DB168FD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AnotherOne", "AnotherOne\AnotherOne.csproj", "{80337923-6649-4D26-B44C-97FFEC661F58}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +25,14 @@ Global
 		{3FF560DC-E58B-4DBB-AEE4-EF7263EDBF2B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3FF560DC-E58B-4DBB-AEE4-EF7263EDBF2B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3FF560DC-E58B-4DBB-AEE4-EF7263EDBF2B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CFDC3474-5575-4A84-9749-FE3A8DB168FD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CFDC3474-5575-4A84-9749-FE3A8DB168FD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CFDC3474-5575-4A84-9749-FE3A8DB168FD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CFDC3474-5575-4A84-9749-FE3A8DB168FD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{80337923-6649-4D26-B44C-97FFEC661F58}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{80337923-6649-4D26-B44C-97FFEC661F58}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{80337923-6649-4D26-B44C-97FFEC661F58}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{80337923-6649-4D26-B44C-97FFEC661F58}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
