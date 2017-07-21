@@ -155,9 +155,9 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="EFDataModels\InternalDBModel.cs" />
-    <Compile Include="Migrations\201707190759136_TestMigration.cs" />
-    <Compile Include="Migrations\201707190759136_TestMigration.Designer.cs">
-      <DependentUpon>201707190759136_TestMigration.cs</DependentUpon>
+    <Compile Include="Migrations\201707211116211_InstalDB.cs" />
+    <Compile Include="Migrations\201707211116211_InstalDB.Designer.cs">
+      <DependentUpon>201707211116211_InstalDB.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -227,8 +227,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201707190759136_TestMigration.resx">
-      <DependentUpon>201707190759136_TestMigration.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201707211116211_InstalDB.resx">
+      <DependentUpon>201707211116211_InstalDB.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

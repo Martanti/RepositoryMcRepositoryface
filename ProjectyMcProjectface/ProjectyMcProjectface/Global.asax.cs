@@ -19,7 +19,7 @@ namespace ProjectyMcProjectface
 
             //For DB Testing purposes only =>
             /*using (var context = new InternalDBModel()) {
-                context.ConnectionStrings.Add(new ConnectionString() { ConnectionId = 1, UserId = 1, String = "Lioler" });
+                InternalDBModel.RegisterUser("Martynas", "123456");
                 context.SaveChanges();
             }*/
                 //<=
