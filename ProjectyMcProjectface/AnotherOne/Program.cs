@@ -13,44 +13,59 @@ namespace AnotherOne
     {
         static void Main(string[] args)
         {
-            string executionType;
-            Console.Write("Would you like to enter DB backup data manually? (y/n) : ");
-            executionType = Console.ReadLine();
+            DataRow[] logicalfiles;
 
-            if (executionType.Trim().ToLower() == "y")
+            Console.WriteLine("Warning: entering invalid data will cause the application to crash!");
+            Console.Write(@"Enter complete server name, for example '.\SQLExpress': ");
+            string serverName = Console.ReadLine();
+
+            Console.Write("Would you like to create an InternalDB database on the specified server? (y/n): ");
+            string createInternalDB = Console.ReadLine();
+            if(createInternalDB.Trim().ToLower() == "y")
             {
-                Console.WriteLine("Warning: entering invalid data will cause the application to crash!");
                 Console.Write("Enter the database name: ");
-                string DBName = Console.ReadLine();
-                Console.Write(@"Enter complete server name, for example '.\SQLExpress': ");
-                string serverName = Console.ReadLine();
-                Console.Write(@"Enter the path of the .bak file: ");
-                string backupPath = Console.ReadLine();
-                Console.Write(@"Enter the path of the .mdf file (point to .bak file and change data type): ");
-                string mdfPath = Console.ReadLine();
-                Console.Write(@"Enter the path of the .ldf file (point to .bak file and change data type): ");
-                string ldfPath = Console.ReadLine();
-
-                RestoreDatabase(DBName, serverName, backupPath, mdfPath, ldfPath);
-
-
+                string DatabaseName = Console.ReadLine();
+                CreateDatabase(serverName, DatabaseName);
             }
-            else if (executionType.Trim().ToLower() == "n")
+            else if(createInternalDB.Trim().ToLower() != "n" && createInternalDB.Trim().ToLower() != "y")
             {
-                RestoreDatabase("NorthWind", @".\SQLExpress", @"C:\DBBackup\Northwind.bak", @"C:\DBBackup\Northwind.mdf", @"C:\DBBackup\Northwind.ldf");
+                Console.WriteLine("Invalid command! ");
+                Console.WriteLine("");
             }
-            else if(executionType.Trim().ToLower() == "l")
-            {
-                Console.Write(@"Enter complete server name, for example '.\SQLExpress': ");
-                string serverName = Console.ReadLine();
-                Console.Write(@"Enter the path of the .bak file: ");
-                string backupPath = Console.ReadLine();
 
-            }
+
+            
+
+            Console.Write("Enter the database name: ");
+            string DBName = Console.ReadLine();
+            
+            Console.Write(@"Enter the path of the .bak file: ");
+            string backupPath = Console.ReadLine();
+            Console.Write(@"Enter the path where the .mdf file will be created: ");
+            string mdfPath = Console.ReadLine();
+            Console.Write(@"Enter the path where the .ldf file will be created: ");
+            string ldfPath = Console.ReadLine();
+
+            logicalfiles = GetListOfLogicalFiles(serverName, backupPath);
+            RestoreDatabase(DBName, serverName, backupPath, logicalfiles[0]["LogicalName"].ToString(), logicalfiles[1]["LogicalName"].ToString(), mdfPath, ldfPath);
+            
 
             Console.ReadKey();
         }
-        static void GetListOfLogicalFiles(string serverInstance, string backupPath)
+        static void CreateDatabase(string serverInstance, string databaseName)
+        {
+            ServerConnection srvConn = new ServerConnection();
+            srvConn.ServerInstance = serverInstance;
+            srvConn.LoginSecure = true;
+
+            Server server = new Server(srvConn);
+
+            Database db = new Database(server, databaseName);
+            db.Create();
+            Console.WriteLine("Database created successfully!");
+            Console.WriteLine(" ");
+        }
+        static DataRow[] GetListOfLogicalFiles(string serverInstance, string backupPath)
         {
             ServerConnection srvConn = new ServerConnection();
             srvConn.ServerInstance = serverInstance;
@@ -66,13 +81,15 @@ namespace AnotherOne
             dt = res.ReadFileList(server);
 
             foundrows = dt.Select();
-
+            Console.WriteLine("List of logicalfiles: ");
             foreach (DataRow r in foundrows)
             {
                 Console.WriteLine(r["LogicalName"].ToString());
             }
+            Console.WriteLine();
+            return foundrows;
         }
-        static void RestoreDatabase(string DBName, string serverInstance, string backupFilePath, string mdfPath, string ldfPath)
+        static void RestoreDatabase(string DBName, string serverInstance, string backupFilePath,string mdfLogicalName, string ldfLogicalName, string mdfPath, string ldfPath)
         {
             Console.WriteLine("Restoring "+DBName+" DB");
 
@@ -91,8 +108,8 @@ namespace AnotherOne
             res.ReplaceDatabase = true;
             res.PercentComplete += new PercentCompleteEventHandler(ProgressEventHandler);
 
-            res.RelocateFiles.Add(new RelocateFile(DBName, mdfPath));
-            res.RelocateFiles.Add(new RelocateFile(DBName+"_Log", ldfPath));
+            res.RelocateFiles.Add(new RelocateFile(mdfLogicalName, mdfPath));
+            res.RelocateFiles.Add(new RelocateFile(ldfLogicalName, ldfPath));
 
             res.SqlRestore(server);
 
