@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.26430.13
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebUI", "ProjectyMcProjectface\WebUI.csproj", "{8F33946D-75A8-489F-96DF-24F085C3FCB2}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjectyMcProjectface", "ProjectyMcProjectface\ProjectyMcProjectface.csproj", "{8F33946D-75A8-489F-96DF-24F085C3FCB2}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdventureWorksConnection", "AdventureWorksConnection\AdventureWorksConnection.csproj", "{3FF560DC-E58B-4DBB-AEE4-EF7263EDBF2B}"
 EndProject
