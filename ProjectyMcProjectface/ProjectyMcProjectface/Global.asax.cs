@@ -18,10 +18,10 @@ namespace ProjectyMcProjectface
             Database.SetInitializer(new MigrateDatabaseToLatestVersion<InternalDBModel, Configuration>());
 
             //For DB Testing purposes only =>
-            using (var context = new InternalDBModel()) {
+            /*using (var context = new InternalDBModel()) {
                 context.ConnectionStrings.Add(new ConnectionString() { ConnectionId = 1, UserId = 1, String = "Lioler" });
                 context.SaveChanges();
-            }
+            }*/
                 //<=
 
             AreaRegistration.RegisterAllAreas();
