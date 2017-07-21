@@ -7,18 +7,18 @@ namespace ProjectyMcProjectface.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class TestMigration : IMigrationMetadata
+    public sealed partial class InstalDB : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(TestMigration));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(InstalDB));
         
         string IMigrationMetadata.Id
         {
-            get { return "201707190759136_TestMigration"; }
+            get { return "201707211116211_InstalDB"; }
         }
         
         string IMigrationMetadata.Source
         {
-            get { return null; }
+            get { return Resources.GetString("Source"); }
         }
         
         string IMigrationMetadata.Target

@@ -150,7 +150,7 @@ C:\Users\Student2\Documents\GitHub\RepositoryMcRepositoryface\ProjectyMcProjectf
 C:\Users\Student2\Documents\GitHub\RepositoryMcRepositoryface\ProjectyMcProjectface\ProjectyMcProjectface\bin\Microsoft.AI.WindowsServer.xml
 C:\Users\Student2\Documents\GitHub\RepositoryMcRepositoryface\ProjectyMcProjectface\ProjectyMcProjectface\bin\Microsoft.AI.Web.xml
 C:\Users\Student2\Documents\GitHub\RepositoryMcRepositoryface\ProjectyMcProjectface\ProjectyMcProjectface\obj\Debug\ProjectyMcProjectface.csprojResolveAssemblyReference.cache
-C:\Users\Student2\Documents\GitHub\RepositoryMcRepositoryface\ProjectyMcProjectface\ProjectyMcProjectface\obj\Debug\ProjectyMcProjectface.Migrations.TestMigration.resources
-C:\Users\Student2\Documents\GitHub\RepositoryMcRepositoryface\ProjectyMcProjectface\ProjectyMcProjectface\obj\Debug\ProjectyMcProjectface.csproj.GenerateResource.Cache
 C:\Users\Student2\Documents\GitHub\RepositoryMcRepositoryface\ProjectyMcProjectface\ProjectyMcProjectface\obj\Debug\ProjectyMcProjectface.dll
 C:\Users\Student2\Documents\GitHub\RepositoryMcRepositoryface\ProjectyMcProjectface\ProjectyMcProjectface\obj\Debug\ProjectyMcProjectface.pdb
+C:\Users\Student2\Documents\GitHub\RepositoryMcRepositoryface\ProjectyMcProjectface\ProjectyMcProjectface\obj\Debug\ProjectyMcProjectface.Migrations.InstalDB.resources
+C:\Users\Student2\Documents\GitHub\RepositoryMcRepositoryface\ProjectyMcProjectface\ProjectyMcProjectface\obj\Debug\ProjectyMcProjectface.csproj.GenerateResource.Cache
