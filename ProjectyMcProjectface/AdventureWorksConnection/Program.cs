@@ -15,10 +15,32 @@ namespace AdventureWorksConnection
         {
             SqlServerTypes.Utilities.LoadNativeAssemblies(AppDomain.CurrentDomain.BaseDirectory);
             
-            ReadAllTablesFromDatabase(@"Data Source=.\SQLEXPRESS;Database=AdventureWorks2014;Integrated Security=True;");
+            //ReadAllTablesFromDatabase(@"Data Source=.\SQLEXPRESS;Database=InternalDB;Integrated Security=True;");
+            CopyDatabase("Northwind", @".\SQLEXPRESS", "Northwind_Internal", @".\SQLEXPRESS");
             
 
             Console.ReadLine();
+        }
+
+        public static void CopyDatabase(string OriginalDBName, string OriginalServerName,
+                                        string DestinationDBName, string DestinationServerName)
+        {
+            SqlConnection originalCon = new SqlConnection("Data Source=" + OriginalServerName + 
+                ";Database=" + OriginalDBName + ";Integrated Security=True");
+            originalCon.Open();
+            SqlConnection destinationServerCon = new SqlConnection("Data Source=" + DestinationServerName + 
+                ";Database=master"+";Integrated Security=True");
+            destinationServerCon.Open();
+
+            string createDestinationDBQuery = "CREATE DATABASE " + DestinationDBName;
+            SqlCommand createDestinationDBCommand = new SqlCommand(createDestinationDBQuery, destinationServerCon);
+            createDestinationDBCommand.ExecuteNonQuery();
+
+            Console.WriteLine("DB craeted successfully");
+
+            originalCon.Close();
+            destinationServerCon.Close();
+
         }
 
         public static void ReadAllTablesFromDatabase(string connectionString)
@@ -44,6 +66,7 @@ namespace AdventureWorksConnection
             SqlCommand command = new SqlCommand(query, con);
             SqlDataAdapter da = new SqlDataAdapter(command);
 
+            
             da.Fill(dataTable);
 
             da.Fill(dataTable);
@@ -62,7 +85,7 @@ namespace AdventureWorksConnection
         }
         public static List<string> GetTableList(SqlConnection connection)
         {
-            List<string> tables = connection.GetSchema("Tables").AsEnumerable().Select(S => S[1].ToString() + "." + S[2].ToString()).ToList();
+            List<string> tables = connection.GetSchema("Tables").AsEnumerable().Select(S => S[1].ToString() + ".[" + S[2].ToString() + "]").ToList();
             return tables;
         }
         

@@ -72,7 +72,6 @@ C:\Users\Student1\Documents\GitHub\RepositoryMcRepositoryface\ProjectyMcProjectf
 C:\Users\Student1\Documents\GitHub\RepositoryMcRepositoryface\ProjectyMcProjectface\ProjectyMcProjectface\bin\AdventureWorksConnection.exe
 C:\Users\Student1\Documents\GitHub\RepositoryMcRepositoryface\ProjectyMcProjectface\ProjectyMcProjectface\bin\AdventureWorksConnection.pdb
 C:\Users\Student1\Documents\GitHub\RepositoryMcRepositoryface\ProjectyMcProjectface\ProjectyMcProjectface\bin\AdventureWorksConnection.exe.config
-C:\Users\Student1\Documents\GitHub\RepositoryMcRepositoryface\ProjectyMcProjectface\ProjectyMcProjectface\obj\Debug\ProjectyMcProjectface.Migrations.TestMigration.resources
 C:\Users\Student1\Documents\GitHub\RepositoryMcRepositoryface\ProjectyMcProjectface\ProjectyMcProjectface\obj\Debug\ProjectyMcProjectface.csproj.GenerateResource.Cache
 C:\Users\Student1\Documents\GitHub\RepositoryMcRepositoryface\ProjectyMcProjectface\ProjectyMcProjectface\bin\SqlServerTypes\x86\msvcr120.dll
 C:\Users\Student1\Documents\GitHub\RepositoryMcRepositoryface\ProjectyMcProjectface\ProjectyMcProjectface\bin\SqlServerTypes\x86\SqlServerSpatial140.dll
@@ -154,3 +153,4 @@ C:\Users\Student2\Documents\GitHub\RepositoryMcRepositoryface\ProjectyMcProjectf
 C:\Users\Student2\Documents\GitHub\RepositoryMcRepositoryface\ProjectyMcProjectface\ProjectyMcProjectface\obj\Debug\ProjectyMcProjectface.pdb
 C:\Users\Student2\Documents\GitHub\RepositoryMcRepositoryface\ProjectyMcProjectface\ProjectyMcProjectface\obj\Debug\ProjectyMcProjectface.Migrations.InstalDB.resources
 C:\Users\Student2\Documents\GitHub\RepositoryMcRepositoryface\ProjectyMcProjectface\ProjectyMcProjectface\obj\Debug\ProjectyMcProjectface.csproj.GenerateResource.Cache
+C:\Users\Student1\Documents\GitHub\RepositoryMcRepositoryface\ProjectyMcProjectface\ProjectyMcProjectface\obj\Debug\ProjectyMcProjectface.Migrations.InstalDB.resources
