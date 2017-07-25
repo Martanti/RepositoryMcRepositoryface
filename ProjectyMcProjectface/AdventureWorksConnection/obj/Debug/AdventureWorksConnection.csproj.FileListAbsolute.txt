@@ -43,13 +43,3 @@ C:\Users\Student2\Documents\GitHub\RepositoryMcRepositoryface\ProjectyMcProjectf
 C:\Users\Student2\Documents\GitHub\RepositoryMcRepositoryface\ProjectyMcProjectface\AdventureWorksConnection\obj\Debug\AdventureWorksConnection.csprojResolveAssemblyReference.cache
 C:\Users\Student2\Documents\GitHub\RepositoryMcRepositoryface\ProjectyMcProjectface\AdventureWorksConnection\obj\Debug\AdventureWorksConnection.exe
 C:\Users\Student2\Documents\GitHub\RepositoryMcRepositoryface\ProjectyMcProjectface\AdventureWorksConnection\obj\Debug\AdventureWorksConnection.pdb
-C:\Users\Student1\Documents\GitHub\RepositoryMcRepositoryface\ProjectyMcProjectface\AdventureWorksConnection\bin\Debug\Microsoft.SqlServer.ConnectionInfo.dll
-C:\Users\Student1\Documents\GitHub\RepositoryMcRepositoryface\ProjectyMcProjectface\AdventureWorksConnection\bin\Debug\Microsoft.SqlServer.ConnectionInfoExtended.dll
-C:\Users\Student1\Documents\GitHub\RepositoryMcRepositoryface\ProjectyMcProjectface\AdventureWorksConnection\bin\Debug\Microsoft.SqlServer.Management.Sdk.Sfc.dll
-C:\Users\Student1\Documents\GitHub\RepositoryMcRepositoryface\ProjectyMcProjectface\AdventureWorksConnection\bin\Debug\Microsoft.SqlServer.Smo.dll
-C:\Users\Student1\Documents\GitHub\RepositoryMcRepositoryface\ProjectyMcProjectface\AdventureWorksConnection\bin\Debug\Microsoft.SqlServer.SmoExtended.dll
-C:\Users\Student1\Documents\GitHub\RepositoryMcRepositoryface\ProjectyMcProjectface\AdventureWorksConnection\bin\Debug\Microsoft.SqlServer.SqlClrProvider.dll
-C:\Users\Student1\Documents\GitHub\RepositoryMcRepositoryface\ProjectyMcProjectface\AdventureWorksConnection\bin\Debug\Microsoft.SqlServer.SqlEnum.dll
-C:\Users\Student1\Documents\GitHub\RepositoryMcRepositoryface\ProjectyMcProjectface\AdventureWorksConnection\bin\Debug\Microsoft.SqlServer.Dmf.dll
-C:\Users\Student1\Documents\GitHub\RepositoryMcRepositoryface\ProjectyMcProjectface\AdventureWorksConnection\bin\Debug\Microsoft.SqlServer.ServiceBrokerEnum.dll
-C:\Users\Student1\Documents\GitHub\RepositoryMcRepositoryface\ProjectyMcProjectface\AdventureWorksConnection\bin\Debug\Microsoft.SqlServer.RegSvrEnum.dll
