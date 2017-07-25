@@ -1,0 +1,47 @@
+﻿@model ProjectyMcProjectface.Models.RegisteredUser1
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Login page</title>
+    @Styles.Render("~/Content/LoginVisuals")
+</head>
+<body id="LoginPage">
+    <div id="LoginWrapper"> 
+        @using (Html.BeginForm("Authorize", "Login", FormMethod.Post))
+        {
+            <table id="LoginTable">
+
+                <tr><td>@Html.LabelFor(model => model.UserName)</td></tr>
+                <tr><td>@Html.EditorFor(model => model.UserName)</td></tr>
+                <tr><td>@Html.ValidationMessageFor(model => model.UserName)</td></tr>
+
+                <tr><td>@Html.LabelFor(model => model.PassWord)</td></tr>
+                <tr><td>@Html.EditorFor(model => model.PassWord)</td></tr>
+                <tr><td>@Html.ValidationMessageFor(model => model.PassWord)</td></tr>
+
+                <tr><td>
+                    <label class="field-validation-error">
+                        @Html.DisplayFor(model => model.LoginErrorMessage)
+                    </label>
+                </td></tr>
+
+
+                <tr><td>
+                    <input type="submit" value="Login" />
+                    <input type="reset" value="Clear" />
+                </td></tr>
+
+
+            </table>
+        }
+    </div>
+
+    @Scripts.Render("~/bundles/ValidationScripts")
+</body>
+</html>

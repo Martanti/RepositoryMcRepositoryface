@@ -29,20 +29,6 @@ namespace ProjectyMcProjectface
                       "~/Content/bootstrap.css",
                       "~/Content/Site.css"));
 
-            bundles.Add(new ScriptBundle("~/bundles/plugins-flot").Include(
-                    "~/Scripts/excanvas.min.js",
-                    "~/Scripts/flot-data.js",
-                    "~/Scripts/jquery.flot.js",
-                    "~/Scripts/jquery.flot.pie.js",
-                    "~/Scripts/jquery.flot.resize.js",
-                    "~/Scripts/jquery.flot.tooltip.min.js"));
-
-            bundles.Add(new ScriptBundle("~/bundles/plugins-morris").Include(
-                "~/Scripts/morris.js",
-                "~/Scripts/morris.min.js",
-                "~/Scripts/morris-data.js"
-                ));
-
             bundles.Add(new ScriptBundle("~/bundles/plugin-raphael").Include(
                 "~/Scripts/raphael.min.js"));
 
@@ -50,6 +36,14 @@ namespace ProjectyMcProjectface
                 "~/Content/morris.css",
                 "~/Content/bootstrap.min.css",
                 "~/Content/sb-admin.css"));
+
+            bundles.Add(new StyleBundle("~/Content/LoginVisuals").Include(
+                "~/Content/LoginStyle.css"));
+
+            bundles.Add(new ScriptBundle("~/bundles/ValidationScripts").Include(
+                 "~/Scripts/jquery-1.10.2.min.js",
+                 "~/Scripts/jquery.validate.min.js",
+                 "~/Scripts/jquery.validate.unobtrusive.min.js"));
 
         }
     }
