@@ -13,15 +13,34 @@
 
 </head>
 <body>
-    @using (Html.BeginForm("LogInAction", "Login", FormMethod.Post))
-    {
-        <div class="container-fluid" id="login-Wrapper">
-           <input type="text" name="UserName" placeholder="Username"/>
-           <input  name="Password" type="password" placeholder="Password"/>
+    <form action="@Url.Action("LogInAction", "Login")" method="post">
+        <div class="container" id="login-Wrapper">
+            <div class="form-group">
+                <label for="UserNameInput">Email:</label>
+                <div>
+                    <input type="text" name="UserName" placeholder="Username" class="form-control" />
+                </div>
+                <div class="alert-danger">
+                    @ViewBag.UsernameIsEmpty
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="PasswordInput">Password:</label>
+                <div>
+                    <input type="password" name="Password" placeholder="Password" class="form-control" />
+                </div>
+                <div class="alert-danger">
+                    @ViewBag.PasswordIsEmpty
+                </div>
+            </div>
+            <div class="alert-danger">
+                @ViewBag.IncorrectCredentials
+            </div>
             <br />
-            <input type="submit" />
+            <button type="submit" class="btn">Log in</button>
+            <button type="button" class="btn" onclick="location.href='@Url.Action("Register","Login")'">Sign up</button>
         </div>
-    }
+    </form>
     @Scripts.Render("~/bundles/ScriptsForLoginPage")
 </body>
 </html>

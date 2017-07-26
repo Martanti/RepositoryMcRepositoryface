@@ -38,6 +38,8 @@ namespace ProjectyMcProjectface
                 "~/Content/sb-admin.css"));
 
             bundles.Add(new StyleBundle("~/Content/LoginVisuals").Include(
+                "~/Content/bootstrap.css",
+                "~/Content/bootstrap.min.css",
                 "~/Content/LoginStyle.css"));
 
             bundles.Add(new ScriptBundle("~/bundles/ScriptsForLoginPage").Include(

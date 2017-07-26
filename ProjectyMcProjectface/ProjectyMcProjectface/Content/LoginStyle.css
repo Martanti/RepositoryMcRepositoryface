@@ -3,10 +3,12 @@
 }
 
 #login-Wrapper {
-    min-width:200px;
-    max-width:250px;
-    width: 20%;
-    height: 15%;
+    min-width: 200px;
+    max-width: 300px;
+    min-height: 230px;
+    max-height: 250px;
+    width: 22%;
+    height: 24%;
     background-color: white;
     position: absolute;
     top: 0;
@@ -14,6 +16,9 @@
     left: 0;
     right: 0;
     margin: auto;
+    padding: 25px;
+    box-shadow: 10px 10px 5px #888888;
+    
 }
 form{
     width: 100%;
