@@ -10,37 +10,15 @@
     <meta name="viewport" content="width=device-width" />
     <title>Login page</title>
     @Styles.Render("~/Content/LoginVisuals")
+
 </head>
-<body id="LoginPage">
-    <div id="LoginWrapper"> 
-        @using (Html.BeginForm("LogInAction", "Login", FormMethod.Post))
-        {
-            <table id="LoginTable">
-
-                <tr><td>@Html.LabelFor(model => model.UserName)</td></tr>
-                <tr><td>@Html.EditorFor(model => model.UserName)</td></tr>
-                <tr><td>@Html.ValidationMessageFor(model => model.UserName)</td></tr>
-
-                <tr><td>@Html.LabelFor(model => model.Password)</td></tr>
-                <tr><td>@Html.EditorFor(model => model.Password)</td></tr>
-                <tr><td>@Html.ValidationMessageFor(model => model.Password)</td></tr>
-
-                <tr><td>
-                    <label class="field-validation-error">
-                        @Html.DisplayFor(model => model.LoginErrorMessage)
-                    </label>
-                </td></tr>
-
-
-                <tr><td>
-                    <input type="submit" value="Login" />
-                </td></tr>
-
-
-            </table>
-        }
-    </div>
-
-    @Scripts.Render("~/bundles/ValidationScripts")
+<body>
+    @using (Html.BeginForm("LogInAction", "Login", FormMethod.Post))
+    {
+        <div class="container-fluid" id="login-Wrapper">
+            aaa
+        </div>
+    }
+    @Scripts.Render("~/bundles/ScriptsForLoginPage")
 </body>
 </html>
