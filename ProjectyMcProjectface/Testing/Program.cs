@@ -12,13 +12,8 @@ namespace Testing
     {
         static void Main(string[] args)
         {
-            using(var context = new InternalDBModel())
-            {
-                foreach(RegisteredUser user in context.RegisteredUsers)
-                {
-                    Console.WriteLine(user.UserName + "_ _" + user.PassWord);
-                }
-            }
+            
+
             Console.WriteLine("Viskas veikia");
             Console.ReadKey();
         }

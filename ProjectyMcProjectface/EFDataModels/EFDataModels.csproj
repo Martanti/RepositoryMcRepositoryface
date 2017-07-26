@@ -49,12 +49,36 @@
   <ItemGroup>
     <Compile Include="ConnectionString.cs" />
     <Compile Include="InternalDBModel.cs" />
+    <Compile Include="Migrations\201707261044180_firstMigration.cs" />
+    <Compile Include="Migrations\201707261044180_firstMigration.Designer.cs">
+      <DependentUpon>201707261044180_firstMigration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201707261048102_AddUserEmail.cs" />
+    <Compile Include="Migrations\201707261048102_AddUserEmail.Designer.cs">
+      <DependentUpon>201707261048102_AddUserEmail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201707261057362_ConnectionStringChanges.cs" />
+    <Compile Include="Migrations\201707261057362_ConnectionStringChanges.Designer.cs">
+      <DependentUpon>201707261057362_ConnectionStringChanges.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RegisteredUser.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201707261044180_firstMigration.resx">
+      <DependentUpon>201707261044180_firstMigration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201707261048102_AddUserEmail.resx">
+      <DependentUpon>201707261048102_AddUserEmail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201707261057362_ConnectionStringChanges.resx">
+      <DependentUpon>201707261057362_ConnectionStringChanges.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

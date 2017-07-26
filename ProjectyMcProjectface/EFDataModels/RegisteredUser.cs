@@ -18,6 +18,8 @@ namespace EFDataModels
         [StringLength(64)]
         public string PassWord { get; set; }
 
+        public string eMail { get; set; }
+
         public virtual ICollection<ConnectionString> ConnectionStrings { get; set; }
     }
 }
