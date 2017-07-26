@@ -7,9 +7,13 @@ using EFDataModels;
 
 namespace Bussiness
 {
-    public class UserManager
+    public interface IUserManager
     {
-        public static void RegisterConnectionString(int UserId, string connStr, string dataSource, string DBName)
+        bool VerifyLogin(string userName, string password);
+    }
+    public class UserManager : IUserManager
+    {
+        public void RegisterConnectionString(int UserId, string connStr, string dataSource, string DBName)
         {
             using (InternalDBModel context = new InternalDBModel())
             {
@@ -31,13 +35,14 @@ namespace Bussiness
                 
             }
         }
-        public static bool AuthorizeLogin(string userName, string password)
+        public bool VerifyLogin(string userName, string password)
         {
             string hashedPassword = GetStringSha256Hash(password);
             userName = userName.Trim();
             
             using(InternalDBModel context = new InternalDBModel())
             {
+
                 foreach(RegisteredUser user in context.RegisteredUsers.Where(r => r.UserName == userName))
                 {
                     if(user.PassWord == hashedPassword)
@@ -49,21 +54,70 @@ namespace Bussiness
 
             return false;
         }
-        public static void RegisterUser(string UserName, string Password, string Email)
+        public string[] ValidateRegisterData(string userName, string password, string repeatedPassword, string Email)
+        {
+            string[] returnValues = { "", "", "", "" };
+
+            using (InternalDBModel context = new InternalDBModel())
+            {
+                if (userName.Length > 36)
+                {
+                    returnValues[0] = "The user name is too long";
+                }
+                else if (userName.Length < 4)
+                {
+                    returnValues[0] = "The user name is too short";
+                }
+                else if (context.RegisteredUsers.Where(u => u.UserName == userName) != null)
+                {
+                    returnValues[0] = "The user name is already taken";
+                }
+
+                if (password.Length < 4)
+                {
+                    returnValues[1] = "The password is too short";
+                }
+                else if (password.Length > 100)
+                {
+                    returnValues[1] = "The password is too long";
+                }
+
+                if (repeatedPassword != password)
+                {
+                    returnValues[2] = "Passwords don't match";
+                }
+
+                if (String.IsNullOrEmpty(Email))
+                {
+                    returnValues[3] = "The E-mail address cannot be empty";
+                }
+                else if (!Email.Contains('@'))
+                {
+                    returnValues[3] = "The E-mail addres is invalid";
+                }
+                else if(context.RegisteredUsers.Where(m => m.Email == Email) != null)
+                {
+                    returnValues[3] = "An account associated with given E-mail already exists";
+                }
+            }
+            
+            return returnValues;
+        }
+        public void RegisterUser(string userName, string password, string email)
         {
             using (InternalDBModel context = new InternalDBModel())
             {
-                string encryptedPassword = GetStringSha256Hash(Password);
+                string hashedPassword = GetStringSha256Hash(password);
                 context.RegisteredUsers.Add(new RegisteredUser()
                 {
-                    UserName = UserName,
-                    PassWord = encryptedPassword,
-                    eMail = Email
+                    UserName = userName,
+                    PassWord = hashedPassword,
+                    Email = email
                 });
                 context.SaveChanges();
             }
         }
-        internal static string GetStringSha256Hash(string text)
+        internal string GetStringSha256Hash(string text)
         {
             if (String.IsNullOrEmpty(text))
                 return String.Empty;

@@ -61,6 +61,14 @@
     <Compile Include="Migrations\201707261057362_ConnectionStringChanges.Designer.cs">
       <DependentUpon>201707261057362_ConnectionStringChanges.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201707261136393_ValidationRemoval.cs" />
+    <Compile Include="Migrations\201707261136393_ValidationRemoval.Designer.cs">
+      <DependentUpon>201707261136393_ValidationRemoval.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201707261244497_ChangedEmailColumnName.cs" />
+    <Compile Include="Migrations\201707261244497_ChangedEmailColumnName.Designer.cs">
+      <DependentUpon>201707261244497_ChangedEmailColumnName.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RegisteredUser.cs" />
@@ -78,6 +86,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201707261057362_ConnectionStringChanges.resx">
       <DependentUpon>201707261057362_ConnectionStringChanges.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201707261136393_ValidationRemoval.resx">
+      <DependentUpon>201707261136393_ValidationRemoval.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201707261244497_ChangedEmailColumnName.resx">
+      <DependentUpon>201707261244497_ChangedEmailColumnName.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

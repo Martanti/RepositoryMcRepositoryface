@@ -65,10 +65,6 @@
       <Project>{837f97be-f359-428b-a3e6-968c7a36b05f}</Project>
       <Name>Bussiness</Name>
     </ProjectReference>
-    <ProjectReference Include="..\ClientDto\ClientDto.csproj">
-      <Project>{76f5ccb3-8ef3-422d-bb67-36ac78eab36c}</Project>
-      <Name>ClientDto</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Dto\Dto.csproj">
       <Project>{4b79efc6-dd82-462a-b332-537a96ad4ff6}</Project>
       <Name>Dto</Name>

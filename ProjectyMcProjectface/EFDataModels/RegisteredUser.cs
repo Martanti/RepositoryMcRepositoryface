@@ -10,15 +10,11 @@ namespace EFDataModels
     {
         public int Id { get; set; }
 
-        [Required]
-        [StringLength(20)]
         public string UserName { get; set; }
 
-        [Required]
-        [StringLength(64)]
         public string PassWord { get; set; }
 
-        public string eMail { get; set; }
+        public string Email { get; set; }
 
         public virtual ICollection<ConnectionString> ConnectionStrings { get; set; }
     }
