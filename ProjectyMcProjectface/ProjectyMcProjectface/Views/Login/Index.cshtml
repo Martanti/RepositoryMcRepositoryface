@@ -16,7 +16,10 @@
     @using (Html.BeginForm("LogInAction", "Login", FormMethod.Post))
     {
         <div class="container-fluid" id="login-Wrapper">
-            aaa
+           <input type="text" name="UserName" placeholder="Username"/>
+           <input  name="Password" type="password" placeholder="Password"/>
+            <br />
+            <input type="submit" />
         </div>
     }
     @Scripts.Render("~/bundles/ScriptsForLoginPage")
