@@ -300,3 +300,5 @@ __pycache__/
 =======
 *.cache
 >>>>>>> origin/master
+*.suo
+*.sln
