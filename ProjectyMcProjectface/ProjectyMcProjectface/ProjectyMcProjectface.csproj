@@ -231,12 +231,6 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\AdventureWorksConnection\AdventureWorksConnection.csproj">
-      <Project>{3ff560dc-e58b-4dbb-aee4-ef7263edbf2b}</Project>
-      <Name>AdventureWorksConnection</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <EmbeddedResource Include="Migrations\201707211116211_InstalDB.resx">
       <DependentUpon>201707211116211_InstalDB.cs</DependentUpon>
     </EmbeddedResource>
