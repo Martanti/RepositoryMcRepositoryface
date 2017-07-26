@@ -4,16 +4,15 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{5663EFDB-1FF3-4118-B22A-7C5D5E0D605A}</ProjectGuid>
-    <OutputType>Exe</OutputType>
-    <RootNamespace>Testing</RootNamespace>
-    <AssemblyName>Testing</AssemblyName>
+    <ProjectGuid>{9C8DE004-953E-473F-8925-6ED04187E14C}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>EFDataModels</RootNamespace>
+    <AssemblyName>EFDataModels</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -23,7 +22,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -49,38 +47,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Program.cs" />
+    <Compile Include="ConnectionString.cs" />
+    <Compile Include="InternalDBModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RegisteredUser.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\AnotherOne\DatabaseInit.csproj">
-      <Project>{80337923-6649-4d26-b44c-97ffec661f58}</Project>
-      <Name>DatabaseInit</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Bussiness\Bussiness.csproj">
-      <Project>{837f97be-f359-428b-a3e6-968c7a36b05f}</Project>
-      <Name>Bussiness</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\ClientDto\ClientDto.csproj">
-      <Project>{76f5ccb3-8ef3-422d-bb67-36ac78eab36c}</Project>
-      <Name>ClientDto</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Dto\Dto.csproj">
-      <Project>{4b79efc6-dd82-462a-b332-537a96ad4ff6}</Project>
-      <Name>Dto</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\EFDataModels\EFDataModels.csproj">
-      <Project>{9c8de004-953e-473f-8925-6ed04187e14c}</Project>
-      <Name>EFDataModels</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\ProjectyMcProjectface\ProjectyMcProjectface.csproj">
-      <Project>{8f33946d-75a8-489f-96df-24f085c3fcb2}</Project>
-      <Name>ProjectyMcProjectface</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

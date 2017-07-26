@@ -1,4 +1,4 @@
-namespace ProjectyMcProjectface
+namespace EFDataModels
 {
     using System;
     using System.Collections.Generic;

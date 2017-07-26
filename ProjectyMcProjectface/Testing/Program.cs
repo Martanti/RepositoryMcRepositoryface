@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Bussiness;
+using EFDataModels;
 
 namespace Testing
 {
@@ -11,8 +12,14 @@ namespace Testing
     {
         static void Main(string[] args)
         {
-            DatabaseCopy.CopyDatabaseSMO(@"Data Source=.\SQLExpress;Database=Northwind; Integrated security=true", @"Data Source=.\SQLExpress; Integrated security=true", "10");
-            Console.WriteLine("Valio");
+            using(var context = new InternalDBModel())
+            {
+                foreach(RegisteredUser user in context.RegisteredUsers)
+                {
+                    Console.WriteLine(user.UserName + "_ _" + user.PassWord);
+                }
+            }
+            Console.WriteLine("Viskas veikia");
             Console.ReadKey();
         }
     }
