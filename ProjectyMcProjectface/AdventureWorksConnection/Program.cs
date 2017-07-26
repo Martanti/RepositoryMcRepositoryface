@@ -15,9 +15,6 @@ namespace AdventureWorksConnection
     {
         static void Main(string[] args)
         {
-
-            //ReadAllTablesFromDatabase(@"Data Source=.\SQLEXPRESS;Database=InternalDB;Integrated Security=True;");
-            //CopyDatabase("Northwind", @".\SQLEXPRESS", "Northwind_Internal", @".\SQLEXPRESS");
             CopyDatabaseSMO(@".\SQLExpress", "AdventureWorks2014", @".\SQLExpress", "Northwind_Internal", "Eziukas");
 
             Console.ReadLine();
@@ -45,24 +42,22 @@ namespace AdventureWorksConnection
                 schema = new Schema(destinationDB, schemaName);
                 schema.Create();
             }
+            createUserDefinedDataTypes(originalDB, destinationDB);
+            createXMLSchemaCollections(originalDB, destinationDB);
+            createUserDefinedTypes(originalDB, destinationDB);
 
             Console.WriteLine("All tables: ");
             foreach (Table table in originalDB.Tables)
             {
-                if(table.Schema == "HumanResources")
-                {
-                    continue;
-                }
+                
                 Console.WriteLine(table.Schema + "."+table.Name);
                 createTable(table, schemaName, destinationServer, destinationDB);
-
-                //copyTabledata(originalServerName, originalDBName, table.Name, destinationServerName, 
-                   // destinationDBName, table.Name, schema.Name, table.Schema);
             }
             Table testTable = originalDB.Tables[0];
             Console.WriteLine("Valio");
 
         }
+
         private static void copyTabledata(string sourceServer, string sourceDatabase, string sourceTable,
             string destinationServer, string destinationDatabase, string destinationTable, string schemaName, string originalSchemaName)
         {
@@ -87,6 +82,7 @@ namespace AdventureWorksConnection
             sourceConn.Close();
             destinationConn.Close();
         }
+
         private static void createTable(Table sourcetable, string schema, Server destinationServer, 
             Database db)
         {
@@ -99,8 +95,95 @@ namespace AdventureWorksConnection
             copiedtable.TextFileGroup = sourcetable.TextFileGroup;
             copiedtable.FileGroup = sourcetable.FileGroup;
 
-            
-            copiedtable.Create();
+            try
+            {
+                copiedtable.Create();
+            }
+            catch (Exception ex)
+            {
+                throw (ex);
+            }
+        }
+        private static void createUserDefinedDataTypes(Database originalDB, Database destinationDB)
+        {
+            foreach (UserDefinedDataType dt in originalDB.UserDefinedDataTypes)
+            {
+                Schema schema = destinationDB.Schemas[dt.Schema];
+                if (schema == null)
+                {
+                    schema = new Schema(destinationDB, dt.Schema);
+                    schema.Create();
+                }
+                UserDefinedDataType t = new UserDefinedDataType(destinationDB, dt.Name);
+                t.SystemType = dt.SystemType;
+                t.Length = dt.Length;
+                t.Schema = dt.Schema;
+                try
+                {
+                    t.Create();
+                }
+                catch(Exception ex)
+                {
+                    throw (ex);
+                }
+
+            }
+
+        }
+       
+        private static void createUserDefinedTypes(Database originalDB, Database destinationDB)
+        {
+            foreach (UserDefinedDataType dt in originalDB.UserDefinedTypes)
+            {
+                Schema schema = destinationDB.Schemas[dt.Schema];
+                if (schema == null)
+                {
+                    schema = new Schema(destinationDB, dt.Schema);
+                    schema.Create();
+                }
+                UserDefinedDataType t = new UserDefinedDataType(destinationDB, dt.Name);
+                t.SystemType = dt.SystemType;
+                t.Length = dt.Length;
+                t.Schema = dt.Schema;
+                try
+                {
+                    t.Create();
+                }
+                catch(Exception ex)
+                {
+                    throw (ex);
+                }
+
+            }
+
+        }
+        private static void createXMLSchemaCollections(Database originalDB, Database destinationDB)
+        {
+            foreach (XmlSchemaCollection col in originalDB.XmlSchemaCollections)
+            {
+                Schema schema = destinationDB.Schemas[col.Schema];
+                if (schema == null)
+                {
+                    schema = new Schema(destinationDB, col.Schema);
+                    schema.Create();
+                }
+                XmlSchemaCollection c = new XmlSchemaCollection(destinationDB, col.Name);
+
+                c.Text = col.Text;
+                c.Schema = col.Schema;
+
+
+                try
+                {
+                    c.Create();
+                }
+                catch(Exception ex)
+                {
+                    throw (ex);
+                }
+
+            }
+
         }
         private static void createColumns(Table sourcetable, Table copiedtable)
         {
@@ -108,182 +191,14 @@ namespace AdventureWorksConnection
 
             foreach (Column source in sourcetable.Columns)
             {
+                
                 Column column = new Column(copiedtable, source.Name, source.DataType);
-                column.Collation = source.Collation;
+
                 column.Nullable = source.Nullable;
-                column.Computed = source.Computed;
-                column.ComputedText = source.ComputedText;
-                column.Default = source.Default;
-
-                if (source.DefaultConstraint != null)
-                {
-                    string tabname = copiedtable.Name;
-                    string constrname = source.DefaultConstraint.Name;
-                    column.AddDefaultConstraint(tabname + "_" + constrname);
-                    column.DefaultConstraint.Text = source.DefaultConstraint.Text;
-                }
-
-                column.IsPersisted = source.IsPersisted;
-                column.DefaultSchema = source.DefaultSchema;
-                column.RowGuidCol = source.RowGuidCol;
-
-                if (server.VersionMajor >= 10)
-                {
-                    column.IsFileStream = source.IsFileStream;
-                    column.IsSparse = source.IsSparse;
-                    column.IsColumnSet = source.IsColumnSet;
-                }
-
+                
                 copiedtable.Columns.Add(column);
             }
         }
-
-        public static void CopyDatabase(string OriginalDBName, string OriginalServerName,
-                                        string DestinationDBName, string DestinationServerName)
-        {
-            SqlConnection originalCon = new SqlConnection("Data Source=" + OriginalServerName + 
-                ";Database=" + OriginalDBName + ";Integrated Security=True");
-            originalCon.Open();
-            SqlConnection destinationServerCon = new SqlConnection("Data Source=" + DestinationServerName + 
-                ";Database="+DestinationDBName+";Integrated Security=True");
-            destinationServerCon.Open();
-
-            /*Create Db
-            string createDestinationDBQuery = "CREATE DATABASE " + DestinationDBName;
-            SqlCommand createDestinationDBCommand = new SqlCommand(createDestinationDBQuery, destinationServerCon);
-            createDestinationDBCommand.ExecuteNonQuery();
-
-            Console.WriteLine("DB craeted successfully");*/
-
-            //getting table list in database
-
-            List<string> tables = GetTableList(originalCon);
-            List<string> tablesWithSchemas = GetTableWithSchemaList(originalCon);
-            if(tables != null)
-            {
-                string schemaName = "TestSchema";
-                string createSchemaDBQuery = "create schema " + schemaName;
-                SqlCommand createSchemaDBCommand = new SqlCommand(createSchemaDBQuery, destinationServerCon);
-                createSchemaDBCommand.ExecuteNonQuery();
-
-                for(int x = 0; x < tables.Count; x++)
-                {
-                    Console.WriteLine("Copying " + tablesWithSchemas[x]);
-                    CopyTableTointernalDB(OriginalDBName,schemaName, tables[x], tablesWithSchemas[x], originalCon, destinationServerCon);
-                    Console.WriteLine();
-                }
-            }
-
-            originalCon.Close();
-            destinationServerCon.Close();
-
-        }
-
-        public static void ReadAllTablesFromDatabase(string connectionString)
-        {
-            SqlConnection con = new SqlConnection(connectionString);
-            con.Open();
-
-            List<string> tables = GetTableList(con);
-            foreach(var table in tables)
-            {
-                Console.WriteLine(table);
-                PrintTableData(table, con);
-                Console.WriteLine();
-            }
-
-            con.Close();
-        }
-        public static void CopyTableTointernalDB(string originalDBName, string schemaName, string tableName, string originalTableWithSchema,
-            SqlConnection originalCon, SqlConnection destinationCon)
-        {
-            
-
-            string createDestinationTableQuery = "create table " + schemaName + ".[" + tableName + "](";
-            DataTable ColumnsDT = new DataTable();
-            string getTableColumnDataQuery = "SELECT * FROM "+originalDBName+".INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = N'" + tableName +"'";
-            SqlCommand getTableColumnDataCommand = new SqlCommand(getTableColumnDataQuery, originalCon);
-            SqlDataAdapter TableDA = new SqlDataAdapter(getTableColumnDataCommand);
-            TableDA.Fill(ColumnsDT);
-            for (int x = 0; x < ColumnsDT.Rows.Count; x++)
-            {
-                createDestinationTableQuery += "[" + ColumnsDT.Rows[x].ItemArray[3].ToString() + "] " + "[" + ColumnsDT.Rows[x].ItemArray[7].ToString() + "], ";
-                
-            }
-
-            createDestinationTableQuery = createDestinationTableQuery.Remove(createDestinationTableQuery.Length - 2);
-            createDestinationTableQuery += " )";
-
-            SqlCommand createDestinationTableCommand = new SqlCommand(createDestinationTableQuery, destinationCon);
-            createDestinationTableCommand.ExecuteNonQuery();
-            Console.WriteLine("Table " + schemaName + "." + tableName + " created succesfully!");
-
-            //Copying Now!
-            
-            DataTable dataTable = new DataTable();
-
-            string getTableDataquery = "select * from " + originalTableWithSchema;
-            SqlCommand getTableDataCommand = new SqlCommand(getTableDataquery, originalCon);
-            SqlDataAdapter da = new SqlDataAdapter(getTableDataCommand);
-
-            da.Fill(dataTable);
-
-            for (int x = 0; x < dataTable.Rows.Count; x++)
-            {
-                string insertQuery = "insert into " + schemaName + ".["+tableName+"](" ;
-                string values = "VALUES(";
-
-                for (int y = 0; y < dataTable.Columns.Count; y++)
-                {
-                    insertQuery += dataTable.Columns[y].ColumnName + ", ";
-                    values += dataTable.Rows[x].ItemArray[y].ToString() + ", ";
-                }
-                insertQuery = insertQuery.Remove(insertQuery.Length - 2);
-                insertQuery += " )";
-                values = values.Remove(values.Length - 2);
-                values += " )";
-                insertQuery += " " + values;
-                SqlCommand insertCommand = new SqlCommand(insertQuery, destinationCon);
-                insertCommand.ExecuteNonQuery();
-                
-            }
-
-            da.Dispose();
-            
-        }
-        public static void PrintTableData(string tableName, SqlConnection con)
-        {
-            DataTable dataTable = new DataTable();
-
-            string query = "select * from " + tableName;
-            SqlCommand command = new SqlCommand(query, con);
-            SqlDataAdapter da = new SqlDataAdapter(command);
-
-            
-            da.Fill(dataTable);
-
-            for (int x = 0; x < dataTable.Rows.Count; x++)
-            {
-                string line = "";
-
-                for (int y = 0; y < dataTable.Columns.Count; y++)
-                {
-                    line = line + dataTable.Columns[y].ColumnName + ": " + dataTable.Rows[x].ItemArray[y].ToString() + "; ";
-                }
-                Console.WriteLine(line);
-            }
-            da.Dispose();
-        }
-        public static List<string> GetTableList(SqlConnection connection)
-        {
-            List<string> tables = connection.GetSchema("Tables").AsEnumerable().Select(S => S[2].ToString()).ToList();
-            return tables;
-        }
-        public static List<string> GetTableWithSchemaList(SqlConnection connection)
-        {
-            List<string> tables = connection.GetSchema("Tables").AsEnumerable().Select(S => S[1].ToString() + ".[" + S[2].ToString() + "]").ToList();
-            
-            return tables;
-        }
+        
     }
 }
