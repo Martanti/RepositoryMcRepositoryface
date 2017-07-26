@@ -103,8 +103,6 @@ C:\Users\Student2\Documents\GitHub\RepositoryMcRepositoryface\ProjectyMcProjectf
 C:\Users\Student2\Documents\GitHub\RepositoryMcRepositoryface\ProjectyMcProjectface\ProjectyMcProjectface\bin\roslyn\vbc.rsp
 C:\Users\Student2\Documents\GitHub\RepositoryMcRepositoryface\ProjectyMcProjectface\ProjectyMcProjectface\bin\roslyn\VBCSCompiler.exe
 C:\Users\Student2\Documents\GitHub\RepositoryMcRepositoryface\ProjectyMcProjectface\ProjectyMcProjectface\bin\roslyn\VBCSCompiler.exe.config
-C:\Users\Student2\Documents\GitHub\RepositoryMcRepositoryface\ProjectyMcProjectface\ProjectyMcProjectface\bin\SqlServerTypes\x86\msvcr120.dll
-C:\Users\Student2\Documents\GitHub\RepositoryMcRepositoryface\ProjectyMcProjectface\ProjectyMcProjectface\bin\SqlServerTypes\x86\SqlServerSpatial140.dll
 C:\Users\Student2\Documents\GitHub\RepositoryMcRepositoryface\ProjectyMcProjectface\ProjectyMcProjectface\bin\ProjectyMcProjectface.dll.config
 C:\Users\Student2\Documents\GitHub\RepositoryMcRepositoryface\ProjectyMcProjectface\ProjectyMcProjectface\bin\ProjectyMcProjectface.dll
 C:\Users\Student2\Documents\GitHub\RepositoryMcRepositoryface\ProjectyMcProjectface\ProjectyMcProjectface\bin\ProjectyMcProjectface.pdb
@@ -154,3 +152,10 @@ C:\Users\Student2\Documents\GitHub\RepositoryMcRepositoryface\ProjectyMcProjectf
 C:\Users\Student2\Documents\GitHub\RepositoryMcRepositoryface\ProjectyMcProjectface\ProjectyMcProjectface\obj\Debug\ProjectyMcProjectface.pdb
 C:\Users\Student2\Documents\GitHub\RepositoryMcRepositoryface\ProjectyMcProjectface\ProjectyMcProjectface\obj\Debug\ProjectyMcProjectface.Migrations.InstalDB.resources
 C:\Users\Student2\Documents\GitHub\RepositoryMcRepositoryface\ProjectyMcProjectface\ProjectyMcProjectface\obj\Debug\ProjectyMcProjectface.csproj.GenerateResource.Cache
+C:\Users\Student2\Documents\GitHub\RepositoryMcRepositoryface\ProjectyMcProjectface\ProjectyMcProjectface\bin\Microsoft.SqlServer.ConnectionInfo.dll
+C:\Users\Student2\Documents\GitHub\RepositoryMcRepositoryface\ProjectyMcProjectface\ProjectyMcProjectface\bin\Microsoft.SqlServer.Smo.dll
+C:\Users\Student2\Documents\GitHub\RepositoryMcRepositoryface\ProjectyMcProjectface\ProjectyMcProjectface\bin\Microsoft.SqlServer.SqlClrProvider.dll
+C:\Users\Student2\Documents\GitHub\RepositoryMcRepositoryface\ProjectyMcProjectface\ProjectyMcProjectface\bin\Microsoft.SqlServer.Management.Sdk.Sfc.dll
+C:\Users\Student2\Documents\GitHub\RepositoryMcRepositoryface\ProjectyMcProjectface\ProjectyMcProjectface\bin\Microsoft.SqlServer.SqlEnum.dll
+C:\Users\Student2\Documents\GitHub\RepositoryMcRepositoryface\ProjectyMcProjectface\ProjectyMcProjectface\bin\Microsoft.SqlServer.Dmf.dll
+C:\Users\Student2\Documents\GitHub\RepositoryMcRepositoryface\ProjectyMcProjectface\ProjectyMcProjectface\bin\Microsoft.SqlServer.ServiceBrokerEnum.dll
