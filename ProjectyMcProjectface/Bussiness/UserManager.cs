@@ -71,7 +71,7 @@ namespace Bussiness
             password = password.Trim();
             repeatedPassword = repeatedPassword.Trim();
             Email = Email.Trim();
-            string[] returnValues = { "", "", "", "" };
+            string[] returnValues = { null, null, null, null };
 
             using (InternalDBModel context = new InternalDBModel())
             {
