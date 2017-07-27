@@ -1,19 +1,18 @@
-namespace ProjectyMcProjectface.Migrations
+namespace EFDataModels.Migrations
 {
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
     using System.Linq;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<ProjectyMcProjectface.InternalDBModel>
+    internal sealed class Configuration : DbMigrationsConfiguration<EFDataModels.InternalDBModel>
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = true;
-            AutomaticMigrationDataLossAllowed = true;
+            AutomaticMigrationsEnabled = false;
         }
 
-        protected override void Seed(ProjectyMcProjectface.InternalDBModel context)
+        protected override void Seed(EFDataModels.InternalDBModel context)
         {
             //  This method will be called after migrating to the latest version.
 

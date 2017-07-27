@@ -1,5 +1,4 @@
-﻿using ProjectyMcProjectface.Migrations;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
@@ -14,16 +13,6 @@ namespace ProjectyMcProjectface
     {
         protected void Application_Start()
         {
-            //Add any pending Database migrations to the database
-            Database.SetInitializer(new MigrateDatabaseToLatestVersion<InternalDBModel, Configuration>());
-
-            //For DB Testing purposes only =>
-            /*using (var context = new InternalDBModel()) {
-                InternalDBModel.RegisterUser("Martynas", "123456");
-                context.SaveChanges();
-            }*/
-                //<=
-
             AreaRegistration.RegisterAllAreas();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
