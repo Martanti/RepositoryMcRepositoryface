@@ -79,6 +79,15 @@ namespace Resources.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to An account associated with given E-mail address already exists.
+        /// </summary>
+        public static string ValidationEmailTaken {
+            get {
+                return ResourceManager.GetString("ValidationEmailTaken", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The password cannot be empty.
         /// </summary>
         public static string ValidationPasswordEmpty {
@@ -120,15 +129,6 @@ namespace Resources.Properties {
         public static string ValidationUserNameEmpty {
             get {
                 return ResourceManager.GetString("ValidationUserNameEmpty", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to The user name is already taken.
-        /// </summary>
-        public static string ValidationUserNameTaken {
-            get {
-                return ResourceManager.GetString("ValidationUserNameTaken", resourceCulture);
             }
         }
         

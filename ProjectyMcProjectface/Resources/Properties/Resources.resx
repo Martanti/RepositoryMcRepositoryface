@@ -123,6 +123,9 @@
   <data name="ValidationEmailInvalid" xml:space="preserve">
     <value>The E-mail addres is invalid</value>
   </data>
+  <data name="ValidationEmailTaken" xml:space="preserve">
+    <value>An account associated with given E-mail address already exists</value>
+  </data>
   <data name="ValidationPasswordEmpty" xml:space="preserve">
     <value>The password cannot be empty</value>
   </data>
@@ -137,9 +140,6 @@
   </data>
   <data name="ValidationUserNameEmpty" xml:space="preserve">
     <value>The user name cannot be empty</value>
-  </data>
-  <data name="ValidationUserNameTaken" xml:space="preserve">
-    <value>The user name is already taken</value>
   </data>
   <data name="ValidationUserNameTooLong" xml:space="preserve">
     <value>The user name is too long</value>

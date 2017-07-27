@@ -87,10 +87,6 @@ namespace Bussiness
                 {
                     returnValues[0] = Resources.Properties.Resources.ValidationUserNameTooShort;
                 }
-                else if (context.RegisteredUsers.Where(u => u.UserName == userName) != null)
-                {
-                    returnValues[0] = Resources.Properties.Resources.ValidationUserNameTaken;
-                }
 
                 if (String.IsNullOrEmpty(password))
                 {
@@ -118,6 +114,19 @@ namespace Bussiness
                 {
                     returnValues[3] = Resources.Properties.Resources.ValidationEmailInvalid;
                 }
+                else
+                {
+                    try
+                    {
+                        var temp = context.RegisteredUsers.Single(u => u.Email == Email);
+                        returnValues[3] = Resources.Properties.Resources.ValidationEmailTaken;
+                    }
+                    catch
+                    {
+
+                    }
+                }
+                
             }
             
             return returnValues;
