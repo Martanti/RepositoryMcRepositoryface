@@ -10,10 +10,10 @@ namespace Bussiness
     
     public class UserManager : IUserManager
     {
-        public int MaxUserNameLength { get; set; }
-        public int MinUserNameLength { get; set; }
-        public int MaxPassWordLength { get; set; }
-        public int MinPassWordLength { get; set; }
+        public int MaxUserNameLength { get; }
+        public int MinUserNameLength { get; }
+        public int MaxPassWordLength { get; }
+        public int MinPassWordLength { get; }
 
         public UserManager(int maxUserNameLength = 36, int minUserNameLength = 4, int maxPassWordLength = 100, int minPassWordLength = 4)
         {
@@ -67,10 +67,19 @@ namespace Bussiness
         }
         public string[] ValidateRegisterData(string userName, string password, string repeatedPassword, string Email)
         {
-            userName = userName.Trim();
-            password = password.Trim();
-            repeatedPassword = repeatedPassword.Trim();
-            Email = Email.Trim();
+            if (!String.IsNullOrEmpty(userName))
+            {
+                userName = userName.Trim();
+            }
+            if (!String.IsNullOrEmpty(password))
+            {
+                password = password.Trim();
+            }
+            if (!String.IsNullOrEmpty(Email))
+            {
+                Email = Email.Trim();
+            }
+            
             string[] returnValues = { null, null, null, null };
 
             using (InternalDBModel context = new InternalDBModel())
