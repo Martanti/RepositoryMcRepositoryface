@@ -9,45 +9,61 @@ using System.Data.SqlClient;
 
 namespace Bussiness
 {
-    class DatabaseCopy
+    public class DatabaseCopy : IDatabaseCopy
     {
-        public static void CopyDatabaseSMO()
+        public void CopyDatabaseSMO(string sourceConnectionString, string destinationConnectionString, string userID)
         {
-            /*ServerConnection originalConn = new ServerConnection();
-            originalConn.ServerInstance = originalServerName;
+            SqlConnection sourceConn = new SqlConnection(sourceConnectionString);
+            sourceConn.Open();
+            SqlConnection targetConn = new SqlConnection(destinationConnectionString);
+            targetConn.Open();
+
+            ServerConnection originalConn = new ServerConnection();
+            originalConn.ServerInstance = sourceConn.DataSource;
             originalConn.LoginSecure = true;
             Server originalServer = new Server(originalConn);
 
             ServerConnection destinationConn = new ServerConnection();
-            destinationConn.ServerInstance = destinationServerName;
+            destinationConn.ServerInstance = targetConn.DataSource;
             destinationConn.LoginSecure = true;
             Server destinationServer = new Server(destinationConn);
 
-            Database originalDB = originalServer.Databases[originalDBName];
-            Database destinationDB = destinationServer.Databases[destinationDBName];
+            Database originalDB = originalServer.Databases[sourceConn.Database];
+            Database destinationDB = destinationServer.Databases[userID + "_" + sourceConn.Database];
 
-            Schema schema = destinationDB.Schemas[schemaName];
-            if (schema == null)
+            if (destinationDB == null)
             {
-                schema = new Schema(destinationDB, schemaName);
-                schema.Create();
+                destinationDB = new Database(destinationServer, userID + "_" + sourceConn.Database);
+                destinationDB.Create();
             }
+
+            foreach (Schema sch in originalDB.Schemas)
+            {
+                Schema schema = destinationDB.Schemas[sch.Name];
+                if (schema == null)
+                {
+                    schema = new Schema(destinationDB, sch.Name);
+                    schema.Create();
+                }
+            }
+
             createUserDefinedDataTypes(originalDB, destinationDB);
             createXMLSchemaCollections(originalDB, destinationDB);
             createUserDefinedTypes(originalDB, destinationDB);
 
-            Console.WriteLine("All tables: ");
             foreach (Table table in originalDB.Tables)
             {
-
-                Console.WriteLine(table.Schema + "." + table.Name);
-                createTable(table, schemaName, destinationServer, destinationDB);
+                createTable(table, table.Schema, destinationServer, destinationDB);
+                copyTabledata(sourceConn.DataSource, sourceConn.Database, table.Name, targetConn.DataSource,
+                    destinationDB.Name, table.Name, table.Schema, table.Schema);
             }
-            Table testTable = originalDB.Tables[0];
-            Console.WriteLine("Valio");*/
+
+            sourceConn.Close();
+            targetConn.Close();
         }
-        public static void CopyDatabaseSMO(string originalServerName, string originalDBName,
-            string destinationServerName, string destinationDBName, string schemaName)
+
+        public void CopyDatabaseSMO(string originalServerName, string originalDBName,
+            string destinationServerName, string userID)
         {
             ServerConnection originalConn = new ServerConnection();
             originalConn.ServerInstance = originalServerName;
@@ -60,31 +76,38 @@ namespace Bussiness
             Server destinationServer = new Server(destinationConn);
 
             Database originalDB = originalServer.Databases[originalDBName];
-            Database destinationDB = destinationServer.Databases[destinationDBName];
+            Database destinationDB = destinationServer.Databases[userID + "_" +originalDBName];
 
-            Schema schema = destinationDB.Schemas[schemaName];
-            if (schema == null)
+            if(destinationDB == null)
             {
-                schema = new Schema(destinationDB, schemaName);
-                schema.Create();
+                destinationDB = new Database(destinationServer, userID + "_" +originalDBName);
+                destinationDB.Create();
             }
+
+            foreach(Schema sch in originalDB.Schemas)
+            {
+                Schema schema = destinationDB.Schemas[sch.Name];
+                if (schema == null)
+                {
+                    schema = new Schema(destinationDB, sch.Name);
+                    schema.Create();
+                }
+            }
+            
             createUserDefinedDataTypes(originalDB, destinationDB);
             createXMLSchemaCollections(originalDB, destinationDB);
             createUserDefinedTypes(originalDB, destinationDB);
 
-            Console.WriteLine("All tables: ");
             foreach (Table table in originalDB.Tables)
             {
-
-                Console.WriteLine(table.Schema + "." + table.Name);
-                createTable(table, schemaName, destinationServer, destinationDB);
+                createTable(table, table.Schema, destinationServer, destinationDB);
+                copyTabledata(originalServerName, originalDBName, table.Name, destinationServerName,
+                    destinationDB.Name, table.Name, table.Schema, table.Schema);
             }
-            Table testTable = originalDB.Tables[0];
-            Console.WriteLine("Valio");
 
         }
 
-        private static void copyTabledata(string sourceServer, string sourceDatabase, string sourceTable,
+        private void copyTabledata(string sourceServer, string sourceDatabase, string sourceTable,
             string destinationServer, string destinationDatabase, string destinationTable, string schemaName, string originalSchemaName)
         {
             SqlConnection sourceConn = new SqlConnection("Data Source=" + sourceServer +
@@ -109,7 +132,7 @@ namespace Bussiness
             destinationConn.Close();
         }
 
-        private static void createTable(Table sourcetable, string schema, Server destinationServer,
+        private void createTable(Table sourcetable, string schema, Server destinationServer,
             Database db)
         {
             Table copiedtable = new Table(db, sourcetable.Name, schema);
@@ -130,7 +153,7 @@ namespace Bussiness
                 throw (ex);
             }
         }
-        private static void createUserDefinedDataTypes(Database originalDB, Database destinationDB)
+        private void createUserDefinedDataTypes(Database originalDB, Database destinationDB)
         {
             foreach (UserDefinedDataType dt in originalDB.UserDefinedDataTypes)
             {
@@ -157,7 +180,7 @@ namespace Bussiness
 
         }
 
-        private static void createUserDefinedTypes(Database originalDB, Database destinationDB)
+        private void createUserDefinedTypes(Database originalDB, Database destinationDB)
         {
             foreach (UserDefinedDataType dt in originalDB.UserDefinedTypes)
             {
@@ -183,7 +206,7 @@ namespace Bussiness
             }
 
         }
-        private static void createXMLSchemaCollections(Database originalDB, Database destinationDB)
+        private void createXMLSchemaCollections(Database originalDB, Database destinationDB)
         {
             foreach (XmlSchemaCollection col in originalDB.XmlSchemaCollections)
             {
@@ -211,7 +234,7 @@ namespace Bussiness
             }
 
         }
-        private static void createColumns(Table sourcetable, Table copiedtable)
+        private void createColumns(Table sourcetable, Table copiedtable)
         {
             Server server = sourcetable.Parent.Parent;
 

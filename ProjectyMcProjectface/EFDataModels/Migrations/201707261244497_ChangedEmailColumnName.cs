@@ -1,9 +1,9 @@
-namespace ProjectyMcProjectface.Migrations
+namespace EFDataModels.Migrations
 {
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class InstalDB : DbMigration
+    public partial class ChangedEmailColumnName : DbMigration
     {
         public override void Up()
         {

@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace ProjectyMcProjectface
+namespace EFDataModels
 {
     public class ConnectionString
     {
@@ -9,6 +9,8 @@ namespace ProjectyMcProjectface
         public int UserId { get; set; }
         public string String { get; set; }
 
+        public string DataSource { get; set; }
+        public string DatabaseName { get; set; }
         public virtual RegisteredUser User { get; set; }
     }
 }

@@ -1,4 +1,4 @@
-namespace ProjectyMcProjectface
+namespace EFDataModels
 {
     using System;
     using System.Collections.Generic;
@@ -10,13 +10,11 @@ namespace ProjectyMcProjectface
     {
         public int Id { get; set; }
 
-        [Required]
-        [StringLength(20)]
         public string UserName { get; set; }
 
-        [Required]
-        [StringLength(64)]
         public string PassWord { get; set; }
+
+        public string Email { get; set; }
 
         public virtual ICollection<ConnectionString> ConnectionStrings { get; set; }
     }
