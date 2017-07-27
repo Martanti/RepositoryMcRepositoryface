@@ -15,7 +15,11 @@ namespace Testing
         static void Main(string[] args)
         {
             
-            Console.WriteLine("Viskas veikia");
+            using(var context = new InternalDBModel())
+            {
+                context.RegisteredUsers.Add(new RegisteredUser() { UserName = "Martynas" , PassWord = "Gaidys", Email="lioler@yourass.com"});
+                context.SaveChanges();
+            }
             Console.ReadKey();
         }
     }

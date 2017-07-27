@@ -37,7 +37,8 @@ namespace ProjectyMcProjectface.Controllers
                 ViewBag.PasswordIsEmpty = null;
             }
 
-
+            /*Autentikacija ir perėjimas į home page'ą*/
+            
             return View("Index");
         }
         [HttpGet]
@@ -54,10 +55,21 @@ namespace ProjectyMcProjectface.Controllers
 
             if(errorMessages[0] == null && errorMessages[1] == null && errorMessages[2] == null && errorMessages[3] == null)
             {
+
                 //įkelimas i serva
+
+                return View("Index");
             }
 
-            return View();
+            ViewBag.BadEmail = errorMessages[3];
+
+            ViewBag.BadUsername = errorMessages[0];
+
+            ViewBag.BadPassword = errorMessages[1];
+
+            ViewBag.BadRePassword = errorMessages[2];
+
+            return View("Register");
         }
     }
 }
