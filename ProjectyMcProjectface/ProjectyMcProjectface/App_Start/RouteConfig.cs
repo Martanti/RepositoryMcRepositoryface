@@ -17,6 +17,11 @@ namespace ProjectyMcProjectface
                 name: "LoginPage",
                 url: "Login",
                 defaults: new { controller = "Login", action = "Index"});
+
+            routes.MapRoute(
+               name: "LogingIn",
+               url: "Login/LogInAction",
+               defaults: new { controller = "Login", action = "LogInAction" });
         }
     }
 }

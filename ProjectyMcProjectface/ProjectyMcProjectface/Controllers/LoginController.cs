@@ -17,9 +17,28 @@ namespace ProjectyMcProjectface.Controllers
         [HttpPost]
         public ActionResult LogInAction(ProjectyMcProjectface.Models.UserLogIn userModel)
         {
-            userModel.LoginErrorMessage = "Login failed. Password and/or username is incorrect";
+            if (userModel.UserName == null)
+            {
+                ViewBag.UsernameIsEmpty = "Username field must be filled";
+            }
 
-            return View("Index", userModel);
+            else
+            {
+                ViewBag.UsernameIsEmpty = null;
+            }
+
+            if (userModel.Password == null)
+            {
+                ViewBag.PasswordIsEmpty = "Password field must be filled";
+            }
+
+            else
+            {
+                ViewBag.PasswordIsEmpty = null;
+            }
+
+
+            return View("Index");
         }
     }
 }
