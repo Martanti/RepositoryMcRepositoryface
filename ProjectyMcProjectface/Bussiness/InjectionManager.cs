@@ -4,37 +4,38 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
+using Ninject;
+using Ninject.Syntax;
 
 namespace Bussiness
 {
-    public class InjectionManager<T>
+    public class InjectionKernel : StandardKernel
     {
-        private readonly Dictionary<string, Type> _factoryDictionary = new Dictionary<string, Type>();
-
-        public InjectionManager()
+        private static InjectionKernel instance;
+        private InjectionKernel()
         {
-            Console.WriteLine("Factory Constructor");
-
-            Type[] types = Assembly.GetAssembly(typeof(T)).GetTypes();
-
-            foreach (Type type in types)
+            Bind<IUserManager>().ToConstructor(x => new UserManager(x.Inject<IEncryptionManager>())); // Possible to write x.Inject<Type>();
+            Bind<IEncryptionManager>().ToConstructor(x => new EncryptionManager());
+            
+        }
+        
+        public static InjectionKernel Instance
+        {
+            get
             {
-                if (!typeof(T).IsAssignableFrom(type) || type == typeof(T))
+                if (instance == null)
                 {
-                    // Incorrect type
-                    continue;
+                    instance = new InjectionKernel();
                 }
-
-                Console.WriteLine(string.Format("Factory adding: {0}", type.Name));
-
-                // Add the type
-                _factoryDictionary.Add(type.Name, type);
+                return instance;
             }
         }
 
-        public T Create<V>(params object[] args)
+        public T Get<T>()
         {
-            return (T)Activator.CreateInstance(_factoryDictionary[typeof(V).Name], args);
+            return ((StandardKernel)this).Get<T>();
         }
+
     }
+    
 }
