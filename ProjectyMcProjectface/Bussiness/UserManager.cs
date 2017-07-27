@@ -7,12 +7,23 @@ using EFDataModels;
 
 namespace Bussiness
 {
-    public interface IUserManager
-    {
-        bool VerifyLogin(string userName, string password);
-    }
+    
     public class UserManager : IUserManager
     {
+        public int MaxUserNameLength { get; set; }
+        public int MinUserNameLength { get; set; }
+        public int MaxPassWordLength { get; set; }
+        public int MinPassWordLength { get; set; }
+
+        public UserManager(int maxUserNameLength = 36, int minUserNameLength = 4, int maxPassWordLength = 100, int minPassWordLength = 4)
+        {
+            MaxUserNameLength = maxUserNameLength;
+            MinUserNameLength = minUserNameLength;
+            MaxPassWordLength = maxPassWordLength;
+            MinPassWordLength = minPassWordLength;
+
+        }
+
         public void RegisterConnectionString(int UserId, string connStr, string dataSource, string DBName)
         {
             using (InternalDBModel context = new InternalDBModel())
@@ -37,77 +48,98 @@ namespace Bussiness
         }
         public bool VerifyLogin(string userName, string password)
         {
-            string hashedPassword = GetStringSha256Hash(password);
+            IEncryptionManager encryptionManager = new EncryptionManager(); //Karolis_to do - dependency managers
+            string hashedPassword = encryptionManager.GetStringSha256Hash(password);
             userName = userName.Trim();
             
             using(InternalDBModel context = new InternalDBModel())
             {
-
-                foreach(RegisteredUser user in context.RegisteredUsers.Where(r => r.UserName == userName))
+                try
                 {
-                    if(user.PassWord == hashedPassword)
-                    {
-                        return true;
-                    }
+                    var user = context.RegisteredUsers.Single(u => u.UserName == userName && u.PassWord == hashedPassword);
+                    return true;
+                }
+                catch (System.InvalidOperationException)
+                {
+                    return false;
                 }
             }
-
-            return false;
         }
         public string[] ValidateRegisterData(string userName, string password, string repeatedPassword, string Email)
         {
+            userName = userName.Trim();
+            password = password.Trim();
+            repeatedPassword = repeatedPassword.Trim();
+            Email = Email.Trim();
             string[] returnValues = { "", "", "", "" };
 
             using (InternalDBModel context = new InternalDBModel())
             {
-                if (userName.Length > 36)
+                if (String.IsNullOrEmpty(userName))
                 {
-                    returnValues[0] = "The user name is too long";
+                    returnValues[0] = Resources.Properties.Resources.ValidationUserNameEmpty;
                 }
-                else if (userName.Length < 4)
+                else if (userName.Length > MaxUserNameLength)
                 {
-                    returnValues[0] = "The user name is too short";
+                    returnValues[0] = Resources.Properties.Resources.ValidationUserNameTooLong;
+                }
+                else if (userName.Length < MinUserNameLength)
+                {
+                    returnValues[0] = Resources.Properties.Resources.ValidationUserNameTooShort;
                 }
                 else if (context.RegisteredUsers.Where(u => u.UserName == userName) != null)
                 {
-                    returnValues[0] = "The user name is already taken";
+                    returnValues[0] = Resources.Properties.Resources.ValidationUserNameTaken;
                 }
 
-                if (password.Length < 4)
+                if (String.IsNullOrEmpty(password))
                 {
-                    returnValues[1] = "The password is too short";
+                    returnValues[1] = Resources.Properties.Resources.ValidationPasswordEmpty;
                 }
-                else if (password.Length > 100)
+                else if (password.Length < MinPassWordLength)
                 {
-                    returnValues[1] = "The password is too long";
+                    returnValues[1] = Resources.Properties.Resources.ValidationPasswordTooShort;
+                }
+                else if (password.Length > MaxPassWordLength)
+                {
+                    returnValues[1] = Resources.Properties.Resources.ValidationPasswordTooLong;
                 }
 
                 if (repeatedPassword != password)
                 {
-                    returnValues[2] = "Passwords don't match";
+                    returnValues[2] = Resources.Properties.Resources.ValidationPasswordsDoNotMatch;
                 }
 
                 if (String.IsNullOrEmpty(Email))
                 {
-                    returnValues[3] = "The E-mail address cannot be empty";
+                    returnValues[3] = Resources.Properties.Resources.ValidationEmailEmpty;
                 }
-                else if (!Email.Contains('@'))
+                else if (!ValidateEmail(Email))
                 {
-                    returnValues[3] = "The E-mail addres is invalid";
-                }
-                else if(context.RegisteredUsers.Where(m => m.Email == Email) != null)
-                {
-                    returnValues[3] = "An account associated with given E-mail already exists";
+                    returnValues[3] = Resources.Properties.Resources.ValidationEmailInvalid;
                 }
             }
             
             return returnValues;
         }
+        public bool ValidateEmail(string email)
+        {
+            try
+            {
+                var addr = new System.Net.Mail.MailAddress(email);
+                return addr.Address == email;
+            }
+            catch
+            {
+                return false;
+            }
+        }
         public void RegisterUser(string userName, string password, string email)
         {
             using (InternalDBModel context = new InternalDBModel())
             {
-                string hashedPassword = GetStringSha256Hash(password);
+                IEncryptionManager encryptionManager = new EncryptionManager(); //Karolis_to do - dependency managers
+                string hashedPassword = encryptionManager.GetStringSha256Hash(password);
                 context.RegisteredUsers.Add(new RegisteredUser()
                 {
                     UserName = userName,
@@ -117,17 +149,6 @@ namespace Bussiness
                 context.SaveChanges();
             }
         }
-        internal string GetStringSha256Hash(string text)
-        {
-            if (String.IsNullOrEmpty(text))
-                return String.Empty;
-
-            using (var sha = new System.Security.Cryptography.SHA256Managed())
-            {
-                byte[] textData = System.Text.Encoding.UTF8.GetBytes(text);
-                byte[] hash = sha.ComputeHash(textData);
-                return BitConverter.ToString(hash).Replace("-", String.Empty);
-            }
-        }
+        
     }
 }

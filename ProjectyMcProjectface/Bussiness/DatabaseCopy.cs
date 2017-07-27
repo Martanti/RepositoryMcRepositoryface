@@ -9,9 +9,9 @@ using System.Data.SqlClient;
 
 namespace Bussiness
 {
-    public class DatabaseCopy
+    public class DatabaseCopy : IDatabaseCopy
     {
-        public static void CopyDatabaseSMO(string sourceConnectionString, string destinationConnectionString, string userID)
+        public void CopyDatabaseSMO(string sourceConnectionString, string destinationConnectionString, string userID)
         {
             SqlConnection sourceConn = new SqlConnection(sourceConnectionString);
             sourceConn.Open();
@@ -62,7 +62,7 @@ namespace Bussiness
             targetConn.Close();
         }
 
-        public static void CopyDatabaseSMO(string originalServerName, string originalDBName,
+        public void CopyDatabaseSMO(string originalServerName, string originalDBName,
             string destinationServerName, string userID)
         {
             ServerConnection originalConn = new ServerConnection();
@@ -107,7 +107,7 @@ namespace Bussiness
 
         }
 
-        private static void copyTabledata(string sourceServer, string sourceDatabase, string sourceTable,
+        private void copyTabledata(string sourceServer, string sourceDatabase, string sourceTable,
             string destinationServer, string destinationDatabase, string destinationTable, string schemaName, string originalSchemaName)
         {
             SqlConnection sourceConn = new SqlConnection("Data Source=" + sourceServer +
@@ -132,7 +132,7 @@ namespace Bussiness
             destinationConn.Close();
         }
 
-        private static void createTable(Table sourcetable, string schema, Server destinationServer,
+        private void createTable(Table sourcetable, string schema, Server destinationServer,
             Database db)
         {
             Table copiedtable = new Table(db, sourcetable.Name, schema);
@@ -153,7 +153,7 @@ namespace Bussiness
                 throw (ex);
             }
         }
-        private static void createUserDefinedDataTypes(Database originalDB, Database destinationDB)
+        private void createUserDefinedDataTypes(Database originalDB, Database destinationDB)
         {
             foreach (UserDefinedDataType dt in originalDB.UserDefinedDataTypes)
             {
@@ -180,7 +180,7 @@ namespace Bussiness
 
         }
 
-        private static void createUserDefinedTypes(Database originalDB, Database destinationDB)
+        private void createUserDefinedTypes(Database originalDB, Database destinationDB)
         {
             foreach (UserDefinedDataType dt in originalDB.UserDefinedTypes)
             {
@@ -206,7 +206,7 @@ namespace Bussiness
             }
 
         }
-        private static void createXMLSchemaCollections(Database originalDB, Database destinationDB)
+        private void createXMLSchemaCollections(Database originalDB, Database destinationDB)
         {
             foreach (XmlSchemaCollection col in originalDB.XmlSchemaCollections)
             {
@@ -234,7 +234,7 @@ namespace Bussiness
             }
 
         }
-        private static void createColumns(Table sourcetable, Table copiedtable)
+        private void createColumns(Table sourcetable, Table copiedtable)
         {
             Server server = sourcetable.Parent.Parent;
 

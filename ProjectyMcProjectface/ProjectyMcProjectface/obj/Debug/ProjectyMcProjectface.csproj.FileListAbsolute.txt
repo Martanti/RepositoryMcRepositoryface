@@ -142,3 +142,5 @@ C:\Users\Student2\Documents\GitHub\RepositoryMcRepositoryface\ProjectyMcProjectf
 C:\Users\Student2\Documents\GitHub\RepositoryMcRepositoryface\ProjectyMcProjectface\ProjectyMcProjectface\obj\Debug\ProjectyMcProjectface.pdb
 C:\Users\Student2\Documents\GitHub\RepositoryMcRepositoryface\ProjectyMcProjectface\ProjectyMcProjectface\obj\Debug\ProjectyMcProjectface.Migrations.InstalDB.resources
 C:\Users\Student2\Documents\GitHub\RepositoryMcRepositoryface\ProjectyMcProjectface\ProjectyMcProjectface\obj\Debug\ProjectyMcProjectface.csproj.GenerateResource.Cache
+C:\Users\Student1\Documents\GitHub\RepositoryMcRepositoryface\ProjectyMcProjectface\ProjectyMcProjectface\bin\Resources.dll
+C:\Users\Student1\Documents\GitHub\RepositoryMcRepositoryface\ProjectyMcProjectface\ProjectyMcProjectface\bin\Resources.pdb

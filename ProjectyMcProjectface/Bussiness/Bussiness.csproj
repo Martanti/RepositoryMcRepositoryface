@@ -76,6 +76,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DatabaseCopy.cs" />
+    <Compile Include="EncryptionManager.cs" />
+    <Compile Include="Interfaces.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UserManager.cs" />
   </ItemGroup>
@@ -91,6 +93,10 @@
     <ProjectReference Include="..\EFDataModels\EFDataModels.csproj">
       <Project>{9c8de004-953e-473f-8925-6ed04187e14c}</Project>
       <Name>EFDataModels</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Resources\Resources.csproj">
+      <Project>{e3c95896-6d56-4853-89cd-f7cb9ded0e66}</Project>
+      <Name>Resources</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
