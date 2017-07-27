@@ -8,18 +8,18 @@ namespace ProjectyMcProjectface.Controllers
 {
     public class LoginController : Controller
     {
-        // GET: Login
+        [HttpGet]
         public ActionResult Index()
         {
             return View();
         }
         
         [HttpPost]
-        public ActionResult LogInAction(ProjectyMcProjectface.Models.UserLogIn userModel)
+        public ActionResult LogInAction(Dto.UserLogInModel userModel)
         {
-            if (userModel.UserName == null)
+            if (userModel.Email == null)
             {
-                ViewBag.UsernameIsEmpty = "Username field must be filled";
+                ViewBag.EmalIsEmpty = "Email field must be filled";
             }
 
             else
@@ -39,6 +39,25 @@ namespace ProjectyMcProjectface.Controllers
 
 
             return View("Index");
+        }
+        [HttpGet]
+        public ActionResult RedirectToRegisterPage()
+        {
+            return View("Register");
+        }
+
+        [HttpPost]
+        public ActionResult RegistrationSubmint(Dto.UserRegisterModel registrationModel)
+        {
+            Bussiness.UserManager inputValidation = new Bussiness.UserManager();
+            string[] errorMessages = inputValidation.ValidateRegisterData(registrationModel.Username, registrationModel.Password, registrationModel.RepeatedPassword, registrationModel.Email);
+
+            if(errorMessages[0] == null && errorMessages[1] == null && errorMessages[2] == null && errorMessages[3] == null)
+            {
+                //įkelimas i serva
+            }
+
+            return View();
         }
     }
 }

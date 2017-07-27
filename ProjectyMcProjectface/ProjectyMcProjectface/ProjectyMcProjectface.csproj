@@ -154,7 +154,6 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\UserLogIn.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -200,9 +199,12 @@
     <Content Include="Views\MainPage\DatabaseEdit.cshtml" />
     <Content Include="Views\MainPage\DatabaseView.cshtml" />
     <Content Include="Views\Login\Index.cshtml" />
+    <Content Include="Views\Shared\_LoginLayout.cshtml" />
+    <Content Include="Views\Login\Register.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -223,6 +225,14 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Bussiness\Bussiness.csproj">
+      <Project>{837f97be-f359-428b-a3e6-968c7a36b05f}</Project>
+      <Name>Bussiness</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Dto\Dto.csproj">
+      <Project>{4b79efc6-dd82-462a-b332-537a96ad4ff6}</Project>
+      <Name>Dto</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Resources\Resources.csproj">
       <Project>{e3c95896-6d56-4853-89cd-f7cb9ded0e66}</Project>
       <Name>Resources</Name>
