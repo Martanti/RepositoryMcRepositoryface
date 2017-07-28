@@ -4,18 +4,18 @@
 <form action="@Url.Action("LogInAction", "Login")" method="post">
     <div class="container formInsideWrapper">
         <div class="form-group">
-            <label for="EmailInput">Email:</label>
+            <label for="EmailInput">@Resources.LoginPageResources.lebel_email</label>
             <div>
-                <input type="text" name="Email" placeholder="Email" class="form-control" />
+                <input type="text" name="Email" placeholder="@Resources.LoginPageResources.placeholder_email" class="form-control" />
             </div>
             <div class="alert-danger errorMesasge">
                 @ViewBag.EmalIsEmpty
             </div>
         </div>
         <div class="form-group">
-            <label for="PasswordInput">Password:</label>
+            <label for="PasswordInput">@Resources.LoginPageResources.label_password</label>
             <div>
-                <input type="password" name="Password" placeholder="Password" class="form-control" />
+                <input type="password" name="Password" placeholder="@Resources.LoginPageResources.placeholder_password" class="form-control" />
             </div>
             <div class="alert-danger errorMesasge">
                 @ViewBag.PasswordIsEmpty
@@ -25,8 +25,8 @@
             @ViewBag.IncorrectCredentials
         </div>
         <br />
-        <button type="submit" class="btn">Log in</button>
+        <button type="submit" class="btn">@Resources.LoginPageResources.button_text_Login</button>
         <br />
-        <button type="button" class="btn" onclick="location.href='@Url.Action("RedirectToRegisterPage","Login")';">Sign up</button>
+        <button type="button" class="btn" onclick="location.href='@Url.Action("RedirectToRegisterPage","Login")';">@Resources.LoginPageResources.button_text_Signup</button>
     </div>
 </form>
