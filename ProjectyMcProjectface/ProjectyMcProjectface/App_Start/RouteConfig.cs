@@ -33,6 +33,12 @@ namespace ProjectyMcProjectface
                 name: "LoginPage",
                 url: "Login/{action}",
                 defaults: new { controller = "Login", action = "Index" });
+
+            routes.MapRoute(
+                name: "ErrorPage",
+                url: "Error/{action}",
+                defaults: new {controller = "Error", action = "Handle404"}
+                );
         }
     }
 }
