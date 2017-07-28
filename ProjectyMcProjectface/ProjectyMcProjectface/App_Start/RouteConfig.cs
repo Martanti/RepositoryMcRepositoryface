@@ -29,9 +29,15 @@ namespace ProjectyMcProjectface
                 defaults: new { controller = "Registration", action = "Register"});
 
             routes.MapRoute(
+
                 name: "RegistrationSubmit",
                 url: "Registration/RegistrationSubmint",
                 defaults: new { controller = "Registration", action = "RegistrationSubmint" });
+           
+          routes.MapRoute(
+                name: "ErrorPage",
+                url: "Error/{action}",
+                defaults: new {controller = "Error", action = "Handle404"});
         }
     }
 }
