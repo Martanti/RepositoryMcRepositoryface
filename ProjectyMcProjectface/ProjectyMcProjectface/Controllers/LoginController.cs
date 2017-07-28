@@ -2,7 +2,7 @@
 using Bussiness;
 namespace ProjectyMcProjectface.Controllers
 {
-    public class LoginController : Controller
+    public class LoginController : BaseController
     {
         [HttpGet]
         public ActionResult Index()

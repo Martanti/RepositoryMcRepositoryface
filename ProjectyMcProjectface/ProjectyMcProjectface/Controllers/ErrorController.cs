@@ -6,7 +6,7 @@ using System.Web.Mvc;
 
 namespace ProjectyMcProjectface.Controllers
 {
-    public class ErrorController : Controller
+    public class ErrorController : BaseController
     {
         public ActionResult Handle403()
         {

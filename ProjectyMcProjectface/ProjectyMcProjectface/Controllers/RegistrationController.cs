@@ -7,7 +7,7 @@ using Bussiness;
 
 namespace ProjectyMcProjectface.Controllers
 {
-    public class RegistrationController : Controller
+    public class RegistrationController : BaseController
     {
         [HttpGet]
         public ActionResult Register()
@@ -23,6 +23,10 @@ namespace ProjectyMcProjectface.Controllers
 
             if (errorMessages[0] == null && errorMessages[1] == null && errorMessages[2] == null && errorMessages[3] == null)
             {
+                IUserManager userRegistration = InjectionKernel.Instance.Get<UserManager>();
+
+                userRegistration.RegisterUser(registrationModel.Username, registrationModel.Password, registrationModel.Email);
+
                 return RedirectToAction("Index", "Login");
             }
 
