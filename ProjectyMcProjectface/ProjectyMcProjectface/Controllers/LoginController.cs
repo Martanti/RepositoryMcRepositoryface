@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
+using Bussiness;
 
 namespace ProjectyMcProjectface.Controllers
 {
@@ -37,8 +34,7 @@ namespace ProjectyMcProjectface.Controllers
                 ViewBag.PasswordIsEmpty = null;
             }
 
-            /*Autentikacija ir perėjimas į home page'ą*/
-            
+
             return View("Index");
         }
         [HttpGet]
@@ -50,26 +46,14 @@ namespace ProjectyMcProjectface.Controllers
         [HttpPost]
         public ActionResult RegistrationSubmint(Dto.UserRegisterModel registrationModel)
         {
-            Bussiness.UserManager inputValidation = new Bussiness.UserManager();
+            var inputValidation = InjectionKernel.Instance.Get<IUserManager>();
             string[] errorMessages = inputValidation.ValidateRegisterData(registrationModel.Username, registrationModel.Password, registrationModel.RepeatedPassword, registrationModel.Email);
 
             if(errorMessages[0] == null && errorMessages[1] == null && errorMessages[2] == null && errorMessages[3] == null)
             {
-
-                //įkelimas i serva
-
-                return View("Index");
             }
 
-            ViewBag.BadEmail = errorMessages[3];
-
-            ViewBag.BadUsername = errorMessages[0];
-
-            ViewBag.BadPassword = errorMessages[1];
-
-            ViewBag.BadRePassword = errorMessages[2];
-
-            return View("Register");
+            return View();
         }
     }
 }

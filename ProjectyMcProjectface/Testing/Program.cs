@@ -14,12 +14,8 @@ namespace Testing
     {
         static void Main(string[] args)
         {
-            
-            using(var context = new InternalDBModel())
-            {
-                context.RegisteredUsers.Add(new RegisteredUser() { UserName = "Martynas" , PassWord = "Gaidys", Email="lioler@yourass.com"});
-                context.SaveChanges();
-            }
+
+            Console.WriteLine("Viskas veikia");
             Console.ReadKey();
         }
     }
