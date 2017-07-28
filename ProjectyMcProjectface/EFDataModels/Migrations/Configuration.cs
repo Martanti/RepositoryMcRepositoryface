@@ -5,14 +5,14 @@ namespace EFDataModels.Migrations
     using System.Data.Entity.Migrations;
     using System.Linq;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<EFDataModels.InternalDBModel>
+    internal sealed class Configuration : DbMigrationsConfiguration<EFDataModels.InternalDBContext>
     {
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
         }
 
-        protected override void Seed(EFDataModels.InternalDBModel context)
+        protected override void Seed(EFDataModels.InternalDBContext context)
         {
             //  This method will be called after migrating to the latest version.
 

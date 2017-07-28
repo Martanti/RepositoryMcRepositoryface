@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Ninject;
 using Ninject.Syntax;
+using EFDataModels;
 
 namespace Bussiness
 {
@@ -16,7 +17,8 @@ namespace Bussiness
         {
             Bind<IUserManager>().ToConstructor(x => new UserManager(x.Inject<IEncryptionManager>())); // Possible to write x.Inject<Type>();
             Bind<IEncryptionManager>().ToConstructor(x => new EncryptionManager());
-            
+            Bind<IDatabaseCopy>().ToConstructor(x => new DatabaseCopy());
+            Bind<IInternalDBModel>().ToConstructor(x => new InternalDBContext());
         }
         
         public static InjectionKernel Instance
