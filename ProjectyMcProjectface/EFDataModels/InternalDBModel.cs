@@ -1,13 +1,15 @@
 namespace EFDataModels
 {
-    using System;
     using System.Data.Entity;
-    using System.ComponentModel.DataAnnotations.Schema;
-    using System.Linq;
 
-    public partial class InternalDBModel : DbContext
+    public interface IInternalDBModel
     {
-        public InternalDBModel()
+        DbSet<RegisteredUser> RegisteredUsers { get; set; }
+        DbSet<ConnectionString> ConnectionStrings { get; set; }
+    }
+    public partial class InternalDBContext : DbContext, IInternalDBModel
+    {
+        public InternalDBContext()
             : base(@"Data Source=.\SQLEXPRESS;Database=InternalDB;Integrated Security=True")
         {
         }
