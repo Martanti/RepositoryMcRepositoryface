@@ -1,27 +1,32 @@
-﻿@model ProjectyMcProjectface.Models.UserLogIn
-@{
-    Layout = null;
+﻿@{
+    Layout = "~/Views/Shared/_LoginLayout.cshtml";
 }
-
-<!DOCTYPE html>
-
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Login page</title>
-    @Styles.Render("~/Content/LoginVisuals")
-
-</head>
-<body>
-    @using (Html.BeginForm("LogInAction", "Login", FormMethod.Post))
-    {
-        <div class="container-fluid" id="login-Wrapper">
-           <input type="text" name="UserName" placeholder="Username"/>
-           <input  name="Password" type="password" placeholder="Password"/>
-            <br />
-            <input type="submit" />
+<form action="@Url.Action("LogInAction", "Login")" method="post">
+    <div class="container formInsideWrapper">
+        <div class="form-group">
+            <label for="EmailInput">Email:</label>
+            <div>
+                <input type="text" name="Email" placeholder="Email" class="form-control" />
+            </div>
+            <div class="alert-danger errorMesasge">
+                @ViewBag.EmalIsEmpty
+            </div>
         </div>
-    }
-    @Scripts.Render("~/bundles/ScriptsForLoginPage")
-</body>
-</html>
+        <div class="form-group">
+            <label for="PasswordInput">Password:</label>
+            <div>
+                <input type="password" name="Password" placeholder="Password" class="form-control" />
+            </div>
+            <div class="alert-danger errorMesasge">
+                @ViewBag.PasswordIsEmpty
+            </div>
+        </div>
+        <div class="alert-danger errorMesasge">
+            @ViewBag.IncorrectCredentials
+        </div>
+        <br />
+        <button type="submit" class="btn">Log in</button>
+        <br />
+        <button type="button" class="btn" onclick="location.href='@Url.Action("RedirectToRegisterPage","Login")';">Sign up</button>
+    </div>
+</form>

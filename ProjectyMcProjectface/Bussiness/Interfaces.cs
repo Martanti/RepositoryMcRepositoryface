@@ -15,10 +15,10 @@ namespace Bussiness
     }
     public interface IUserManager
     {
-        int MaxUserNameLength { get; set; }
-        int MinUserNameLength { get; set; }
-        int MaxPassWordLength { get; set; }
-        int MinPassWordLength { get; set; }
+        int MaxUserNameLength { get; }
+        int MinUserNameLength { get; }
+        int MaxPassWordLength { get; }
+        int MinPassWordLength { get; }
 
         void RegisterConnectionString(int UserId, string connStr, string dataSource, string DBName);
         bool VerifyLogin(string userName, string password);

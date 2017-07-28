@@ -305,3 +305,7 @@ __pycache__/
 ProjectyMcProjectface/.vs/ProjectyMcProjectface/v15/.suo
 *.suo
 *.suo
+
+bin
+obj
+config

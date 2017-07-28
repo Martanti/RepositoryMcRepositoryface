@@ -1,25 +1,59 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
+using Bussiness;
 
 namespace ProjectyMcProjectface.Controllers
 {
     public class LoginController : Controller
     {
-        // GET: Login
+        [HttpGet]
         public ActionResult Index()
         {
             return View();
         }
         
         [HttpPost]
-        public ActionResult LogInAction(ProjectyMcProjectface.Models.UserLogIn userModel)
+        public ActionResult LogInAction(Dto.UserLogInModel userModel)
         {
-            userModel.LoginErrorMessage = "Login failed. Password and/or username is incorrect";
+            if (userModel.Email == null)
+            {
+                ViewBag.EmalIsEmpty = "Email field must be filled";
+            }
 
-            return View("Index", userModel);
+            else
+            {
+                ViewBag.UsernameIsEmpty = null;
+            }
+
+            if (userModel.Password == null)
+            {
+                ViewBag.PasswordIsEmpty = "Password field must be filled";
+            }
+
+            else
+            {
+                ViewBag.PasswordIsEmpty = null;
+            }
+
+
+            return View("Index");
+        }
+        [HttpGet]
+        public ActionResult RedirectToRegisterPage()
+        {
+            return View("Register");
+        }
+
+        [HttpPost]
+        public ActionResult RegistrationSubmint(Dto.UserRegisterModel registrationModel)
+        {
+            var inputValidation = InjectionKernel.Instance.Get<IUserManager>();
+            string[] errorMessages = inputValidation.ValidateRegisterData(registrationModel.Username, registrationModel.Password, registrationModel.RepeatedPassword, registrationModel.Email);
+
+            if(errorMessages[0] == null && errorMessages[1] == null && errorMessages[2] == null && errorMessages[3] == null)
+            {
+            }
+
+            return View();
         }
     }
 }
