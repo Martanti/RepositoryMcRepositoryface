@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
+using Bussiness;
 
 namespace ProjectyMcProjectface.Controllers
 {
@@ -49,12 +46,11 @@ namespace ProjectyMcProjectface.Controllers
         [HttpPost]
         public ActionResult RegistrationSubmint(Dto.UserRegisterModel registrationModel)
         {
-            Bussiness.UserManager inputValidation = new Bussiness.UserManager();
+            var inputValidation = InjectionKernel.Instance.Get<IUserManager>();
             string[] errorMessages = inputValidation.ValidateRegisterData(registrationModel.Username, registrationModel.Password, registrationModel.RepeatedPassword, registrationModel.Email);
 
             if(errorMessages[0] == null && errorMessages[1] == null && errorMessages[2] == null && errorMessages[3] == null)
             {
-                //įkelimas i serva
             }
 
             return View();

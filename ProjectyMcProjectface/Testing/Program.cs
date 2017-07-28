@@ -14,7 +14,7 @@ namespace Testing
     {
         static void Main(string[] args)
         {
-            
+
             Console.WriteLine("Viskas veikia");
             Console.ReadKey();
         }

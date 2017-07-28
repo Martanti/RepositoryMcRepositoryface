@@ -14,14 +14,15 @@ namespace Bussiness
         public int MinUserNameLength { get; }
         public int MaxPassWordLength { get; }
         public int MinPassWordLength { get; }
-
-        public UserManager(int maxUserNameLength = 36, int minUserNameLength = 4, int maxPassWordLength = 100, int minPassWordLength = 4)
+        private IEncryptionManager _encryptionManager;
+        public UserManager(IEncryptionManager encryptionManager)
         {
-            MaxUserNameLength = maxUserNameLength;
-            MinUserNameLength = minUserNameLength;
-            MaxPassWordLength = maxPassWordLength;
-            MinPassWordLength = minPassWordLength;
+            MaxUserNameLength = 36;
+            MinUserNameLength = 4;
+            MaxPassWordLength = 100;
+            MinPassWordLength = 4;
 
+            _encryptionManager = encryptionManager;
         }
 
         public void RegisterConnectionString(int UserId, string connStr, string dataSource, string DBName)
@@ -48,8 +49,8 @@ namespace Bussiness
         }
         public bool VerifyLogin(string userName, string password)
         {
-            IEncryptionManager encryptionManager = new EncryptionManager(); //Karolis_to do - dependency managers
-            string hashedPassword = encryptionManager.GetStringSha256Hash(password);
+
+            string hashedPassword = _encryptionManager.GetStringSha256Hash(password);
             userName = userName.Trim();
             
             using(InternalDBModel context = new InternalDBModel())
@@ -156,8 +157,7 @@ namespace Bussiness
         {
             using (InternalDBModel context = new InternalDBModel())
             {
-                IEncryptionManager encryptionManager = new EncryptionManager(); //Karolis_to do - dependency managers
-                string hashedPassword = encryptionManager.GetStringSha256Hash(password);
+                string hashedPassword = _encryptionManager.GetStringSha256Hash(password);
                 context.RegisteredUsers.Add(new RegisteredUser()
                 {
                     UserName = userName,
