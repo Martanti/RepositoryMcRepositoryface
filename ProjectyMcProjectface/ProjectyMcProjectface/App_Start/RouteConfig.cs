@@ -40,7 +40,7 @@ namespace ProjectyMcProjectface
                 defaults: new {controller = "Error", action = "Handle404"});
 
             routes.MapRoute(
-                name:"Main page home",
+                name:"MainPageHome",
                 url:"Home/Index",
                 defaults: new { controller = "Home", action = "Index" });
         }

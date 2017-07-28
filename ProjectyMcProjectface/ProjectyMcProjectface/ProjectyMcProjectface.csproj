@@ -203,10 +203,10 @@
     <Content Include="Views\Web.config" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
-    <Content Include="Views\MainPage\Index.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\_PageMainLayout.cshtml" />
-    <Content Include="Views\MainPage\DatabaseEdit.cshtml" />
-    <Content Include="Views\MainPage\DatabaseView.cshtml" />
+    <Content Include="Views\Home\DatabaseEdit.cshtml" />
+    <Content Include="Views\Home\DatabaseView.cshtml" />
     <Content Include="Views\Login\Index.cshtml" />
     <Content Include="Views\Shared\_LoginLayout.cshtml" />
     <Content Include="Views\Login\Register.cshtml" />
