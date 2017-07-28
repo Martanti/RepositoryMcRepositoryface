@@ -13,46 +13,46 @@ namespace ProjectyMcProjectface.Controllers
         [HttpPost]
         public ActionResult LogInAction(Dto.UserLogInModel userModel)
         {
-            if (userModel.Email == null)
+            if (userModel.Email == null || userModel.Password == null)
             {
-                ViewBag.EmalIsEmpty = Resources.LoginPageResources.error_message_Email_empty;
-            }
 
+                if (userModel.Email == null)
+                {
+                    ViewBag.EmalIsEmpty = Resources.LoginPageResources.error_message_Email_empty;
+                }
+
+                else
+                {
+                    ViewBag.UsernameIsEmpty = null;
+                }
+
+                if (userModel.Password == null)
+                {
+                    ViewBag.PasswordIsEmpty = Resources.LoginPageResources.error_message_Password_empty;
+                }
+
+                else
+                {
+                    ViewBag.PasswordIsEmpty = null;
+                }
+            }
             else
             {
-                ViewBag.UsernameIsEmpty = null;
+
+                IUserManager loginAuthenticator = InjectionKernel.Instance.Get<UserManager>();
+                if (loginAuthenticator.VerifyLogin(userModel.Email, userModel.Password))
+                {
+                    return RedirectToAction("Index", "Home");
+                }
+
+                else
+                {
+                    ViewBag.IncorrectCredentials = Resources.LoginPageResources.error_message_Inncorrect_Credentials;
+                }
             }
 
-            if (userModel.Password == null)
-            {
-                ViewBag.PasswordIsEmpty = Resources.LoginPageResources.error_message_Password_empty;
-            }
-
-            else
-            {
-                ViewBag.PasswordIsEmpty = null;
-            }
-
-
-            return View("Index");
-        }
-        [HttpGet]
-        public ActionResult RedirectToRegisterPage()
-        {
-            return View("Register");
+            return View("Index", userModel);
         }
 
-        [HttpPost]
-        public ActionResult RegistrationSubmint(Dto.UserRegisterModel registrationModel)
-        {
-            var inputValidation = InjectionKernel.Instance.Get<IUserManager>();
-            string[] errorMessages = inputValidation.ValidateRegisterData(registrationModel.Username, registrationModel.Password, registrationModel.RepeatedPassword, registrationModel.Email);
-
-            if(errorMessages[0] == null && errorMessages[1] == null && errorMessages[2] == null && errorMessages[3] == null)
-            {
-            }
-
-            return View();
-        }
     }
 }

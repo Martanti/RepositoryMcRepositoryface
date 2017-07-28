@@ -12,7 +12,7 @@ namespace ProjectyMcProjectface
         public static void RegisterRoutes(RouteCollection routes)
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
-            /*
+            
             routes.MapRoute(
                 name: "LoginPage",
                 url: "Login",
@@ -24,21 +24,20 @@ namespace ProjectyMcProjectface
                defaults: new { controller = "Login", action = "LogInAction" });
 
             routes.MapRoute(
-               name: "RedirectToRegistration",
-               url: "Login/RedirectToRegisterPage",
-               defaults: new { controller = "Login", action = "RedirectToRegisterPage" });
-               */
+                name:"Registration",
+                url:"Registration",
+                defaults: new { controller = "Registration", action = "Register"});
 
             routes.MapRoute(
-                name: "LoginPage",
-                url: "Login/{action}",
-                defaults: new { controller = "Login", action = "Index" });
 
-            routes.MapRoute(
+                name: "RegistrationSubmit",
+                url: "Registration/RegistrationSubmint",
+                defaults: new { controller = "Registration", action = "RegistrationSubmint" });
+           
+          routes.MapRoute(
                 name: "ErrorPage",
                 url: "Error/{action}",
-                defaults: new {controller = "Error", action = "Handle404"}
-                );
+                defaults: new {controller = "Error", action = "Handle404"});
         }
     }
 }

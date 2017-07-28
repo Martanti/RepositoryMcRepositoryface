@@ -1,0 +1,58 @@
+﻿@{
+    Layout = "~/Views/Shared/_LoginLayout.cshtml";
+}
+
+<form  action="@Url.Action("RegistrationSubmint", "Registration")" method="post">
+    <div class="container formInsideWrapper">
+        <div class="form-group">
+            <label for="EmailInput">@Resources.RegistrationPageResources.label_Email</label>
+            <div>
+                <input type="text" name="Email" placeholder="@Resources.RegistrationPageResources.placeholder_Email" class="form-control" />
+            </div>
+            <div class="alert-danger errorMesasge">
+                @ViewBag.BadEmail
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            <label for="UsernameInput">@Resources.RegistrationPageResources.label_Username</label>
+            <div>
+                <input type="text" name="Username" placeholder="@Resources.RegistrationPageResources.placeholder_Username" class="form-control" />
+            </div>
+            <div class="alert-danger errorMesasge">
+                @ViewBag.BadUsername
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            <label for="PasswordInput">@Resources.RegistrationPageResources.label_Password</label>
+            <div>
+                <input type="password" name="Password" placeholder="@Resources.RegistrationPageResources.placeholder_Password" class="form-control" />
+            </div>
+            <div class="alert-danger errorMesasge">
+                @ViewBag.BadPassword
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            <label for="UsernameInput">@Resources.RegistrationPageResources.label_RePassword</label>
+            <div>
+                <input type="password" name="RepeatedPassword" placeholder="@Resources.RegistrationPageResources.placeholder_RePassword" class="form-control" />
+            </div>
+            <div class="alert-danger errorMesasge">
+                @ViewBag.BadRePassword
+            </div>
+        </div>
+
+
+        <br />
+        <button type="submit" class="btn">@Resources.RegistrationPageResources.button_Submit</button>
+        <br />
+    </div>
+
+
+
+</form>
