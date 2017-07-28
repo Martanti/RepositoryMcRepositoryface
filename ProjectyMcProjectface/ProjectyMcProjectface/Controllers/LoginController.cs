@@ -1,6 +1,5 @@
 ﻿using System.Web.Mvc;
 using Bussiness;
-
 namespace ProjectyMcProjectface.Controllers
 {
     public class LoginController : Controller
@@ -16,7 +15,7 @@ namespace ProjectyMcProjectface.Controllers
         {
             if (userModel.Email == null)
             {
-                ViewBag.EmalIsEmpty = "Email field must be filled";
+                ViewBag.EmalIsEmpty = Resources.LoginPageResources.error_message_Email_empty;
             }
 
             else
@@ -26,7 +25,7 @@ namespace ProjectyMcProjectface.Controllers
 
             if (userModel.Password == null)
             {
-                ViewBag.PasswordIsEmpty = "Password field must be filled";
+                ViewBag.PasswordIsEmpty = Resources.LoginPageResources.error_message_Password_empty;
             }
 
             else
