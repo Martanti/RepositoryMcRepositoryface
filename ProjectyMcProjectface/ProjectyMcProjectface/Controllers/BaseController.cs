@@ -7,6 +7,8 @@ namespace ProjectyMcProjectface.Controllers
 {
     public class BaseController : Controller
     {
+        public readonly string ReturnUrlCookieName = "returnUrl";
+        public readonly int cookieExpirationTimeInYears = 15;
         protected override void OnException(ExceptionContext filterContext)
         {
             ILog log = log4net.LogManager.GetLogger(typeof(ErrorController));

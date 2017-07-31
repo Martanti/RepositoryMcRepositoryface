@@ -10,6 +10,7 @@ namespace Dto
         public string Email { get; set; }
 
         public string Password { get; set; }
+        public string RequestedURL { get; set; }
     }
 
     public class UserRegisterModel
@@ -21,5 +22,6 @@ namespace Dto
         public string Password { get; set; }
 
         public string RepeatedPassword { get; set; }
+        public string RequestedURL { get; set; }
     }
 }

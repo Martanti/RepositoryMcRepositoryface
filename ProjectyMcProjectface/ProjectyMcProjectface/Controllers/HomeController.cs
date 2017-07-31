@@ -11,10 +11,6 @@ namespace ProjectyMcProjectface.Controllers
     {
         public ActionResult Index()
         {
-            if (User.Identity.IsAuthenticated)
-            {
-                
-            }
             return View();
         }
 

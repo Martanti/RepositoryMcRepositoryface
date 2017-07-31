@@ -7,6 +7,7 @@ using Bussiness;
 
 namespace ProjectyMcProjectface.Controllers
 {
+    [AllowAnonymous]
     public class RegistrationController : BaseController
     {
         [HttpGet]
