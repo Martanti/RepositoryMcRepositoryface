@@ -1,39 +1,47 @@
 ﻿using System.Web.Mvc;
 using Bussiness;
+using Dto;
 namespace ProjectyMcProjectface.Controllers
 {
     public class LoginController : BaseController
     {
         [HttpGet]
-        public ActionResult Index()
+        public ActionResult Index(string dipshitoMessage = "", bool IsRegistrySuccessfull = false)
         {
-            return View();
+            UserLogInModel userModel = new UserLogInModel();
+            userModel.UsernameEmptyFieldError = "";
+            userModel.PasswordEmptyError = "";
+            userModel.BadCredentialsError = "";
+            if(IsRegistrySuccessfull != false)
+            {
+                userModel.RegistrationSuccsesMessage = "Congratulations! You have successfuly registered!";
+            }
+            else
+            {
+                userModel.RegistrationSuccsesMessage = "";
+            }
+            
+            return View("Index", userModel);
         }
         
         [HttpPost]
-        public ActionResult LogInAction(Dto.UserLogInModel userModel)
+        public ActionResult Index(UserLogInModel userModel)
         {
+            userModel.UsernameEmptyFieldError = "";
+            userModel.PasswordEmptyError = "";
+            userModel.BadCredentialsError = "";
+            userModel.RegistrationSuccsesMessage = "";
             if (userModel.Email == null || userModel.Password == null)
             {
 
                 if (userModel.Email == null)
                 {
-                    ViewBag.EmalIsEmpty = Resources.LoginPageResources.error_message_Email_empty;
-                }
-
-                else
-                {
-                    ViewBag.UsernameIsEmpty = null;
+                    userModel.UsernameEmptyFieldError = Resources.LoginPageResources.error_message_Email_empty;
                 }
 
                 if (userModel.Password == null)
                 {
-                    ViewBag.PasswordIsEmpty = Resources.LoginPageResources.error_message_Password_empty;
-                }
-
-                else
-                {
-                    ViewBag.PasswordIsEmpty = null;
+                    userModel.PasswordEmptyError = Resources.LoginPageResources.error_message_Password_empty;
                 }
             }
             else
@@ -47,7 +55,7 @@ namespace ProjectyMcProjectface.Controllers
 
                 else
                 {
-                    ViewBag.IncorrectCredentials = Resources.LoginPageResources.error_message_Inncorrect_Credentials;
+                    userModel.BadCredentialsError = Resources.LoginPageResources.error_message_Inncorrect_Credentials;
                 }
             }
 

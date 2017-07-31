@@ -2,12 +2,12 @@
     background-color: rgb(194, 194, 194);
 }
 
-.formInsideWrapper {
+.formInputWrapper {
     min-width: 240px;
-    max-width:300px;
+    max-width: 300px;
     width: 22%;
     display: flex;
-    margin-top:25px;
+    margin-top: 25px;
     flex-direction: column;
     background-color: white;
     padding: 25px;
@@ -15,10 +15,18 @@
 }
 
 .errorMesasge{
-    margin-top:5px;
+    margin-top:10px;
+    padding-left:8px;
 }
 
 form{
     width: 100%;
 }
 
+.spaceForButton{
+    margin-top:5px;
+}
+
+.succesfullRegistration{
+    padding-left: 8px;
+}
