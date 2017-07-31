@@ -15,9 +15,7 @@ namespace ProjectyMcProjectface
     {
         protected void Application_Start()
         {
-            /*ILog log = log4net.LogManager.GetLogger(typeof(ErrorController));
-
-            log.Error(filterContext.Exception.Message);*/
+            log4net.Config.XmlConfigurator.Configure();        
 
             AreaRegistration.RegisterAllAreas();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
