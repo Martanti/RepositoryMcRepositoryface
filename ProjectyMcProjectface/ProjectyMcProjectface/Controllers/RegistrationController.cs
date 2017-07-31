@@ -4,7 +4,6 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Bussiness;
-using Dto;
 
 namespace ProjectyMcProjectface.Controllers
 {
@@ -13,43 +12,33 @@ namespace ProjectyMcProjectface.Controllers
         [HttpGet]
         public ActionResult Register()
         {
-            UserRegisterModel userModel = new UserRegisterModel();
-            userModel.EmailErrorMessage = "";
-            userModel.UsernameErrorMessage = "";
-            userModel.PasswordErrorMessage = "";
-            userModel.RePasswordErrorMessage = "";
-            return View("Register", userModel);
+            return View("Register");
         }
 
         [HttpPost]
-        public ActionResult RegistrationSubmint(UserRegisterModel registrationModel)
+        public ActionResult RegistrationSubmint(Dto.UserRegisterModel registrationModel)
         {
-            registrationModel.EmailErrorMessage = "";
-            registrationModel.UsernameErrorMessage = "";
-            registrationModel.PasswordErrorMessage = "";
-            registrationModel.RePasswordErrorMessage = "";
-
             var inputValidation = InjectionKernel.Instance.Get<IUserManager>();
             string[] errorMessages = inputValidation.ValidateRegisterData(registrationModel.Username, registrationModel.Password, registrationModel.RepeatedPassword, registrationModel.Email);
 
-            if (errorMessages[0] == "" && errorMessages[1] == "" && errorMessages[2] == "" && errorMessages[3] == "")
+            if (errorMessages[0] == null && errorMessages[1] == null && errorMessages[2] == null && errorMessages[3] == null)
             {
                 IUserManager userRegistration = InjectionKernel.Instance.Get<UserManager>();
 
                 userRegistration.RegisterUser(registrationModel.Username, registrationModel.Password, registrationModel.Email);
 
-                return RedirectToAction("Index", "Login", new { RegistrationSuccessful = true });
+                return RedirectToAction("Index", "Login");
             }
 
             else
             {
-                registrationModel.EmailErrorMessage = errorMessages[3];
-                registrationModel.UsernameErrorMessage = errorMessages[0];
-                registrationModel.PasswordErrorMessage = errorMessages[1];
-                registrationModel.RePasswordErrorMessage = errorMessages[2];
+                ViewBag.BadEmail = errorMessages[3];
+                ViewBag.BadUsername = errorMessages[0];
+                @ViewBag.BadPassword = errorMessages[1];
+                @ViewBag.BadRePassword = errorMessages[2];
             }
 
-            return View("Register", registrationModel);
+            return View("Register");
         }
 
     }

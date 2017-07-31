@@ -88,7 +88,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Your email and/or password is incorrect.
+        ///   Looks up a localized string similar to Your email and/or is incorrect.
         /// </summary>
         public static string error_message_Inncorrect_Credentials {
             get {

@@ -127,7 +127,7 @@
     <value>Email field must be filled</value>
   </data>
   <data name="error_message_Inncorrect_Credentials" xml:space="preserve">
-    <value>Your email and/or password is incorrect</value>
+    <value>Your email and/or is incorrect</value>
   </data>
   <data name="error_message_Password_empty" xml:space="preserve">
     <value>Password field must be filled</value>

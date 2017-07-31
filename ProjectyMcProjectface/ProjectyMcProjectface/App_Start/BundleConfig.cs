@@ -45,8 +45,7 @@ namespace ProjectyMcProjectface
             bundles.Add(new ScriptBundle("~/bundles/ScriptsForLoginPage").Include(
                  "~/Scripts/jquery-1.10.2.min.js",
                  "~/Scripts/jquery.validate.min.js",
-                 "~/Scripts/jquery.validate.unobtrusive.min.js",
-                 "~/Scripts/loginPageJscript.js"));
+                 "~/Scripts/jquery.validate.unobtrusive.min.js"));
 
         }
     }
