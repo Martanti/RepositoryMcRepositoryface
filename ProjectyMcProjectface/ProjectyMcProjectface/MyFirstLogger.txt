@@ -1,0 +1,1 @@
+2017-07-31 12:04:38,796 [1] ERROR ProjectyMcProjectface.MvcApplication test
