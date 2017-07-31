@@ -84,7 +84,7 @@ namespace Bussiness
                 Email = Email.Trim();
             }
             
-            string[] returnValues = { null, null, null, null };
+            string[] returnValues = { "", "", "", "" };
 
             using (InternalDBContext context = new InternalDBContext())
             {
