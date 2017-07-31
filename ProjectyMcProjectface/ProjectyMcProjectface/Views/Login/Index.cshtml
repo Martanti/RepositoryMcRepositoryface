@@ -1,12 +1,13 @@
 ﻿@{
     Layout = "~/Views/Shared/_LoginLayout.cshtml";
 }
+
 <form action="@Url.Action("LogInAction", "Login")" method="post">
     <div class="container formInsideWrapper">
         <div class="form-group">
-            <label for="EmailInput">@Resources.LoginPageResources.lebel_email</label>
+            <label for="Email">@Resources.LoginPageResources.lebel_email</label>
             <div>
-                <input type="text" name="Email" placeholder="@Resources.LoginPageResources.placeholder_email" class="form-control" />
+                <input id="Email" type="text" name="Email" placeholder="@Resources.LoginPageResources.placeholder_email" class="form-control" />
             </div>
             <div class="alert-danger errorMesasge">
                 @ViewBag.EmalIsEmpty
