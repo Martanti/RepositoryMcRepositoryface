@@ -6,6 +6,8 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
+using log4net;
+using ProjectyMcProjectface.Controllers;
 
 namespace ProjectyMcProjectface
 {
@@ -13,6 +15,10 @@ namespace ProjectyMcProjectface
     {
         protected void Application_Start()
         {
+            /*ILog log = log4net.LogManager.GetLogger(typeof(ErrorController));
+
+            log.Error(filterContext.Exception.Message);*/
+
             AreaRegistration.RegisterAllAreas();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
