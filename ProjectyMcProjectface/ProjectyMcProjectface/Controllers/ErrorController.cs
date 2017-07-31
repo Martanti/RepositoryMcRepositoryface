@@ -4,8 +4,10 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
+
 namespace ProjectyMcProjectface.Controllers
 {
+    [AllowAnonymous]
     public class ErrorController : BaseController
     {
         public ActionResult Handle403()

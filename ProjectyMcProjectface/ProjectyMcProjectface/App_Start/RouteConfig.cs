@@ -12,7 +12,13 @@ namespace ProjectyMcProjectface
         public static void RegisterRoutes(RouteCollection routes)
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
-            
+
+            routes.MapRoute(
+                name:"default",
+                url:"{controller}/{action}",
+                defaults: new {controller = "Home", action = "Index"}
+                );
+
             routes.MapRoute(
                 name: "LoginPage",
                 url: "Login",
@@ -43,6 +49,7 @@ namespace ProjectyMcProjectface
                 name:"MainPageHome",
                 url:"Home/Index",
                 defaults: new { controller = "Home", action = "Index" });
+
         }
     }
 }

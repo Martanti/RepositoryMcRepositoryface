@@ -11,6 +11,9 @@ namespace Dto
 
         public string Password { get; set; }
 
+        public string RequestedURL { get; set; }
+
+
         public string RegistrationSuccsesMessage { get; set; }
 
         public string UsernameEmptyFieldError { get; set; }
@@ -30,13 +33,13 @@ namespace Dto
 
         public string RepeatedPassword { get; set; }
 
+        public string RequestedURL { get; set; }
+
+
         public string EmailErrorMessage { get; set; }
 
         public string UsernameErrorMessage { get; set; }
 
         public string PasswordErrorMessage { get; set; }
-
-        public string RePasswordErrorMessage { get; set; }
-
     }
 }
