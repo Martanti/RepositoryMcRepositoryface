@@ -29,11 +29,12 @@ namespace Bussiness
             Database originalDB = originalServer.Databases[sourceConn.Database];
             Database destinationDB = destinationServer.Databases[userID + "_" + sourceConn.Database];
 
-            if (destinationDB == null)
+            if (destinationDB != null)
             {
-                destinationDB = new Database(destinationServer, userID + "_" + sourceConn.Database);
-                destinationDB.Create();
+                destinationDB.Drop();
             }
+            destinationDB = new Database(destinationServer, userID + "_" + sourceConn.Database);
+            destinationDB.Create();
 
             foreach (Schema sch in originalDB.Schemas)
             {

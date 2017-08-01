@@ -30,5 +30,7 @@ namespace Bussiness
     public interface IDatabaseManager
     {
         bool IsDatabaseAvailable(string connectionString);
+        void RegisterDatabase(string originalConnectionString, 
+            string internalConnectionString, int userId, string databaseName = "");
     }
 }
