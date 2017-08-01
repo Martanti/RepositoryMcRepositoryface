@@ -9,12 +9,8 @@
     <div class="container-fluid">
 
         <!-- Page Heading -->
-        <form id="FormHolderAddDatabase" action="@Url.Action(String.Empty, "Login")" method="post">
+        <form id="FormHolderAddDatabase" action="@Url.Action("VerifyConnectionString","Home")" method="post">
             <div class="container formInputWrapper">
-                <div class="alert-success succesfullRegistration">
-
-                </div>
-
                 <div class="form-group">
                     <label>Connection String</label>
                     <div>
@@ -28,7 +24,7 @@
                     </div>
                 </div>
 
-                <button type="submit" class="btn spaceForButton">Test Connection</button>
+                <button id="TestConnectionButtonAddDatabase" type="submit" class="btn spaceForButton">Test Connection</button>
             </div>
         </form>
 
