@@ -23,5 +23,13 @@ namespace ProjectyMcProjectface.Controllers
         {
             return View();
         }
+        public ActionResult SignOut()
+        {
+            var owinContext = Request.GetOwinContext();
+            var authManager = owinContext.Authentication;
+
+            authManager.SignOut("ApplicationCookie");
+            return RedirectToAction("Index", "Login");
+        }
     }
 }

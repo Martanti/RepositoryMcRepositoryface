@@ -13,21 +13,7 @@ namespace ProjectyMcProjectface
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
-<<<<<<< HEAD
-            
-
             routes.MapRoute(
-||||||| merged common ancestors
-            routes.MapRoute(
-                name:"default",
-                url:"{controller}/{action}",
-                defaults: new {controller = "Home", action = "Index"}
-                );
-
-            routes.MapRoute(
-=======
-            routes.MapRoute(
->>>>>>> refs/remotes/origin/master
                 name: "LoginPage",
                 url: "Login",
                 defaults: new { controller = "Login", action = "Index"});
@@ -58,21 +44,11 @@ namespace ProjectyMcProjectface
                 url:"Home/Index",
                 defaults: new { controller = "Home", action = "Index" });
 
-<<<<<<< HEAD
             routes.MapRoute(
                 name: "default",
                 url: "{controller}/{action}",
                 defaults: new { controller = "Home", action = "Index" }
                 );
-||||||| merged common ancestors
-=======
-            routes.MapRoute(
-                name: "default",
-                url: "{controller}/{action}",
-                defaults: new { controller = "Home", action = "Index" }
-                );
-
->>>>>>> refs/remotes/origin/master
         }
     }
 }
