@@ -43,10 +43,14 @@ namespace ProjectyMcProjectface
                 "~/Content/LoginStyle.css"));
 
             bundles.Add(new ScriptBundle("~/bundles/ScriptsForLoginPage").Include(
-                 "~/Scripts/jquery-1.10.2.min.js",
-                 "~/Scripts/jquery.validate.min.js",
-                 "~/Scripts/jquery.validate.unobtrusive.min.js",
                  "~/Scripts/loginPageJscript.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/FormValidationsScripts").Include(
+                "~/Scripts/jquery-{version}.js",
+                 "~/Scripts/jquery.validate.js",
+                  "~/Scripts/LoginFormValidation.js",
+                  "~/Scripts/RegistrationFormValidation.js"
+                 ));
 
         }
     }

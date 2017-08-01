@@ -8,7 +8,7 @@
         <div class="form-group">
             <label for="EmailInput">@Resources.RegistrationPageResources.label_Email</label>
             <div>
-                <input id="EmailInput" type="text" name="Email" placeholder="@Resources.RegistrationPageResources.placeholder_Email" class="form-control" />
+                <input id="EmailInput" type="email" name="Email" placeholder="@Resources.RegistrationPageResources.placeholder_Email" class="form-control" value="@Model.Email"/>
             </div>
             <div class="alert-danger errorMesasge">
                 @Model.EmailErrorMessage
@@ -19,7 +19,7 @@
         <div class="form-group">
             <label for="UsernameInput">@Resources.RegistrationPageResources.label_Username</label>
             <div>
-                <input id="UsernameInput" type="text" name="Username" placeholder="@Resources.RegistrationPageResources.placeholder_Username" class="form-control" />
+                <input id="UsernameInput" type="text" name="Username" placeholder="@Resources.RegistrationPageResources.placeholder_Username" class="form-control" value="@Model.Username" />
             </div>
             <div class="alert-danger errorMesasge">
                 @Model.UsernameErrorMessage

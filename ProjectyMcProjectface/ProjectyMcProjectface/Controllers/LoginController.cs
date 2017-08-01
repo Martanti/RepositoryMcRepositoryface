@@ -12,7 +12,7 @@ namespace ProjectyMcProjectface.Controllers
     public class LoginController : BaseController
     {
         [HttpGet]
-        public ActionResult Index(string returnUrl = null, bool RegistrationSuccessful = false)
+        public ActionResult Login(string returnUrl = null, bool RegistrationSuccessful = false)
         {
             UserLogInModel userModel = new UserLogInModel();
             userModel.UsernameEmptyFieldError = "";
@@ -47,7 +47,7 @@ namespace ProjectyMcProjectface.Controllers
         }
         
         [HttpPost]
-        public ActionResult Index(UserLogInModel userModel)
+        public ActionResult Login(UserLogInModel userModel)
         {
 
             userModel.UsernameEmptyFieldError = "";
