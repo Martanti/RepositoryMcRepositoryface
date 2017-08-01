@@ -26,7 +26,7 @@ namespace Bussiness
                 return false;
             }   
         }
-        public void RegisterDatabase(string originalConnectionString,string internalConnectionString, string databaseName, int userId)
+        public void RegisterDatabase(string originalConnectionString,string internalConnectionString, int userId, string databaseName = "")
         {
             using (var context = new InternalDBContext())
             {

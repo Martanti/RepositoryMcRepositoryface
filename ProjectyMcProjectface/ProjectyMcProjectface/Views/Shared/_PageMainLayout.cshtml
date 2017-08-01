@@ -27,9 +27,7 @@
 </head>
 
 <body>
-
     <div id="wrapper">
-
         <!-- Navigation -->
         <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
             <!-- Brand and toggle get grouped for better mobile display -->
@@ -75,10 +73,13 @@
                         @Html.ActionLink("Home", "Index")<i class="fa fa-fw fa-dashboard"></i>
                     </li>
                     <li>
-                        @Html.ActionLink("Show all databases", "DatabaseView")<i class="fa fa-fw fa-bar-chart-o"></i>
+                        @Html.ActionLink("Show all databases", "DatabaseView", "Home")<i class="fa fa-fw fa-bar-chart-o"></i>
                     </li>
                     <li>
-                        @Html.ActionLink("Edit a database", "DatabaseEdit")<i class="fa fa-fw fa-table"></i>
+                        @Html.ActionLink("Add database", "AddDatabase", "Home")<i class="fa fa-fw fa-bar-chart-o"></i>
+                    </li>
+                    <li>
+                        @Html.ActionLink("Edit a database", "DatabaseEdit", "Home")<i class="fa fa-fw fa-table"></i>
                     </li>
                 </ul>
             </div>
