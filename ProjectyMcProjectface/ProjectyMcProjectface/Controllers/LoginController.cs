@@ -72,7 +72,7 @@ namespace ProjectyMcProjectface.Controllers
             else
             {
 
-                IUserManager loginAuthenticator = InjectionKernel.Instance.Get<UserManager>();
+                IUserManager loginAuthenticator = InjectionKernel.Instance.Get<IUserManager>();
                 if (loginAuthenticator.VerifyLogin(userModel.Email, userModel.Password))
                 {
                     var identity = new ClaimsIdentity(new[] {
@@ -83,8 +83,16 @@ namespace ProjectyMcProjectface.Controllers
 
                     var owinContext = Request.GetOwinContext();
                     var authManager = owinContext.Authentication;
+
+                    if (userModel.RememberUser)
+                    {
+                        authManager.SignIn(new Microsoft.Owin.Security.AuthenticationProperties { IsPersistent = true, ExpiresUtc = DateTimeOffset.UtcNow.AddDays(7) }, identity);
+                    }
+                    else
+                    {
+                        authManager.SignIn(new Microsoft.Owin.Security.AuthenticationProperties { IsPersistent = true}, identity);
+                    }
                     
-                    authManager.SignIn(new Microsoft.Owin.Security.AuthenticationProperties { IsPersistent = true, ExpiresUtc = DateTimeOffset.UtcNow.AddDays(7) }, identity); 
 
                     if(HttpContext.Request.Cookies[ReturnUrlCookieName] != null)
                     {
