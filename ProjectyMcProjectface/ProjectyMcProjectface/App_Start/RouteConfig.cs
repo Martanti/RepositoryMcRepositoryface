@@ -49,7 +49,6 @@ namespace ProjectyMcProjectface
                 url: "{controller}/{action}",
                 defaults: new { controller = "Home", action = "Index" }
                 );
-
         }
     }
 }

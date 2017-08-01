@@ -11,6 +11,7 @@ namespace ProjectyMcProjectface.Controllers
     [AllowAnonymous]
     public class LoginController : BaseController
     {
+        public readonly double RememberMeExpirationTimeInDays = 7;
         [HttpGet]
         public ActionResult Index(string returnUrl = null, bool RegistrationSuccessful = false)
         {
@@ -78,10 +79,12 @@ namespace ProjectyMcProjectface.Controllers
                             new Claim(ClaimTypes.Email, userModel.Email)
                         },
                         "ApplicationCookie");
+                    
 
                     var owinContext = Request.GetOwinContext();
                     var authManager = owinContext.Authentication;
-                    authManager.SignIn(identity);
+                    
+                    authManager.SignIn(new Microsoft.Owin.Security.AuthenticationProperties { IsPersistent = true, ExpiresUtc = DateTimeOffset.UtcNow.AddDays(7) }, identity); 
 
                     if(HttpContext.Request.Cookies[ReturnUrlCookieName] != null)
                     {
