@@ -4,14 +4,15 @@ using System.Diagnostics;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Dto;
 
 namespace ProjectyMcProjectface.Controllers
 {
     public class HomeController : BaseController
     {
-        public ActionResult Index()
+        public ActionResult Index(AuthenticatedUserModel userModel)
         {
-            return View();
+            return View("Index", userModel);
         }
 
         public ActionResult DatabaseEdit()

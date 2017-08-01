@@ -43,4 +43,9 @@ namespace Dto
         public string PasswordErrorMessage { get; set; }
         public string RePasswordErrorMessage { get; set; }
     }
+
+    public class AuthenticatedUserModel
+    {
+        public string Username { get; set; }
+    }
 }
