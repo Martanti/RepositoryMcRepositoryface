@@ -21,6 +21,8 @@ namespace Dto
         public string PasswordEmptyError { get; set; }
 
         public string BadCredentialsError { get; set; }
+
+        public bool RememberUser { get; set; }
     }
 
     public class UserRegisterModel

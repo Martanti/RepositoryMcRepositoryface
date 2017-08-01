@@ -79,6 +79,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Remember me.
+        /// </summary>
+        public static string checkbox_RememberUser {
+            get {
+                return ResourceManager.GetString("checkbox_RememberUser", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Email field must be filled.
         /// </summary>
         public static string error_message_Email_empty {
@@ -120,6 +129,15 @@ namespace Resources {
         public static string lebel_email {
             get {
                 return ResourceManager.GetString("lebel_email", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Forgot password?.
+        /// </summary>
+        public static string link_ForgotPassword {
+            get {
+                return ResourceManager.GetString("link_ForgotPassword", resourceCulture);
             }
         }
         

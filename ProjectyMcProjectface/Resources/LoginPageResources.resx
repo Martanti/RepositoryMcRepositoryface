@@ -123,6 +123,9 @@
   <data name="button_text_Signup" xml:space="preserve">
     <value>Sign up</value>
   </data>
+  <data name="checkbox_RememberUser" xml:space="preserve">
+    <value>Remember me</value>
+  </data>
   <data name="error_message_Email_empty" xml:space="preserve">
     <value>Email field must be filled</value>
   </data>
@@ -137,6 +140,9 @@
   </data>
   <data name="lebel_email" xml:space="preserve">
     <value>Email</value>
+  </data>
+  <data name="link_ForgotPassword" xml:space="preserve">
+    <value>Forgot password?</value>
   </data>
   <data name="placeholder_email" xml:space="preserve">
     <value>Email</value>

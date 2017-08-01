@@ -12,13 +12,13 @@ namespace ProjectyMcProjectface.Controllers
     public class LoginController : BaseController
     {
         [HttpGet]
-        public ActionResult Index(string returnUrl, bool IsRegistrySuccessfull = false)
+        public ActionResult Index(string returnUrl = null, bool RegistrationSuccessful = false)
         {
             UserLogInModel userModel = new UserLogInModel();
             userModel.UsernameEmptyFieldError = "";
             userModel.PasswordEmptyError = "";
             userModel.BadCredentialsError = "";
-            if(IsRegistrySuccessfull != false)
+            if(RegistrationSuccessful != false)
             {
                 userModel.RegistrationSuccsesMessage = "Congratulations! You have successfuly registered!";
             }
