@@ -22,7 +22,6 @@ namespace ProjectyMcProjectface
 
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
                       "~/Scripts/bootstrap.js",
-                      "~/Scripts/bootstrap.min.js",
                       "~/Scripts/respond.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
@@ -30,7 +29,6 @@ namespace ProjectyMcProjectface
                       "~/Content/Site.css"));
 
             bundles.Add(new StyleBundle("~/Content/pluginCss").Include(
-                "~/Content/morris.css",
                 "~/Content/bootstrap.min.css",
                 "~/Content/sb-admin.css",
                 "~/Content/CustomStylesForMainPage.css"
@@ -50,7 +48,8 @@ namespace ProjectyMcProjectface
                   "~/Scripts/LoginFormValidation.js",
                   "~/Scripts/RegistrationFormValidation.js"
                  ));
-
+            bundles.Add(new ScriptBundle("~/bundles/MainPageCommonScripts").Include(
+                "~/Scripts/MainPageCommonScript.js"));
         }
     }
 }

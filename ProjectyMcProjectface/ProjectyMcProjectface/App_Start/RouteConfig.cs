@@ -45,6 +45,11 @@ namespace ProjectyMcProjectface
                 defaults: new { controller = "Home", action = "Index" });
 
             routes.MapRoute(
+                name: "Signout",
+                url: "Signout",
+                defaults: new { controller = "Home", action = "SignOut" });
+
+            routes.MapRoute(
                 name: "default",
                 url: "{controller}/{action}",
                 defaults: new { controller = "Home", action = "Index" }
