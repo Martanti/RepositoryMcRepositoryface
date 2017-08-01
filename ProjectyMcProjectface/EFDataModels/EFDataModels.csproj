@@ -38,6 +38,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -48,7 +49,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ConnectionString.cs" />
-    <Compile Include="InternalDBModel.cs" />
+    <Compile Include="InternalDBContext.cs" />
     <Compile Include="Migrations\201707261044180_firstMigration.cs" />
     <Compile Include="Migrations\201707261044180_firstMigration.Designer.cs">
       <DependentUpon>201707261044180_firstMigration.cs</DependentUpon>
@@ -68,6 +69,10 @@
     <Compile Include="Migrations\201707261244497_ChangedEmailColumnName.cs" />
     <Compile Include="Migrations\201707261244497_ChangedEmailColumnName.Designer.cs">
       <DependentUpon>201707261244497_ChangedEmailColumnName.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201708010959572_alteredConnectionStringsTable.cs" />
+    <Compile Include="Migrations\201708010959572_alteredConnectionStringsTable.Designer.cs">
+      <DependentUpon>201708010959572_alteredConnectionStringsTable.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -92,6 +97,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201707261244497_ChangedEmailColumnName.resx">
       <DependentUpon>201707261244497_ChangedEmailColumnName.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201708010959572_alteredConnectionStringsTable.resx">
+      <DependentUpon>201708010959572_alteredConnectionStringsTable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

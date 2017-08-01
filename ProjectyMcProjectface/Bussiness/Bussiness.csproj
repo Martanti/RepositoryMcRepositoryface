@@ -79,6 +79,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DatabaseCopy.cs" />
+    <Compile Include="DatabaseManager.cs" />
     <Compile Include="EncryptionManager.cs" />
     <Compile Include="InjectionManager.cs" />
     <Compile Include="Interfaces.cs" />

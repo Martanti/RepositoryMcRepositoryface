@@ -25,7 +25,7 @@ namespace Bussiness
             _encryptionManager = encryptionManager;
         }
 
-        public void RegisterConnectionString(int UserId, string connStr, string dataSource, string DBName)
+        /*public void RegisterConnectionString(int UserId, string connStr, string dataSource, string DBName)
         {
             using (InternalDBContext context = new InternalDBContext())
             {
@@ -46,7 +46,7 @@ namespace Bussiness
                 }
                 
             }
-        }
+        }*/
         public bool VerifyLogin(string Email, string password)
         {
             if(String.IsNullOrWhiteSpace(Email) || String.IsNullOrWhiteSpace(password))

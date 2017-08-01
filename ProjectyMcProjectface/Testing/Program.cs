@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Configuration;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,7 +16,16 @@ namespace Testing
         static void Main(string[] args)
         {
 
-            Console.WriteLine("Viskas veikia");
+            IDatabaseManager manager = InjectionKernel.Instance.Get<IDatabaseManager>();
+            /*bool IsAvailable = manager.IsDatabaseAvailable(System.Configuration.ConfigurationManager.AppSettings["InternalDBConnectionString"].ToString());
+            if (IsAvailable)
+            {
+                Console.WriteLine("Connection succeeded");
+            }
+            else
+            {
+                Console.WriteLine("Connection failed");
+            }*/
             Console.ReadKey();
         }
     }

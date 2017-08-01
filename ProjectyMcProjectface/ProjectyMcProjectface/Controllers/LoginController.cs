@@ -11,6 +11,7 @@ namespace ProjectyMcProjectface.Controllers
     [AllowAnonymous]
     public class LoginController : BaseController
     {
+        public readonly double RememberMeExpirationTimeInDays = 7;
         [HttpGet]
         public ActionResult Login(string returnUrl = null, bool RegistrationSuccessful = false)
         {
@@ -71,17 +72,27 @@ namespace ProjectyMcProjectface.Controllers
             else
             {
 
-                IUserManager loginAuthenticator = InjectionKernel.Instance.Get<UserManager>();
+                IUserManager loginAuthenticator = InjectionKernel.Instance.Get<IUserManager>();
                 if (loginAuthenticator.VerifyLogin(userModel.Email, userModel.Password))
                 {
                     var identity = new ClaimsIdentity(new[] {
                             new Claim(ClaimTypes.Email, userModel.Email)
                         },
                         "ApplicationCookie");
+                    
 
                     var owinContext = Request.GetOwinContext();
                     var authManager = owinContext.Authentication;
-                    authManager.SignIn(identity);
+
+                    if (userModel.RememberUser)
+                    {
+                        authManager.SignIn(new Microsoft.Owin.Security.AuthenticationProperties { IsPersistent = true, ExpiresUtc = DateTimeOffset.UtcNow.AddDays(7) }, identity);
+                    }
+                    else
+                    {
+                        authManager.SignIn(new Microsoft.Owin.Security.AuthenticationProperties { IsPersistent = true}, identity);
+                    }
+                    
 
                     if(HttpContext.Request.Cookies[ReturnUrlCookieName] != null)
                     {
