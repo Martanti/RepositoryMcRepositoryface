@@ -8,6 +8,7 @@ using System.Web.Optimization;
 using System.Web.Routing;
 using log4net;
 using ProjectyMcProjectface.Controllers;
+using Bussiness;
 
 namespace ProjectyMcProjectface
 {
@@ -15,7 +16,11 @@ namespace ProjectyMcProjectface
     {
         protected void Application_Start()
         {
-            log4net.Config.XmlConfigurator.Configure();        
+            log4net.Config.XmlConfigurator.Configure();
+
+            //Testing
+            
+            //Testing
 
             AreaRegistration.RegisterAllAreas();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);

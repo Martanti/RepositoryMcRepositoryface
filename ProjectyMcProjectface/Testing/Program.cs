@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Configuration;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -16,7 +17,7 @@ namespace Testing
         {
 
             IDatabaseManager manager = InjectionKernel.Instance.Get<IDatabaseManager>();
-            bool IsAvailable = manager.IsDatabaseAvailable(@"Data Source=.\SQLEXPRESS;Database=InternalDBd;Integrated Security=True");
+            /*bool IsAvailable = manager.IsDatabaseAvailable(System.Configuration.ConfigurationManager.AppSettings["InternalDBConnectionString"].ToString());
             if (IsAvailable)
             {
                 Console.WriteLine("Connection succeeded");
@@ -24,7 +25,7 @@ namespace Testing
             else
             {
                 Console.WriteLine("Connection failed");
-            }
+            }*/
             Console.ReadKey();
         }
     }

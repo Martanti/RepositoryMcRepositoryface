@@ -14,19 +14,17 @@ namespace Bussiness
         public void CopyDatabaseSMO(string sourceConnectionString, string destinationConnectionString, string userID)
         {
             SqlConnection sourceConn = new SqlConnection(sourceConnectionString);
-            sourceConn.Open();
             SqlConnection targetConn = new SqlConnection(destinationConnectionString);
-            targetConn.Open();
-
-            ServerConnection originalConn = new ServerConnection();
-            originalConn.ServerInstance = sourceConn.DataSource;
-            originalConn.LoginSecure = true;
-            Server originalServer = new Server(originalConn);
 
             ServerConnection destinationConn = new ServerConnection();
             destinationConn.ServerInstance = targetConn.DataSource;
             destinationConn.LoginSecure = true;
             Server destinationServer = new Server(destinationConn);
+
+            ServerConnection originalConn = new ServerConnection();
+            originalConn.ServerInstance = sourceConn.DataSource;
+            originalConn.LoginSecure = true;
+            Server originalServer = new Server(originalConn);
 
             Database originalDB = originalServer.Databases[sourceConn.Database];
             Database destinationDB = destinationServer.Databases[userID + "_" + sourceConn.Database];
@@ -57,9 +55,6 @@ namespace Bussiness
                 copyTabledata(sourceConn.DataSource, sourceConn.Database, table.Name, targetConn.DataSource,
                     destinationDB.Name, table.Name, table.Schema, table.Schema);
             }
-
-            sourceConn.Close();
-            targetConn.Close();
         }
 
         public void CopyDatabaseSMO(string originalServerName, string originalDBName,

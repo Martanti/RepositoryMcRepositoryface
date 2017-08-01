@@ -19,8 +19,6 @@ namespace Bussiness
         int MinUserNameLength { get; }
         int MaxPassWordLength { get; }
         int MinPassWordLength { get; }
-
-        void RegisterConnectionString(int UserId, string connStr, string dataSource, string DBName);
         bool VerifyLogin(string userName, string password);
         string[] ValidateRegisterData(string userName, string password, string repeatedPassword, string Email);
         void RegisterUser(string userName, string password, string email);
