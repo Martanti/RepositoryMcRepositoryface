@@ -25,28 +25,6 @@ namespace Bussiness
             _encryptionManager = encryptionManager;
         }
 
-        /*public void RegisterConnectionString(int UserId, string connStr, string dataSource, string DBName)
-        {
-            using (InternalDBContext context = new InternalDBContext())
-            {
-                try
-                {
-                    context.ConnectionStrings.Add(new ConnectionString()
-                    {
-                        UserId = UserId,
-                        String = connStr,
-                        DataSource = dataSource,
-                        DatabaseName = DBName
-                    });
-                    context.SaveChanges();
-                }
-                catch(Exception ex)
-                {
-                    throw (ex);
-                }
-                
-            }
-        }*/
         public bool VerifyLogin(string Email, string password)
         {
             if(String.IsNullOrWhiteSpace(Email) || String.IsNullOrWhiteSpace(password))
@@ -168,6 +146,14 @@ namespace Bussiness
                     Email = email
                 });
                 context.SaveChanges();
+            }
+        }
+
+        public string GetUsernameByEmail(string email)
+        {
+            using(var context = new InternalDBContext())
+            {
+                return context.RegisteredUsers.Single(x => x.Email == email).UserName;
             }
         }
         
