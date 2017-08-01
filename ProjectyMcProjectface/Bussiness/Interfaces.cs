@@ -23,6 +23,7 @@ namespace Bussiness
         string[] ValidateRegisterData(string userName, string password, string repeatedPassword, string Email);
         void RegisterUser(string userName, string password, string email);
         bool ValidateEmail(string email);
+        string GetUsernameByEmail(string email);
     }
     public interface IEncryptionManager {
         string GetStringSha256Hash(string text);
@@ -30,5 +31,7 @@ namespace Bussiness
     public interface IDatabaseManager
     {
         bool IsDatabaseAvailable(string connectionString);
+        void RegisterDatabase(string originalConnectionString, 
+            string internalConnectionString, int userId, string databaseName = "");
     }
 }

@@ -17,15 +17,8 @@ namespace Testing
         {
 
             IDatabaseManager manager = InjectionKernel.Instance.Get<IDatabaseManager>();
-            /*bool IsAvailable = manager.IsDatabaseAvailable(System.Configuration.ConfigurationManager.AppSettings["InternalDBConnectionString"].ToString());
-            if (IsAvailable)
-            {
-                Console.WriteLine("Connection succeeded");
-            }
-            else
-            {
-                Console.WriteLine("Connection failed");
-            }*/
+            manager.RegisterDatabase(@"Data Source=.\SQLEXPRESS;Database=Northwind;Integrated Security=True", @"Data Source=.\SQLEXPRESS;Database=InternalDB;Integrated Security=True", 3, "TestingTTTTTTTTT");
+            Console.WriteLine(":)");
             Console.ReadKey();
         }
     }

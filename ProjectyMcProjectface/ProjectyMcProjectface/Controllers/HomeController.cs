@@ -24,6 +24,15 @@ namespace ProjectyMcProjectface.Controllers
         {
             return View();
         }
+        public ActionResult AddDatabase()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult VerifyConnectionString()
+        {
+            return RedirectToAction("AddDatabase");
+        }
         public ActionResult SignOut()
         {
             var owinContext = Request.GetOwinContext();
