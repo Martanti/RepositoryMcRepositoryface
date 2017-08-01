@@ -40,7 +40,7 @@ namespace ProjectyMcProjectface.Controllers
 
                 userRegistration.RegisterUser(registrationModel.Username, registrationModel.Password, registrationModel.Email);
 
-                return RedirectToAction("Index", "Login", new { RegistrationSuccessful = true });
+                return RedirectToAction("Login", "Login", new { RegistrationSuccessful = true });
             }
 
             else

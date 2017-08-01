@@ -141,9 +141,6 @@
   <data name="lebel_email" xml:space="preserve">
     <value>Email</value>
   </data>
-  <data name="link_ForgotPassword" xml:space="preserve">
-    <value>Forgot password?</value>
-  </data>
   <data name="placeholder_email" xml:space="preserve">
     <value>Email</value>
   </data>

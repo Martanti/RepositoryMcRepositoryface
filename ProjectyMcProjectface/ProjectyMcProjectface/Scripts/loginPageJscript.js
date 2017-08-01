@@ -1,3 +1,5 @@
-﻿$("#GoToRegistrationButton").click(function () {
-    location.href = '/Registration';
+﻿$(document).ready(function () {
+    $("#GoToRegistrationButton").click(function () {
+        location.href = '/Registration';
+    });
 });
