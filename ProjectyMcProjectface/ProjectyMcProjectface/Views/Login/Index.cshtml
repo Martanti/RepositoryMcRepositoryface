@@ -12,9 +12,9 @@
         <div class="form-group">
             <label for="Email">@Resources.LoginPageResources.lebel_email</label>
             <div>
-                <input id="Email" type="text" name="Email" placeholder="@Resources.LoginPageResources.placeholder_email" class="form-control" />
+                <input id="Email" type="email"  name="Email" placeholder="@Resources.LoginPageResources.placeholder_email" class="form-control" />
             </div>
-            <div class="alert-danger errorMesasge">
+            <div class="alert-danger errorMessage">
                 @Model.UsernameEmptyFieldError
             </div>
         </div>
@@ -23,11 +23,11 @@
             <div>
                 <input id="PasswordInput" type="password" name="Password" placeholder="@Resources.LoginPageResources.placeholder_password" class="form-control" />
             </div>
-            <div class="alert-danger errorMesasge">
+            <div class="alert-danger errorMessage">
                 @Model.PasswordEmptyError
             </div>
         </div>
-        <div class="alert-danger errorMesasge">
+        <div class="alert-danger errorMessage">
             @Model.BadCredentialsError
         </div>
         <br />
@@ -36,7 +36,7 @@
         <button id="GoToRegistrationButton" type="button" class="btn spaceForButton">@Resources.LoginPageResources.button_text_Signup</button>
         <div class="checkbox">
             <label>
-                <input name="RememberUser" type="checkbox" value="true"/>
+                <input name="RememberUser" type="checkbox" value="true" />
                 @Resources.LoginPageResources.checkbox_RememberUser
             </label>
         </div>

@@ -133,15 +133,6 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Forgot password?.
-        /// </summary>
-        public static string link_ForgotPassword {
-            get {
-                return ResourceManager.GetString("link_ForgotPassword", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Email.
         /// </summary>
         public static string placeholder_email {
