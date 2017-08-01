@@ -1,7 +1,11 @@
 ﻿$(document).ready(function () {
     $("#UserRegistrationForm").validate({
         rules: {
-            Email: "required",
+            Email: {
+                required: true,
+                email: true,
+                maxlength:128
+            },
             Username: {
                 required: true,
                 minlength: 4,
@@ -21,7 +25,11 @@
         },
 
         messages: {
-            Email: "Plase enter your email",
+            Email: {
+                required: "Plase enter your email",
+                email: "Please enter valid email address",
+                maxlength: "Your email exeeds character limit of 128"
+            },
             Username: {
                 required: "Please enter your desired username",
                 minlength: "Your username bust at least 4 characcters long",
