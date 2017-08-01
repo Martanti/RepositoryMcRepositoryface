@@ -29,4 +29,8 @@ namespace Bussiness
     public interface IEncryptionManager {
         string GetStringSha256Hash(string text);
     }
+    public interface IDatabaseManager
+    {
+        bool IsDatabaseAvailable(string connectionString);
+    }
 }

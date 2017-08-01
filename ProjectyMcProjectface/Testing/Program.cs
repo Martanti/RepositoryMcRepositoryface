@@ -15,7 +15,16 @@ namespace Testing
         static void Main(string[] args)
         {
 
-            Console.WriteLine("Viskas veikia");
+            IDatabaseManager manager = InjectionKernel.Instance.Get<IDatabaseManager>();
+            bool IsAvailable = manager.IsDatabaseAvailable(@"Data Source=.\SQLEXPRESS;Database=InternalDBd;Integrated Security=True");
+            if (IsAvailable)
+            {
+                Console.WriteLine("Connection succeeded");
+            }
+            else
+            {
+                Console.WriteLine("Connection failed");
+            }
             Console.ReadKey();
         }
     }
