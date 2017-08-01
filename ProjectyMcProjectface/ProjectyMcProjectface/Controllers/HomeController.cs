@@ -23,6 +23,10 @@ namespace ProjectyMcProjectface.Controllers
         {
             return View();
         }
+        public ActionResult AddDatabase()
+        {
+            return View();
+        }
         public ActionResult SignOut()
         {
             var owinContext = Request.GetOwinContext();
