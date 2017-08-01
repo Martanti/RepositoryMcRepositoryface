@@ -29,13 +29,12 @@ namespace ProjectyMcProjectface
                       "~/Content/bootstrap.css",
                       "~/Content/Site.css"));
 
-            bundles.Add(new ScriptBundle("~/bundles/plugin-raphael").Include(
-                "~/Scripts/raphael.min.js"));
-
             bundles.Add(new StyleBundle("~/Content/pluginCss").Include(
                 "~/Content/morris.css",
                 "~/Content/bootstrap.min.css",
-                "~/Content/sb-admin.css"));
+                "~/Content/sb-admin.css",
+                "~/Content/CustomStylesForMainPage.css"
+                ));
 
             bundles.Add(new StyleBundle("~/Content/LoginVisuals").Include(
                 "~/Content/bootstrap.css",
