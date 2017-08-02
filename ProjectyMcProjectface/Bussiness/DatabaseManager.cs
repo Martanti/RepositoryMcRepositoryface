@@ -55,9 +55,21 @@ namespace Bussiness
                 context.SaveChanges();
             }
         }
-        public List<DatabaseModel> GetDatabases(string email)
+        public List<DatabaseModel> GetDatabasesByEmail(string email)
         {
-            return new List<DatabaseModel>();
+            var context = InjectionKernel.Instance.Get<IInternalDBModel>();
+            List<DatabaseModel> returnValues = new List<DatabaseModel>();
+            IUserManager userManager = InjectionKernel.Instance.Get<IUserManager>();
+            foreach (var db in context.ConnectionStrings.Where(x => x.UserId == int.Parse(userManager.GetIdByEmail(email))).AsQueryable())
+            {
+                DatabaseModel dbModel = new DatabaseModel();
+                dbModel.InternalConnectionString = db.String;
+                dbModel.Name = db.DatabaseName;
+                dbModel.OriginalConnectionString = db.InternalConnString;
+                returnValues.Add(dbModel);
+            }
+
+            return returnValues;
         }
     }
 }

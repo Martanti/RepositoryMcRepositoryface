@@ -5,6 +5,7 @@ using Dto;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Security.Claims;
 
 namespace Bussiness
 {
@@ -26,6 +27,7 @@ namespace Bussiness
         bool ValidateEmail(string email);
         string GetUsernameByEmail(string email);
         string GetIdByEmail(string email);
+        string GetUsernameFromIdentity(ClaimsIdentity identity);
     }
     public interface IEncryptionManager {
         string GetStringSha256Hash(string text);
