@@ -93,21 +93,18 @@ namespace ProjectyMcProjectface.Controllers
                     {
                         authManager.SignIn(new Microsoft.Owin.Security.AuthenticationProperties { IsPersistent = true}, identity);
                     }
-                    
 
-                    if(HttpContext.Request.Cookies[ReturnUrlCookieName] != null)
+                    if (HttpContext.Request.Cookies[ReturnUrlCookieName] != null)
                     {
-                        if(!String.IsNullOrEmpty(HttpContext.Request.Cookies[ReturnUrlCookieName].Value) &&
+                        if (!String.IsNullOrEmpty(HttpContext.Request.Cookies[ReturnUrlCookieName].Value) &&
                         Url.IsLocalUrl(HttpContext.Request.Cookies[ReturnUrlCookieName].Value))
                         {
                             return Redirect(HttpContext.Request.Cookies[ReturnUrlCookieName].Value);
                         }
                     }
-                    else
-                    {
 
-                    }
                     return RedirectToAction("Index", "Home", new { Usern = true });
+
                 }
 
                 else
