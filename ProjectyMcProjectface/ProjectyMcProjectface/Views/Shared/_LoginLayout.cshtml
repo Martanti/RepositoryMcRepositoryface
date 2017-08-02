@@ -3,14 +3,14 @@
 <head>
     <title>PMcPf</title>
     @Styles.Render("~/Content/LoginVisuals")
-    @Scripts.Render("~/bundles/FormValidationsScripts")
+    
 
 </head>
 <body>
     <div id="FormWrapper">
         @RenderBody()
     </div>
-
+    @Scripts.Render("~/bundles/FormValidationsScripts")
     @Scripts.Render("~/bundles/ScriptsForLoginPage")
 
    

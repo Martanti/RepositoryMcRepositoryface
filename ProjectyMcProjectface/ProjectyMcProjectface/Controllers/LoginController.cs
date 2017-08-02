@@ -103,8 +103,6 @@ namespace ProjectyMcProjectface.Controllers
                         }
                     }
 
-                    return RedirectToAction("Index", "Home", new { Usern = true });
-
                 }
 
                 else

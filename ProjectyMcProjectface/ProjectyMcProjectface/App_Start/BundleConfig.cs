@@ -31,7 +31,8 @@ namespace ProjectyMcProjectface
             bundles.Add(new StyleBundle("~/Content/pluginCss").Include(
                 "~/Content/bootstrap.min.css",
                 "~/Content/sb-admin.css",
-                "~/Content/CustomStylesForMainPage.css"
+                "~/Content/CustomStylesForMainPage.css",
+                "~/Content/font-awesome.min.css"
                 ));
 
             bundles.Add(new StyleBundle("~/Content/LoginVisuals").Include(
