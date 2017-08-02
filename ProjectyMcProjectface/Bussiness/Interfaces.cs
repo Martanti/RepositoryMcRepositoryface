@@ -37,6 +37,7 @@ namespace Bussiness
         bool IsDatabaseAvailable(string connectionString);
         void RegisterDatabase(string originalConnectionString, 
             string internalConnectionString, int userId, string databaseName = "");
-        List<DatabaseModel> GetDatabases(string email);
+        List<DatabaseModel> GetDatabasesByEmail(string email);
+        bool CheckDatabaseExistance(string id, string connString);
     }
 }
