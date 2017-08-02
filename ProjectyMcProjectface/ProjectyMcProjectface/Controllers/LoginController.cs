@@ -103,6 +103,7 @@ namespace ProjectyMcProjectface.Controllers
                             return Redirect(HttpContext.Request.Cookies[ReturnUrlCookieName].Value);
                         }
                     }
+                    return RedirectToAction("Index", "Home");
 
                 }
 

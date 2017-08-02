@@ -21,6 +21,7 @@ namespace ProjectyMcProjectface.Controllers
             string userName = claims.Single(c => c.Type == ClaimTypes.NameIdentifier).Value.ToString();
 
             ViewBag.MainPageLayoutUsername = userName;
+
             return View("Index");
         }
 
