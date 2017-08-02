@@ -76,7 +76,9 @@ namespace ProjectyMcProjectface.Controllers
                 if (loginAuthenticator.VerifyLogin(userModel.Email, userModel.Password))
                 {
                     var identity = new ClaimsIdentity(new[] {
-                            new Claim(ClaimTypes.Email, userModel.Email)
+                            new Claim(ClaimTypes.Email, userModel.Email),
+                            new Claim(ClaimTypes.NameIdentifier, 
+                                loginAuthenticator.GetUsernameByEmail(userModel.Email))
                         },
                         "ApplicationCookie");
                     
