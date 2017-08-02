@@ -33,3 +33,30 @@ body{
     
 }
 /*AddDatabasePage*/
+
+@media(max-width:768px) {
+    #SignedInAs{
+        display:none;
+    }
+}
+
+.navbar-collapse{
+    background-color:inherit;
+    border-color:inherit;
+
+}
+
+.navbar-inverse{
+    border-color:inherit;
+}
+
+.navbar-header{
+    -webkit-box-sizing:unset;
+    box-sizing:unset;
+}
+
+.nav {
+    -webkit-box-sizing:unset;
+    box-sizing:unset;
+}
+

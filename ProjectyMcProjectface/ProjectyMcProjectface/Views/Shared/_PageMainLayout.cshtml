@@ -37,54 +37,48 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="/">Hello</a>
-            </div>
-            <div class="navbar-collapse navbar">
-                <ul class="nav navbar-nav">
+                <a class="navbar-brand" href="/" id="SignedInAs">Signed in as</a>
+
+                <ul class="nav navbar-right top-nav">
                     <li class="dropdown">
-                        <a href="" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Select database
+                        <a href="" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                            <i class="fa fa-fw fa-database"></i>
                             <b class="caret"></b>
                         </a>
 
                         <ul class="dropdown-menu">
-                            <li>
-                                <a href="">Dummmy database</a>
-                            </li>
-                            <li>
-                                <a href="">Dummmy database</a>
-                            </li>
-                            <li>
-                                <a href="">Dummmy database</a>
-                            </li>
                         </ul>
                     </li>
                     <li>
-                        <a id="SignOutButton" href="/Signout">Sign out</a>
+                        <a id="SignOutButton" href="/Signout">
+                            <i class="fa fa-fw fa-power-off"></i>
+                        </a>
                     </li>
 
                 </ul>
             </div>
+
             <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
             <div class="collapse navbar-collapse navbar-ex1-collapse" aria-expanded="false">
                 <ul class="nav navbar-nav side-nav">
                     <li>
-                        @Html.ActionLink("Home", "Index")<i class="fa fa-fw fa-dashboard"></i>
+                        @Html.ActionLink("Home", "Index")
                     </li>
                     <li>
-                        @Html.ActionLink("Show all databases", "DatabaseView", "Home")<i class="fa fa-fw fa-bar-chart-o"></i>
+                        @Html.ActionLink("Show all databases", "DatabaseView", "Home")
                     </li>
                     <li>
-                        @Html.ActionLink("Add database", "AddDatabase", "Home")<i class="fa fa-fw fa-bar-chart-o"></i>
+                        @Html.ActionLink("Add database", "AddDatabase", "Home")
                     </li>
                     <li>
-                        @Html.ActionLink("Edit a database", "DatabaseEdit", "Home")<i class="fa fa-fw fa-table"></i>
+                        @Html.ActionLink("Edit a database", "DatabaseEdit", "Home")
                     </li>
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
         </nav>
 
-        @RenderBody();
+        @RenderBody()
 
     </div>
     <!-- /#wrapper -->
