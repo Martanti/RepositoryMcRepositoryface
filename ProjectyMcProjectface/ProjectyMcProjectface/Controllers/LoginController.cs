@@ -93,21 +93,14 @@ namespace ProjectyMcProjectface.Controllers
                     {
                         authManager.SignIn(new Microsoft.Owin.Security.AuthenticationProperties { IsPersistent = true}, identity);
                     }
-                    
 
-                    if(HttpContext.Request.Cookies[ReturnUrlCookieName] != null)
+                    if (!String.IsNullOrEmpty(/*modelio url reiksme*/) &&
+                       Url.IsLocalUrl(/*modelio url reiksme*/))
                     {
-                        if(!String.IsNullOrEmpty(HttpContext.Request.Cookies[ReturnUrlCookieName].Value) &&
-                        Url.IsLocalUrl(HttpContext.Request.Cookies[ReturnUrlCookieName].Value))
-                        {
-                            return Redirect(HttpContext.Request.Cookies[ReturnUrlCookieName].Value);
-                        }
+                        IUserManager usernameGetter = InjectionKernel.Instance.Get<IUserManager>();
+                        return RedirectToAction("Index", "Home", new { Username = usernameGetter.GetUsernameByEmail(userModel.Email) });
                     }
-                    else
-                    {
 
-                    }
-                    return RedirectToAction("Index", "Home", new { Usern = true });
                 }
 
                 else

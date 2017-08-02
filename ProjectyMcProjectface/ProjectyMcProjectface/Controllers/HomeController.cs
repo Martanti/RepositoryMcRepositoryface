@@ -10,8 +10,9 @@ namespace ProjectyMcProjectface.Controllers
 {
     public class HomeController : BaseController
     {
-        public ActionResult Index(AuthenticatedUserModel userModel)
+        public ActionResult Index(AuthenticatedUserModel userModel = null, string Username = "")
         {
+            userModel.Username = Username;
             return View("Index", userModel);
         }
 
