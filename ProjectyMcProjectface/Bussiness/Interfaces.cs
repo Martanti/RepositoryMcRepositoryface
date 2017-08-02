@@ -1,6 +1,7 @@
 ﻿using Microsoft.SqlServer.Management.Smo;
 using System;
 using System.Collections.Generic;
+using Dto;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -34,5 +35,6 @@ namespace Bussiness
         bool IsDatabaseAvailable(string connectionString);
         void RegisterDatabase(string originalConnectionString, 
             string internalConnectionString, int userId, string databaseName = "");
+        List<DatabaseModel> GetDatabases(string email);
     }
 }
