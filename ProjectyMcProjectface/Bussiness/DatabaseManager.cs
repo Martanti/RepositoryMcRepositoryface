@@ -71,5 +71,17 @@ namespace Bussiness
 
             return returnValues;
         }
+        public bool CheckDatabaseExistance(string id, string connString)
+        {
+            SqlConnection connection = new SqlConnection(connString);
+            IInternalDBModel context = InjectionKernel.Instance.Get<IInternalDBModel>();
+            if(context.ConnectionStrings.Any
+                (x => new SqlConnectionStringBuilder(x.InternalConnString).DataSource == id
+                +"_"+new SqlConnectionStringBuilder(x.String).DataSource))
+            {
+                return true;
+            }
+            return false;
+        }
     }
 }
