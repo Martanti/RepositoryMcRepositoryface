@@ -24,6 +24,7 @@ namespace Bussiness
         void RegisterUser(string userName, string password, string email);
         bool ValidateEmail(string email);
         string GetUsernameByEmail(string email);
+        string GetIdByEmail(string email);
     }
     public interface IEncryptionManager {
         string GetStringSha256Hash(string text);

@@ -19,12 +19,18 @@ body{
     padding: 1%;
     width: 60%;
 }
-#TestConnectionButtonAddDatabase {
+#TestConnectionButtonAddDatabase,
+#AddDatabaseButton {
     border: 1px solid black;
 }
 #ConnectionSuccessLabelAddDatabase{
     word-break:break-all;
     padding: 0% 3%;
+}
+#AddDatabaseButton{
+    margin-top: 5px;
+    float: right;
+    
 }
 /*AddDatabasePage*/
 

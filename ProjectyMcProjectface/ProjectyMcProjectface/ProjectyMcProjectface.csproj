@@ -237,6 +237,7 @@
     <Content Include="Views\Error\Handle505.cshtml" />
     <Content Include="Views\Registration\Register.cshtml" />
     <Content Include="Views\Home\AddDatabase.cshtml" />
+    <Content Include="Views\Home\DatabaseRegisterSuccessful.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
