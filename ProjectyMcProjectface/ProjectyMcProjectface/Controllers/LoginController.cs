@@ -28,20 +28,7 @@ namespace ProjectyMcProjectface.Controllers
                 userModel.RegistrationSuccsesMessage = "";
             }
             
-            if(returnUrl != null)
-            {
-                if(HttpContext.Request.Cookies[ReturnUrlCookieName] != null)
-                {
-                    HttpContext.Response.Cookies[ReturnUrlCookieName].Value = returnUrl;
-                }
-                else
-                {
-                    HttpCookie cookie = new HttpCookie(ReturnUrlCookieName);
-                    cookie.Value = returnUrl;
-                    cookie.Expires = cookie.Expires = DateTime.Now.AddYears(cookieExpirationTimeInYears);
-                    System.Web.HttpContext.Current.Response.Cookies.Add(cookie);
-                }
-            }
+            /*enter valuie to model*/
             
             return View("Index", userModel);
 
@@ -92,21 +79,14 @@ namespace ProjectyMcProjectface.Controllers
                     {
                         authManager.SignIn(new Microsoft.Owin.Security.AuthenticationProperties { IsPersistent = true}, identity);
                     }
-                    
 
-                    if(HttpContext.Request.Cookies[ReturnUrlCookieName] != null)
+                    if (!String.IsNullOrEmpty(/*modelio url reiksme*/) &&
+                       Url.IsLocalUrl(/*modelio url reiksme*/))
                     {
-                        if(!String.IsNullOrEmpty(HttpContext.Request.Cookies[ReturnUrlCookieName].Value) &&
-                        Url.IsLocalUrl(HttpContext.Request.Cookies[ReturnUrlCookieName].Value))
-                        {
-                            return Redirect(HttpContext.Request.Cookies[ReturnUrlCookieName].Value);
-                        }
+                        IUserManager usernameGetter = InjectionKernel.Instance.Get<IUserManager>();
+                        return RedirectToAction("Index", "Home", new { Username = usernameGetter.GetUsernameByEmail(userModel.Email) });
                     }
-                    else
-                    {
 
-                    }
-                    return RedirectToAction("Index", "Home", new { Usern = true });
                 }
 
                 else
