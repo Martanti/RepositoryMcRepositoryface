@@ -156,6 +156,14 @@ namespace Bussiness
                 return context.RegisteredUsers.Single(x => x.Email == email).UserName;
             }
         }
-        
+        public string GetIdByEmail(string email)
+        {
+            using (var context = new InternalDBContext())
+            {
+                return context.RegisteredUsers.Single(x => x.Email == email).Id.ToString();
+            }
+        }
+
+
     }
 }
