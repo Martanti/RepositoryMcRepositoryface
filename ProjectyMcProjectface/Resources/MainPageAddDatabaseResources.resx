@@ -123,6 +123,12 @@
   <data name="button_TestConnection" xml:space="preserve">
     <value>Test Connection</value>
   </data>
+  <data name="ErrorConnStringAlreadyRegistered" xml:space="preserve">
+    <value>You have already registered this Database</value>
+  </data>
+  <data name="ErrorConnStringInvalid" xml:space="preserve">
+    <value>Couldn't establish valid connection, check the connection string!</value>
+  </data>
   <data name="label_ConString" xml:space="preserve">
     <value>Connection String</value>
   </data>

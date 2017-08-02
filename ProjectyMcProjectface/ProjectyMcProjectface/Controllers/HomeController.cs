@@ -43,6 +43,7 @@ namespace ProjectyMcProjectface.Controllers
             model.Name = "";
             model.IsConnectionSuccessfull = false;
             model.IsHttpGet = true;
+            model.ErrorMessage = "";
             return View("AddDatabase", model);
 
         }
@@ -55,10 +56,16 @@ namespace ProjectyMcProjectface.Controllers
                 model.ConnectionString = model.ConnectionString.Trim();
                 IDatabaseManager DBManager = InjectionKernel.Instance.Get<IDatabaseManager>();
                 model.IsConnectionSuccessfull = DBManager.IsDatabaseAvailable(model.ConnectionString);
+                
+                
             }
             if (!String.IsNullOrWhiteSpace(model.Name))
             {
                 model.Name = model.Name.Trim();
+            }
+            if (!model.IsConnectionSuccessfull)
+            {
+                model.ErrorMessage = Resources.MainPageAddDatabaseResources.ErrorConnStringInvalid;
             }
             return View("AddDatabase", model);
         }
@@ -78,6 +85,10 @@ namespace ProjectyMcProjectface.Controllers
             {
                 model.Name = model.Name.Trim();
             }
+            if (!model.IsConnectionSuccessfull)
+            {
+                model.ErrorMessage = Resources.MainPageAddDatabaseResources.ErrorConnStringInvalid;
+            }
 
             if (model.IsConnectionSuccessfull)
             {
@@ -87,13 +98,18 @@ namespace ProjectyMcProjectface.Controllers
                 IUserManager userManager = InjectionKernel.Instance.Get<IUserManager>();
                 string id = userManager.GetIdByEmail(email);
 
-                DBManager.RegisterDatabase(model.ConnectionString, ConfigurationManager.AppSettings["InternalDBConnectionString"].ToString(), int.Parse(id), model.Name);
-                return RedirectToAction("DatabaseRegisterSuccessful", "Home");
+                if(DBManager.CheckDatabaseExistance(id, model.ConnectionString))
+                {
+                    model.ErrorMessage = Resources.MainPageAddDatabaseResources.ErrorConnStringAlreadyRegistered;
+                }
+                else
+                {
+                    DBManager.RegisterDatabase(model.ConnectionString, ConfigurationManager.AppSettings["InternalDBConnectionString"].ToString(), int.Parse(id), model.Name);
+                    return RedirectToAction("DatabaseRegisterSuccessful", "Home");
+                }
+                
             }
-            else
-            {
-                return View("AddDatabase", model);
-            }
+            return View("AddDatabase", model);
         }
         public ActionResult DatabaseRegisterSuccessful()
         {

@@ -79,6 +79,24 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to You have already registered this Database.
+        /// </summary>
+        public static string ErrorConnStringAlreadyRegistered {
+            get {
+                return ResourceManager.GetString("ErrorConnStringAlreadyRegistered", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Couldn&apos;t establish valid connection, check the connection string!.
+        /// </summary>
+        public static string ErrorConnStringInvalid {
+            get {
+                return ResourceManager.GetString("ErrorConnStringInvalid", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Connection String.
         /// </summary>
         public static string label_ConString {
