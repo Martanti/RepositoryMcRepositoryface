@@ -28,7 +28,21 @@ namespace ProjectyMcProjectface.Controllers
                 userModel.RegistrationSuccsesMessage = "";
             }
             
-            /*enter valuie to model*/
+            if(returnUrl != null)
+            {
+                if(HttpContext.Request.Cookies[ReturnUrlCookieName] != null)
+                {
+                    HttpContext.Response.Cookies[ReturnUrlCookieName].Value = returnUrl;
+                }
+                else
+                {
+                    //Pisk nx urodas 
+                    HttpCookie cookie = new HttpCookie(ReturnUrlCookieName);
+                    cookie.Value = returnUrl;
+                    cookie.Expires = cookie.Expires = DateTime.Now.AddYears(cookieExpirationTimeInYears);
+                    System.Web.HttpContext.Current.Response.Cookies.Add(cookie);
+                }
+            }
             
             return View("Index", userModel);
 
