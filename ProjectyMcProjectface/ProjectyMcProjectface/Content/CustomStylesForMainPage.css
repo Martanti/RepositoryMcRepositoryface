@@ -7,23 +7,43 @@
 .navbar-collapse{
     border-radius: 0px;
 }
+
+.formInputWrapper {
+    min-width: 240px;
+    max-width: 500px;
+    width: 60%;
+    display: flex;
+    margin-top: 25px;
+    flex-direction: column;
+    background-color: #E5E5E5;
+    padding: 25px;
+    box-shadow: 10px 10px 5px #888888;
+}
+
+.errorMessage {
+    margin-top: 10px;
+    padding-left: 8px;
+}
+
+form {
+    width: 100%;
+}
+
+.spaceForButton {
+    margin-top: 5px;
+}
+
+.succesfullRegistration {
+    padding-left: 8px;
+    padding-right: 8px;
+}
 body{
     background-color: #FFF;
 }
 
 /*AddDatabasePage*/
-#FormHolderAddDatabase {
-    background-color: #E5E5E5;
-    border-radius: 10px;
-    margin: 5% 20%;
-    padding: 1%;
-    width: 60%;
-}
-#TestConnectionButtonAddDatabase,
-#AddDatabaseButton {
-    border: 1px solid black;
-}
-#ConnectionSuccessLabelAddDatabase{
+
+#ConnectionSuccess{
     word-break:break-all;
     padding: 0% 3%;
 }

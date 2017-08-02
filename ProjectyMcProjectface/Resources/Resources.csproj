@@ -45,6 +45,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>LoginPageResources.resx</DependentUpon>
     </Compile>
+    <Compile Include="MainPageAddDatabaseResources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MainPageAddDatabaseResources.resx</DependentUpon>
+    </Compile>
     <Compile Include="MainPageLayoutResources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -66,6 +71,10 @@
     <EmbeddedResource Include="LoginPageResources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>LoginPageResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainPageAddDatabaseResources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>MainPageAddDatabaseResources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="MainPageLayoutResources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
