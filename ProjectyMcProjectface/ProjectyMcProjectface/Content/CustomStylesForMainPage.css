@@ -22,4 +22,8 @@ body{
 #TestConnectionButtonAddDatabase {
     border: 1px solid black;
 }
+#ConnectionSuccessLabelAddDatabase{
+    word-break:break-all;
+    padding: 0% 3%;
+}
 /*AddDatabasePage*/
