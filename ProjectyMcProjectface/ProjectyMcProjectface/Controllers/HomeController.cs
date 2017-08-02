@@ -13,10 +13,15 @@ namespace ProjectyMcProjectface.Controllers
 {
     public class HomeController : BaseController
     {
-        public ActionResult Index(AuthenticatedUserModel userModel = null, string Username = "")
+        public ActionResult Index()
         {
-            userModel.Username = Username;
-            return View("Index", userModel);
+            var identity = (ClaimsIdentity)User.Identity;
+            IEnumerable<Claim> claims = identity.Claims;
+
+            string userName = claims.Single(c => c.Type == ClaimTypes.NameIdentifier).Value.ToString();
+
+            ViewBag.MainPageLayoutUsername = userName;
+            return View("Index");
         }
 
         public ActionResult DatabaseEdit()
