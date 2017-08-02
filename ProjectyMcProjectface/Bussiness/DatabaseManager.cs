@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using EFDataModels;
+using Dto;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -53,6 +54,10 @@ namespace Bussiness
                 context.ConnectionStrings.Add(stringObj);
                 context.SaveChanges();
             }
+        }
+        public List<DatabaseModel> GetDatabases(string email)
+        {
+            return new List<DatabaseModel>();
         }
     }
 }
