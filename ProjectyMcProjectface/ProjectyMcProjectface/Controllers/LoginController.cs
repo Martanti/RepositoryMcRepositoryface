@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Web;
 using System;
 using Dto;
+using System.Linq;
 
 namespace ProjectyMcProjectface.Controllers
 {
@@ -103,6 +104,7 @@ namespace ProjectyMcProjectface.Controllers
                             return Redirect(HttpContext.Request.Cookies[ReturnUrlCookieName].Value);
                         }
                     }
+                    return RedirectToAction("Index", "Home");
 
                 }
 
@@ -114,6 +116,7 @@ namespace ProjectyMcProjectface.Controllers
 
             return View("Index", userModel);
         }
+        
 
     }
 }
