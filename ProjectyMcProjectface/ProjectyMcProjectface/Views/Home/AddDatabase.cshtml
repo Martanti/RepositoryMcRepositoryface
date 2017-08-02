@@ -1,38 +1,49 @@
-﻿
+﻿@model Dto.DatabaseRegisterModel
 @{
-    ViewBag.Title = "Home Page";
     Layout= "~/Views/Shared/_PageMainLayout.cshtml";
 }
 
 <div id="page-wrapper">
 
     <div class="container-fluid">
-
-        <!-- Page Heading -->
-        <form id="FormHolderAddDatabase" action="@Url.Action("VerifyConnectionString","Home")" method="post">
+        <form id="FormHolderAddDatabase" action="@Url.Action("AddDatabase","Home")" method="post">
             <div class="container formInputWrapper">
                 <div class="form-group">
                     <label>Connection String</label>
                     <div>
-                        <input name="ConnectionString" placeholder="Connection String" class="form-control" />
+                        <input name="ConnectionString" placeholder="Connection String" class="form-control" value="@Model.ConnectionString" />
                     </div>
                 </div>
                 <div class="form-group">
                     <label>Database Name (optional)</label>
                     <div>
-                        <input name="Name" placeholder="Database name" class="form-control"/>
+                        <input name="Name" placeholder="Database name" class="form-control" value="@Model.Name"/>
                     </div>
                 </div>
 
                 <button id="TestConnectionButtonAddDatabase" type="submit" class="btn spaceForButton">Test Connection</button>
-                <label id="ConnectionSuccessLabelAddDatabase">Fak you</label>
+                @if (Model.IsHttpGet)
+                {
+                    <label id="ConnectionSuccessLabelAddDatabase"></label>
+                    <br />
+                    <button disabled="true" id="AddDatabaseButton" type="submit" class="btn spaceForButton">Add Database</button>
+                }
+                else if (Model.IsConnectionSuccessfull)
+                {
+                    <label id="ConnectionSuccessLabelAddDatabase">:)</label>
+                    <br />
+                    <button id="AddDatabaseButton" formaction="@Url.Action("RegisterDatabase","Home")" type="submit" class="btn spaceForButton">Add Database</button>
 
-                <button id="TestConnectionButtonAddDatabase" type="submit" class="btn spaceForButton">Test Connection</button>
+                }
+                else
+                {
+                    <label id="ConnectionSuccessLabelAddDatabase">;(</label>
+                    <br />
+                    <button disabled="true" id="AddDatabaseButton" type="submit" class="btn spaceForButton">Add Database</button>
+                }
             </div>
         </form>
 
     </div>
-    <!-- /.container-fluid -->
 
 </div>
-<!-- /#page-wrapper -->
