@@ -36,6 +36,7 @@ namespace ProjectyMcProjectface.Controllers
                 }
                 else
                 {
+                    //Pisk nx urodas 
                     HttpCookie cookie = new HttpCookie(ReturnUrlCookieName);
                     cookie.Value = returnUrl;
                     cookie.Expires = cookie.Expires = DateTime.Now.AddYears(cookieExpirationTimeInYears);
