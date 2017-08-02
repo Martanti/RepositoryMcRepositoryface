@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Web;
 using System;
 using Dto;
+using System.Linq;
 
 namespace ProjectyMcProjectface.Controllers
 {
@@ -115,6 +116,7 @@ namespace ProjectyMcProjectface.Controllers
 
             return View("Index", userModel);
         }
+        
 
     }
 }

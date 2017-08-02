@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using EFDataModels;
+using System.Security.Claims;
+using Dto;
 
 namespace Bussiness
 {
@@ -163,7 +165,11 @@ namespace Bussiness
                 return context.RegisteredUsers.Single(x => x.Email == email).Id.ToString();
             }
         }
-
+        public string GetUsernameFromIdentity(ClaimsIdentity identity)
+        {
+            IEnumerable<Claim> claims = identity.Claims;
+            return claims.Single(c => c.Type == ClaimTypes.NameIdentifier).Value.ToString();
+        }
 
     }
 }
