@@ -5,7 +5,7 @@ using System.Web;
 
 namespace Dto
 {
-    public class UserLogInModel
+    public class UserLogInModel : BaseModel
     {
         public string Email { get; set; }
 
@@ -24,7 +24,7 @@ namespace Dto
         public bool RememberUser { get; set; }
     }
 
-    public class UserRegisterModel
+    public class UserRegisterModel : BaseModel
     {
         public string Email { get; set; }
         
@@ -44,7 +44,7 @@ namespace Dto
         public string RePasswordErrorMessage { get; set; }
     }
 
-    public class AuthenticatedUserModel
+    public class AuthenticatedUserModel : BaseModel
     {
         public string Username { get; set; }
     }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Dto
 {
-    public class DatabaseRegisterModel
+    public class DatabaseRegisterModel : BaseModel
     {
         public string ConnectionString { get; set; }
         public string Name { get; set; }

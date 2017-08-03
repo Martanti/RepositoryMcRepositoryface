@@ -12,9 +12,14 @@ namespace Bussiness
     public class DatabaseManager : IDatabaseManager
     {
         private IInternalDBModel _internalDBContext;
-        public DatabaseManager(IInternalDBModel internalDBModel)
+        private IUserManager _userManager;
+        private IDatabaseCopy _databaseCopy;
+        public DatabaseManager(IInternalDBModel internalDBModel, IUserManager userManager,
+            IDatabaseCopy databaseCopy)
         {
             _internalDBContext = internalDBModel;
+            _userManager = userManager;
+            _databaseCopy = databaseCopy;
         }
         public bool IsDatabaseAvailable(string connectionString)
         {
@@ -40,7 +45,7 @@ namespace Bussiness
             stringObj.String = originalConnectionString;
             SqlConnection originalConn = new SqlConnection(originalConnectionString);
             SqlConnectionStringBuilder internalBuilder = new SqlConnectionStringBuilder(internalConnectionString);
-            internalBuilder.InitialCatalog = userId + "_" + originalConn.Database;
+            internalBuilder.InitialCatalog = stringObj.InternalDatabaseName = userId + "_" + originalConn.Database;
             stringObj.InternalConnString = internalBuilder.ConnectionString;
 
             if (String.IsNullOrWhiteSpace(databaseName))
@@ -51,22 +56,23 @@ namespace Bussiness
             {
                 stringObj.DatabaseName = databaseName;
             }
-            IDatabaseCopy DBCpy = InjectionKernel.Instance.Get<IDatabaseCopy>();
-            DBCpy.CopyDatabaseSMO(stringObj.String, stringObj.InternalConnString, userId.ToString());
+            
+            _databaseCopy.CopyDatabaseSMO(stringObj.String, stringObj.InternalConnString, userId.ToString());
 
             _internalDBContext.ConnectionStrings.Add(stringObj);
             _internalDBContext.SaveChanges();
         }
         public List<Database> GetDatabasesByEmail(string email)
         {
+            int id = int.Parse(_userManager.GetIdByEmail(email));
             List<Database> returnValues = new List<Database>();
-            IUserManager userManager = InjectionKernel.Instance.Get<IUserManager>();
-            foreach (var db in _internalDBContext.ConnectionStrings.Where(x => x.UserId == int.Parse(userManager.GetIdByEmail(email))).AsQueryable())
+            foreach (var db in _internalDBContext.ConnectionStrings.Where(x => x.UserId == id).AsQueryable())
             {
                 Database dbModel = new Database();
-                dbModel.InternalConnectionString = db.String;
+                dbModel.InternalConnectionString = db.InternalConnString;
                 dbModel.Name = db.DatabaseName;
-                dbModel.OriginalConnectionString = db.InternalConnString;
+                dbModel.OriginalConnectionString = db.String;
+                dbModel.InternalName = new SqlConnectionStringBuilder(db.InternalConnString).InitialCatalog;
                 returnValues.Add(dbModel);
             }
 
@@ -75,9 +81,10 @@ namespace Bussiness
         public bool CheckDatabaseExistance(string id, string connString)
         {
             SqlConnection connection = new SqlConnection(connString);
-            if(_internalDBContext.ConnectionStrings.Any
-                (x => new SqlConnectionStringBuilder(x.InternalConnString).DataSource == id
-                +"_"+new SqlConnectionStringBuilder(x.String).DataSource))
+            string dataSource = new SqlConnectionStringBuilder(connString).InitialCatalog;
+            if (_internalDBContext.ConnectionStrings.Any
+                (x => x.InternalDatabaseName == (id
+                +"_"+dataSource)))
             {
                 return true;
             }
