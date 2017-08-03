@@ -19,7 +19,8 @@ namespace Bussiness
             Bind<IEncryptionManager>().ToConstructor(x => new EncryptionManager());
             Bind<IDatabaseCopy>().ToConstructor(x => new DatabaseCopy());
             Bind<IInternalDBModel>().ToConstructor(x => new InternalDBContext());
-            Bind<IDatabaseManager>().ToConstructor(x => new DatabaseManager(x.Inject<IInternalDBModel>()));
+            Bind<IDatabaseManager>().ToConstructor(x => new DatabaseManager(x.Inject<IInternalDBModel>(),
+                x.Inject<IUserManager>(), x.Inject<IDatabaseCopy>()));
         }
         
         public static InjectionKernel Instance

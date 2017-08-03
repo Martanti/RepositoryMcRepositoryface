@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@model Dto.BaseModel
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -36,7 +37,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="/" id="SignedInAs">@Resources.MainPageLayoutResources.header_SignedIn @ViewBag.MainPageLayoutUsername</a>
+                <a class="navbar-brand" href="/" id="SignedInAs">@Resources.MainPageLayoutResources.header_SignedIn @Model.UserName</a>
 
                 <ul class="nav navbar-right top-nav">
                     <li class="dropdown">
@@ -46,6 +47,12 @@
                         </a>
 
                         <ul class="dropdown-menu">
+                            @foreach(var db in Model.UserDatabases)
+                            {
+                                <li>
+                                    <a href="/Home/AddDatabaseToCookies?internalDbName=@db.InternalName">@db.Name</a>
+                                </li>
+                            }
                         </ul>
                     </li>
                     <li>
@@ -71,6 +78,9 @@
                     </li>
                     <li>
                         @Html.ActionLink("Edit a database", "DatabaseEdit", "Home")
+                    </li>
+                    <li>
+                        @Html.ActionLink("View selected database", "ViewCurrentDatabase", "Home")
                     </li>
                 </ul>
             </div>

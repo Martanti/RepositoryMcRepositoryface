@@ -55,10 +55,6 @@ namespace ProjectyMcProjectface.Controllers
         [HttpPost]
         public ActionResult Login(UserLogInModel userModel)
         {
-            if (User.Identity.IsAuthenticated)
-            {
-                return RedirectToAction("Index", "Home");
-            }
             userModel.UsernameEmptyFieldError = "";
             userModel.PasswordEmptyError = "";
             userModel.BadCredentialsError = "";
