@@ -16,6 +16,10 @@ namespace ProjectyMcProjectface.Controllers
         [HttpGet]
         public ActionResult Login(string returnUrl = null, bool RegistrationSuccessful = false)
         {
+            if (User.Identity.IsAuthenticated)
+            {
+                return RedirectToAction("Index", "Home");
+            }
             UserLogInModel userModel = new UserLogInModel();
             userModel.UsernameEmptyFieldError = "";
             userModel.PasswordEmptyError = "";
@@ -51,7 +55,10 @@ namespace ProjectyMcProjectface.Controllers
         [HttpPost]
         public ActionResult Login(UserLogInModel userModel)
         {
-
+            if (User.Identity.IsAuthenticated)
+            {
+                return RedirectToAction("Index", "Home");
+            }
             userModel.UsernameEmptyFieldError = "";
             userModel.PasswordEmptyError = "";
             userModel.BadCredentialsError = "";

@@ -4,6 +4,7 @@ namespace EFDataModels
 
     public interface IInternalDBModel
     {
+        int SaveChanges();
         DbSet<RegisteredUser> RegisteredUsers { get; set; }
         DbSet<ConnectionString> ConnectionStrings { get; set; }
     }

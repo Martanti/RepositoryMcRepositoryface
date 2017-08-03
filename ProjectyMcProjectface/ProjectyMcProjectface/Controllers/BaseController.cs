@@ -2,6 +2,9 @@
 using log4net;
 using System.Diagnostics;
 using System;
+using System.Security.Claims;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace ProjectyMcProjectface.Controllers
 {
@@ -18,5 +21,21 @@ namespace ProjectyMcProjectface.Controllers
                 "---------------------------------------------------------------------------------------------------" +
                 "---------------------------------------------------------------------------------------------------");
         }
+        protected override void OnActionExecuting(ActionExecutingContext filterContext)
+        {
+            if (User.Identity.IsAuthenticated)
+            {
+                var identity = (ClaimsIdentity)User.Identity;
+                IEnumerable<Claim> claims = identity.Claims;
+
+                string userName = claims.Single(c => c.Type == ClaimTypes.NameIdentifier).Value.ToString();
+
+                ViewBag.MainPageLayoutUsername = userName;
+            }
+                
+            base.OnActionExecuting(filterContext);
+        }
+
     }
+    
 }
