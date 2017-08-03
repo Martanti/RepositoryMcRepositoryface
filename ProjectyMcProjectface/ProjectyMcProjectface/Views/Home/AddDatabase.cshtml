@@ -23,7 +23,7 @@
 
                 <button id="TestConnectionButtonAddDatabase" type="submit" class="btn btn-default spaceForButton">@Resources.MainPageAddDatabaseResources.button_TestConnection</button>
                 <label id="ConnectionSuccess"></label>
-                <label id="ConnectionError"></label>
+                <label id="ConnectionError">@Model.ErrorMessage</label>
 
                 @if (Model.IsHttpGet)
                 {
