@@ -11,6 +11,11 @@ namespace Bussiness
 {
     public class DatabaseManager : IDatabaseManager
     {
+        private IInternalDBModel _internalDBContext;
+        public DatabaseManager(IInternalDBModel internalDBModel)
+        {
+            _internalDBContext = internalDBModel;
+        }
         public bool IsDatabaseAvailable(string connectionString)
         {
             try
@@ -29,40 +34,36 @@ namespace Bussiness
         }
         public void RegisterDatabase(string originalConnectionString,string internalConnectionString, int userId, string databaseName = "")
         {
-            using (var context = new InternalDBContext())
+            ConnectionString stringObj = new ConnectionString();
+
+            stringObj.UserId = userId;
+            stringObj.String = originalConnectionString;
+            SqlConnection originalConn = new SqlConnection(originalConnectionString);
+            SqlConnectionStringBuilder internalBuilder = new SqlConnectionStringBuilder(internalConnectionString);
+            internalBuilder.InitialCatalog = userId + "_" + originalConn.Database;
+            stringObj.InternalConnString = internalBuilder.ConnectionString;
+
+            if (String.IsNullOrWhiteSpace(databaseName))
             {
-                ConnectionString stringObj = new ConnectionString();
-
-                stringObj.UserId = userId;
-                stringObj.String = originalConnectionString;
-                SqlConnection originalConn = new SqlConnection(originalConnectionString);
-                SqlConnectionStringBuilder internalBuilder = new SqlConnectionStringBuilder(internalConnectionString);
-                internalBuilder.InitialCatalog = userId + "_" + originalConn.Database;
-                stringObj.InternalConnString = internalBuilder.ConnectionString;
-
-                if (String.IsNullOrWhiteSpace(databaseName))
-                {
-                    stringObj.DatabaseName = originalConn.Database;
-                }
-                else
-                {
-                    stringObj.DatabaseName = databaseName;
-                }
-                IDatabaseCopy DBCpy = InjectionKernel.Instance.Get<IDatabaseCopy>();
-                DBCpy.CopyDatabaseSMO(stringObj.String, stringObj.InternalConnString, userId.ToString());
-
-                context.ConnectionStrings.Add(stringObj);
-                context.SaveChanges();
+                stringObj.DatabaseName = originalConn.Database;
             }
-        }
-        public List<DatabaseModel> GetDatabasesByEmail(string email)
-        {
-            var context = InjectionKernel.Instance.Get<IInternalDBModel>();
-            List<DatabaseModel> returnValues = new List<DatabaseModel>();
-            IUserManager userManager = InjectionKernel.Instance.Get<IUserManager>();
-            foreach (var db in context.ConnectionStrings.Where(x => x.UserId == int.Parse(userManager.GetIdByEmail(email))).AsQueryable())
+            else
             {
-                DatabaseModel dbModel = new DatabaseModel();
+                stringObj.DatabaseName = databaseName;
+            }
+            IDatabaseCopy DBCpy = InjectionKernel.Instance.Get<IDatabaseCopy>();
+            DBCpy.CopyDatabaseSMO(stringObj.String, stringObj.InternalConnString, userId.ToString());
+
+            _internalDBContext.ConnectionStrings.Add(stringObj);
+            _internalDBContext.SaveChanges();
+        }
+        public List<Database> GetDatabasesByEmail(string email)
+        {
+            List<Database> returnValues = new List<Database>();
+            IUserManager userManager = InjectionKernel.Instance.Get<IUserManager>();
+            foreach (var db in _internalDBContext.ConnectionStrings.Where(x => x.UserId == int.Parse(userManager.GetIdByEmail(email))).AsQueryable())
+            {
+                Database dbModel = new Database();
                 dbModel.InternalConnectionString = db.String;
                 dbModel.Name = db.DatabaseName;
                 dbModel.OriginalConnectionString = db.InternalConnString;
@@ -74,8 +75,7 @@ namespace Bussiness
         public bool CheckDatabaseExistance(string id, string connString)
         {
             SqlConnection connection = new SqlConnection(connString);
-            IInternalDBModel context = InjectionKernel.Instance.Get<IInternalDBModel>();
-            if(context.ConnectionStrings.Any
+            if(_internalDBContext.ConnectionStrings.Any
                 (x => new SqlConnectionStringBuilder(x.InternalConnString).DataSource == id
                 +"_"+new SqlConnectionStringBuilder(x.String).DataSource))
             {

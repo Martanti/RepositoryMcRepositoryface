@@ -15,12 +15,7 @@ namespace ProjectyMcProjectface.Controllers
     {
         public ActionResult Index()
         {
-            var identity = (ClaimsIdentity)User.Identity;
-            IEnumerable<Claim> claims = identity.Claims;
-
-            string userName = claims.Single(c => c.Type == ClaimTypes.NameIdentifier).Value.ToString();
-
-            ViewBag.MainPageLayoutUsername = userName;
+            
 
             return View("Index");
         }

@@ -15,6 +15,10 @@ namespace ProjectyMcProjectface.Controllers
         [HttpGet]
         public ActionResult Register()
         {
+            if (User.Identity.IsAuthenticated)
+            {
+                return RedirectToAction("Index", "Home");
+            }
             UserRegisterModel userModel = new UserRegisterModel();
             userModel.EmailErrorMessage = "";
             userModel.UsernameErrorMessage = "";
@@ -26,6 +30,10 @@ namespace ProjectyMcProjectface.Controllers
         [HttpPost]
         public ActionResult RegistrationSubmint(UserRegisterModel registrationModel)
         {
+            if (User.Identity.IsAuthenticated)
+            {
+                return RedirectToAction("Index", "Home");
+            }
             registrationModel.EmailErrorMessage = "";
             registrationModel.UsernameErrorMessage = "";
             registrationModel.PasswordErrorMessage = "";

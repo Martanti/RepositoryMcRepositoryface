@@ -17,7 +17,8 @@ namespace Bussiness
         public int MaxPassWordLength { get; }
         public int MinPassWordLength { get; }
         private IEncryptionManager _encryptionManager;
-        public UserManager(IEncryptionManager encryptionManager)
+        private IInternalDBModel _internalDBContext;
+        public UserManager(IEncryptionManager encryptionManager, IInternalDBModel internalDBModel)
         {
             MaxUserNameLength = 36;
             MinUserNameLength = 4;
@@ -25,8 +26,8 @@ namespace Bussiness
             MinPassWordLength = 4;
 
             _encryptionManager = encryptionManager;
+            _internalDBContext = internalDBModel;
         }
-
         public bool VerifyLogin(string Email, string password)
         {
             if(String.IsNullOrWhiteSpace(Email) || String.IsNullOrWhiteSpace(password))
@@ -35,18 +36,15 @@ namespace Bussiness
             }
             string hashedPassword = _encryptionManager.GetStringSha256Hash(password);
             Email = Email.Trim();
-            
-            using(InternalDBContext context = new InternalDBContext())
+
+            try
             {
-                try
-                {
-                    var user = context.RegisteredUsers.Single(u => u.Email == Email && u.PassWord == hashedPassword);
-                    return true;
-                }
-                catch (System.InvalidOperationException)
-                {
-                    return false;
-                }
+                var user = _internalDBContext.RegisteredUsers.Single(u => u.Email == Email && u.PassWord == hashedPassword);
+                return true;
+            }
+            catch (System.InvalidOperationException)
+            {
+                return false;
             }
         }
         public string[] ValidateRegisterData(string userName, string password, string repeatedPassword, string Email)
@@ -66,62 +64,58 @@ namespace Bussiness
             
             string[] returnValues = { "", "", "", "" };
 
-            using (InternalDBContext context = new InternalDBContext())
+            if (String.IsNullOrEmpty(userName))
             {
-                if (String.IsNullOrEmpty(userName))
-                {
-                    returnValues[0] = Resources.ValidationResources.ValidationUserNameEmpty;
-                }
-                else if (userName.Length > MaxUserNameLength)
-                {
-                    returnValues[0] = Resources.ValidationResources.ValidationUserNameTooLong;
-                }
-                else if (userName.Length < MinUserNameLength)
-                {
-                    returnValues[0] = Resources.ValidationResources.ValidationUserNameTooShort;
-                }
-
-                if (String.IsNullOrEmpty(password))
-                {
-                    returnValues[1] = Resources.ValidationResources.ValidationPasswordEmpty;
-                }
-                else if (password.Length < MinPassWordLength)
-                {
-                    returnValues[1] = Resources.ValidationResources.ValidationPasswordTooShort;
-                }
-                else if (password.Length > MaxPassWordLength)
-                {
-                    returnValues[1] = Resources.ValidationResources.ValidationPasswordTooLong;
-                }
-
-                if (repeatedPassword != password)
-                {
-                    returnValues[2] = Resources.ValidationResources.ValidationPasswordsDoNotMatch;
-                }
-
-                if (String.IsNullOrEmpty(Email))
-                {
-                    returnValues[3] = Resources.ValidationResources.ValidationEmailEmpty;
-                }
-                else if (!ValidateEmail(Email))
-                {
-                    returnValues[3] = Resources.ValidationResources.ValidationEmailInvalid;
-                }
-                else
-                {
-                    try
-                    {
-                        var temp = context.RegisteredUsers.Single(u => u.Email == Email);
-                        returnValues[3] = Resources.ValidationResources.ValidationEmailTaken;
-                    }
-                    catch
-                    {
-
-                    }
-                }
-                
+                returnValues[0] = Resources.ValidationResources.ValidationUserNameEmpty;
             }
-            
+            else if (userName.Length > MaxUserNameLength)
+            {
+                returnValues[0] = Resources.ValidationResources.ValidationUserNameTooLong;
+            }
+            else if (userName.Length < MinUserNameLength)
+            {
+                returnValues[0] = Resources.ValidationResources.ValidationUserNameTooShort;
+            }
+
+            if (String.IsNullOrEmpty(password))
+            {
+                returnValues[1] = Resources.ValidationResources.ValidationPasswordEmpty;
+            }
+            else if (password.Length < MinPassWordLength)
+            {
+                returnValues[1] = Resources.ValidationResources.ValidationPasswordTooShort;
+            }
+            else if (password.Length > MaxPassWordLength)
+            {
+                returnValues[1] = Resources.ValidationResources.ValidationPasswordTooLong;
+            }
+
+            if (repeatedPassword != password)
+            {
+                returnValues[2] = Resources.ValidationResources.ValidationPasswordsDoNotMatch;
+            }
+
+            if (String.IsNullOrEmpty(Email))
+            {
+                returnValues[3] = Resources.ValidationResources.ValidationEmailEmpty;
+            }
+            else if (!ValidateEmail(Email))
+            {
+                returnValues[3] = Resources.ValidationResources.ValidationEmailInvalid;
+            }
+            else
+            {
+                try
+                {
+                    var temp = _internalDBContext.RegisteredUsers.Single(u => u.Email == Email);
+                    returnValues[3] = Resources.ValidationResources.ValidationEmailTaken;
+                }
+                catch
+                {
+
+                }
+            }
+
             return returnValues;
         }
         public bool ValidateEmail(string email)
@@ -138,32 +132,23 @@ namespace Bussiness
         }
         public void RegisterUser(string userName, string password, string email)
         {
-            using (InternalDBContext context = new InternalDBContext())
+            string hashedPassword = _encryptionManager.GetStringSha256Hash(password);
+            _internalDBContext.RegisteredUsers.Add(new RegisteredUser()
             {
-                string hashedPassword = _encryptionManager.GetStringSha256Hash(password);
-                context.RegisteredUsers.Add(new RegisteredUser()
-                {
-                    UserName = userName,
-                    PassWord = hashedPassword,
-                    Email = email
-                });
-                context.SaveChanges();
-            }
+                UserName = userName,
+                PassWord = hashedPassword,
+                Email = email
+            });
+            _internalDBContext.SaveChanges();
         }
 
         public string GetUsernameByEmail(string email)
         {
-            using(var context = new InternalDBContext())
-            {
-                return context.RegisteredUsers.Single(x => x.Email == email).UserName;
-            }
+            return _internalDBContext.RegisteredUsers.Single(x => x.Email == email).UserName;
         }
         public string GetIdByEmail(string email)
         {
-            using (var context = new InternalDBContext())
-            {
-                return context.RegisteredUsers.Single(x => x.Email == email).Id.ToString();
-            }
+            return _internalDBContext.RegisteredUsers.Single(x => x.Email == email).Id.ToString();
         }
         public string GetUsernameFromIdentity(ClaimsIdentity identity)
         {
