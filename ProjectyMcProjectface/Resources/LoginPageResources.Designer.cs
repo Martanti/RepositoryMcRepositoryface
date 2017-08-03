@@ -61,6 +61,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Congratulations! You have successfuly registered! Now you can log in with your credentials.
+        /// </summary>
+        public static string alert_RegistrationWasASuccess {
+            get {
+                return ResourceManager.GetString("alert_RegistrationWasASuccess", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Log in.
         /// </summary>
         public static string button_text_Login {

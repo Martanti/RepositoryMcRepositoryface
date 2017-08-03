@@ -26,7 +26,7 @@ namespace ProjectyMcProjectface.Controllers
             userModel.BadCredentialsError = "";
             if(RegistrationSuccessful != false)
             {
-                userModel.RegistrationSuccsesMessage = "Congratulations! You have successfuly registered!";
+                userModel.RegistrationSuccsesMessage = Resources.LoginPageResources.alert_RegistrationWasASuccess;
             }
             else
             {

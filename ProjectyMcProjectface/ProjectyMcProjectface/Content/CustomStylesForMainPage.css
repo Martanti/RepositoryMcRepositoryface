@@ -73,6 +73,7 @@ body{
 .navbar-header{
     -webkit-box-sizing:unset;
     box-sizing:unset;
+    width:100%;
 }
 
 .nav {

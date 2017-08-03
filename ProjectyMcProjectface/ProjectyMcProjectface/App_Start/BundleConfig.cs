@@ -46,8 +46,7 @@ namespace ProjectyMcProjectface
             bundles.Add(new ScriptBundle("~/bundles/FormValidationsScripts").Include(
                 "~/Scripts/jquery-{version}.js",
                  "~/Scripts/jquery.validate.js",
-                  "~/Scripts/LoginFormValidation.js",
-                  "~/Scripts/RegistrationFormValidation.js"
+                  "~/Scripts/ClassBasedFrontValidation.js"
                  ));
             bundles.Add(new ScriptBundle("~/bundles/MainPageCommonScripts").Include(
                 "~/Scripts/MainPageCommonScript.js"));
