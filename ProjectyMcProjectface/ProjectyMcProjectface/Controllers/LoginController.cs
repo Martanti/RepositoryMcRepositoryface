@@ -26,7 +26,7 @@ namespace ProjectyMcProjectface.Controllers
             userModel.BadCredentialsError = "";
             if(RegistrationSuccessful != false)
             {
-                userModel.RegistrationSuccsesMessage = "Congratulations! You have successfuly registered!";
+                userModel.RegistrationSuccsesMessage = Resources.LoginPageResources.alert_RegistrationWasASuccess;
             }
             else
             {
@@ -55,10 +55,6 @@ namespace ProjectyMcProjectface.Controllers
         [HttpPost]
         public ActionResult Login(UserLogInModel userModel)
         {
-            if (User.Identity.IsAuthenticated)
-            {
-                return RedirectToAction("Index", "Home");
-            }
             userModel.UsernameEmptyFieldError = "";
             userModel.PasswordEmptyError = "";
             userModel.BadCredentialsError = "";
