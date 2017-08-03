@@ -74,6 +74,10 @@
     <Compile Include="Migrations\201708010959572_alteredConnectionStringsTable.Designer.cs">
       <DependentUpon>201708010959572_alteredConnectionStringsTable.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201708031057341_UpdatedConnectionStringsTable.cs" />
+    <Compile Include="Migrations\201708031057341_UpdatedConnectionStringsTable.Designer.cs">
+      <DependentUpon>201708031057341_UpdatedConnectionStringsTable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RegisteredUser.cs" />
@@ -100,6 +104,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201708010959572_alteredConnectionStringsTable.resx">
       <DependentUpon>201708010959572_alteredConnectionStringsTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201708031057341_UpdatedConnectionStringsTable.resx">
+      <DependentUpon>201708031057341_UpdatedConnectionStringsTable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

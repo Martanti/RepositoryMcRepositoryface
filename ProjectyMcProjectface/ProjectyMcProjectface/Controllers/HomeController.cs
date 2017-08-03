@@ -17,17 +17,20 @@ namespace ProjectyMcProjectface.Controllers
         {
             
 
-            return View("Index");
+            return View("Index", new BaseModel());
         }
-
+        public ActionResult ViewCurrentDatabase()
+        {
+            return View("ViewCurrentDatabase", new BaseModel());
+        }
         public ActionResult DatabaseEdit()
         {
-            return View();
+            return View(new BaseModel());
         }
 
         public ActionResult DatabaseView()
         {
-            return View();
+            return View(new BaseModel());
         }
 
         [HttpGet]
@@ -108,7 +111,7 @@ namespace ProjectyMcProjectface.Controllers
         }
         public ActionResult DatabaseRegisterSuccessful()
         {
-            return View("DatabaseRegisterSuccessful");
+            return View("DatabaseRegisterSuccessful", new BaseModel());
         }
 
         public ActionResult SignOut()
@@ -118,6 +121,10 @@ namespace ProjectyMcProjectface.Controllers
 
             authManager.SignOut("ApplicationCookie");
             return RedirectToAction("Index", "Login");
+        }
+        public ActionResult AddDatabaseToCookies(string internalDbName)
+        {
+            return RedirectToAction("ViewCurrentDatabase", "Home");
         }
     }
 }

@@ -10,6 +10,7 @@ namespace EFDataModels
         public string String { get; set; }
         public string InternalConnString { get; set; }
         public string DatabaseName { get; set; }
+        public string InternalDatabaseName { get; set; }
         public virtual RegisteredUser User { get; set; }
     }
 }

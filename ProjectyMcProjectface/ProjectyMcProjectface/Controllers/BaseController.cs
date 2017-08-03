@@ -5,6 +5,8 @@ using System;
 using System.Security.Claims;
 using System.Collections.Generic;
 using System.Linq;
+using Dto;
+using Bussiness;
 
 namespace ProjectyMcProjectface.Controllers
 {
@@ -21,19 +23,27 @@ namespace ProjectyMcProjectface.Controllers
                 "---------------------------------------------------------------------------------------------------" +
                 "---------------------------------------------------------------------------------------------------");
         }
-        protected override void OnActionExecuting(ActionExecutingContext filterContext)
+        
+        protected override void OnActionExecuted(ActionExecutedContext filterContext)
         {
-            if (User.Identity.IsAuthenticated)
+            
+
+            base.OnActionExecuted(filterContext);
+
+            if (User.Identity.IsAuthenticated && filterContext.Controller.ViewData.Model != null)
             {
                 var identity = (ClaimsIdentity)User.Identity;
                 IEnumerable<Claim> claims = identity.Claims;
 
-                string userName = claims.Single(c => c.Type == ClaimTypes.NameIdentifier).Value.ToString();
+                IDatabaseManager DBManager = InjectionKernel.Instance.Get<IDatabaseManager>();
 
-                ViewBag.MainPageLayoutUsername = userName;
+                var userName = claims.Single(c => c.Type == ClaimTypes.NameIdentifier).Value.ToString();
+                var email = claims.Single(c => c.Type == ClaimTypes.Email).Value.ToString();
+                var model = filterContext.Controller.ViewData.Model as BaseModel;
+
+                model.UserName = userName;
+                model.UserDatabases = DBManager.GetDatabasesByEmail(email);
             }
-                
-            base.OnActionExecuting(filterContext);
         }
 
     }
