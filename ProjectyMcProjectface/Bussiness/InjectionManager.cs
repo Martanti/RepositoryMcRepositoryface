@@ -15,11 +15,11 @@ namespace Bussiness
         private static InjectionKernel instance;
         private InjectionKernel()
         {
-            Bind<IUserManager>().ToConstructor(x => new UserManager(x.Inject<IEncryptionManager>()));
+            Bind<IUserManager>().ToConstructor(x => new UserManager(x.Inject<IEncryptionManager>(), x.Inject<IInternalDBModel>()));
             Bind<IEncryptionManager>().ToConstructor(x => new EncryptionManager());
             Bind<IDatabaseCopy>().ToConstructor(x => new DatabaseCopy());
             Bind<IInternalDBModel>().ToConstructor(x => new InternalDBContext());
-            Bind<IDatabaseManager>().ToConstructor(x => new DatabaseManager());
+            Bind<IDatabaseManager>().ToConstructor(x => new DatabaseManager(x.Inject<IInternalDBModel>()));
         }
         
         public static InjectionKernel Instance
