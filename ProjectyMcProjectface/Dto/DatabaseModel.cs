@@ -15,12 +15,12 @@ namespace Dto
     { 
         private Table()
         {
-            Columns = new List<Tuple<string, ValueType>>();
+            Columns = new List<string>();
             Rows = new List<Row>();
         }
         public string Name { get; set; }
         public string Schema { get; set; }
-        public List<Tuple<string, ValueType>> Columns { get; set; }
+        public List<string> Columns { get; set; }
         public List<Row> Rows { get; set; }
     }
     public class Row : BaseModel

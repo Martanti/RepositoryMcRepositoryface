@@ -1,7 +1,14 @@
 ﻿
 @{
-    ViewBag.Title = "DatabaseEdit";
-    Layout = "~/Views/Shared/_PageMainLayout.cshtml";
+    var model = ViewContext.ViewData.Model as Dto.BaseModel;
+    if (!model.IsPartial)
+    {
+        Layout = "~/Views/Shared/_PageMainLayout.cshtml";
+    }
+    else
+    {
+        Layout = null;
+    }
 }
 
 
@@ -13,7 +20,7 @@
         <div class="row">
             <div class="col-lg-12">
                 <h1 class="page-header">
-                    Lorum ipsum
+                    Database edit
                 </h1>
             </div>
         </div>

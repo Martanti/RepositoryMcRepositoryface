@@ -13,28 +13,29 @@ namespace ProjectyMcProjectface.Controllers
 {
     public class HomeController : BaseController
     {
-        public ActionResult Index()
+        public ActionResult Index(bool isPartial = false)
         {
-            
+            var baseModel = new BaseModel() {IsPartial = isPartial };
+            return View("Index", baseModel);
+        }
+        public ActionResult ViewCurrentDatabase(bool isPartial = false)
+        {
+            var baseModel = new BaseModel() { IsPartial = isPartial };
+            return PartialView("ViewCurrentDatabase", baseModel);
+        }
+        public ActionResult DatabaseEdit(bool isPartial = false)
+        {
+            var baseModel = new BaseModel() { IsPartial = isPartial };
+            return View(baseModel);
+        }
 
-            return View("Index", new BaseModel());
-        }
-        public ActionResult ViewCurrentDatabase()
+        public ActionResult DatabaseView(bool isPartial = false)
         {
-            return View("ViewCurrentDatabase", new BaseModel());
-        }
-        public ActionResult DatabaseEdit()
-        {
-            return View(new BaseModel());
-        }
-
-        public ActionResult DatabaseView()
-        {
-            return View(new BaseModel());
+            return View(new BaseModel() { IsPartial=isPartial});
         }
 
         [HttpGet]
-        public ActionResult AddDatabase()
+        public ActionResult AddDatabase(bool isPartial = false)
         {
             DatabaseRegisterModel model = new DatabaseRegisterModel();
             model.ConnectionString = "";
@@ -42,12 +43,15 @@ namespace ProjectyMcProjectface.Controllers
             model.IsConnectionSuccessfull = false;
             model.IsHttpGet = true;
             model.ErrorMessage = "";
-            return View("AddDatabase", model);
 
+            model.IsPartial = isPartial;
+
+            return View("AddDatabase", model);
         }
         [HttpPost]
-        public ActionResult AddDatabase(DatabaseRegisterModel model)
+        public ActionResult AddDatabase(DatabaseRegisterModel model, bool isPartial=false)
         {
+            model.IsPartial = isPartial;
             model.IsHttpGet = false;
             if (!String.IsNullOrWhiteSpace(model.ConnectionString))
             {
@@ -103,15 +107,11 @@ namespace ProjectyMcProjectface.Controllers
                 else
                 {
                     DBManager.RegisterDatabase(model.ConnectionString, ConfigurationManager.AppSettings["InternalDBConnectionString"].ToString(), int.Parse(id), model.Name);
-                    return RedirectToAction("DatabaseRegisterSuccessful", "Home");
+                    return View("DatabaseRegisterSuccessful", new BaseModel() {IsPartial = model.IsPartial });
                 }
                 
             }
             return View("AddDatabase", model);
-        }
-        public ActionResult DatabaseRegisterSuccessful()
-        {
-            return View("DatabaseRegisterSuccessful", new BaseModel());
         }
 
         public ActionResult SignOut()
@@ -124,7 +124,7 @@ namespace ProjectyMcProjectface.Controllers
         }
         public ActionResult AddDatabaseToCookies(string internalDbName)
         {
-            return RedirectToAction("ViewCurrentDatabase", "Home");
+            return RedirectToAction("Index", "Home");
         }
     }
 }
