@@ -14,40 +14,42 @@
 <div id="page-wrapper">
 
     <div class="container-fluid">
-        <form id="FormHolderAddDatabase" action="@Url.Action("AddDatabase","Home")" method="post">
-            <div class="container formInputWrapper">
-                <div class="form-group">
-                    <label for="ConnectionString">@Resources.MainPageAddDatabaseResources.label_ConString</label>
-                    <div>
-                        <input id="ConnectionString" name="ConnectionString" placeholder="Connection String" class="form-control" value="@Model.ConnectionString" />
-                    </div>
+        <form id="FormHolderAddDatabase" action="@Url.Action("AddDatabase", "Home")" method="post" class="form-horizontal">
+            <label id="ConnectionSuccess"></label>
+            <div class="row">
+                <div class="col-lg-3"></div>
+                <div id="AddDatabaseErrorMessage" class="alert-danger errorMessage">
+                    @Model.ErrorMessage
                 </div>
-                <div class="form-group">
-                    <label for="DatabaseName">@Resources.MainPageAddDatabaseResources.label_Databasename</label>
-                    <div>
-                        <input id="DatabaseName" name="Name" placeholder="Database name" class="form-control" value="@Model.Name"/>
-                    </div>
-                </div>
-
+            </div>
+        <div class="form-group">
+            <label for="ConnectionString" class="control-label col-sm-2">@Resources.MainPageAddDatabaseResources.label_ConString<span class="colorRed">@Resources.CommonTextResources.RequiredInputSymbol</span></label>
+            <div class="col-sm-8">
+                <input id="ConnectionString" name="ConnectionString" placeholder="Connection String" class="form-control" value="@Model.ConnectionString" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="DatabaseName" class="control-label col-sm-2">@Resources.MainPageAddDatabaseResources.label_Databasename</label>
+            <div class="col-sm-8">
+                <input id="DatabaseName" name="Name" placeholder="Database name" class="form-control" value="@Model.Name" />
+            </div>
+        </div>
+            <div id="AddDatabaseButtonGroup">
                 <button id="TestConnectionButtonAddDatabase" type="submit" class="btn btn-default spaceForButton">@Resources.MainPageAddDatabaseResources.button_TestConnection</button>
-                <label id="ConnectionSuccess"></label>
-                <label id="ConnectionError">@Model.ErrorMessage</label>
-
                 @if (Model.IsHttpGet)
                 {
-                    <button id="AddDatabaseButton" type="submit" class="btn btn-default spaceForButton disabled" >@Resources.MainPageAddDatabaseResources.button_AddDatabase</button>
+                    <button id="AddDatabaseButton" type="submit" class="btn btn-default spaceForButton disabled">@Resources.CommonTextResources.button_ok</button>
                 }
                 else if (Model.IsConnectionSuccessfull)
                 {
-                    <button id="AddDatabaseButton" formaction="@Url.Action("RegisterDatabase","Home")" type="submit" class="btn btn-default spaceForButton">Add Database</button>
+                    <button id="AddDatabaseButton" formaction="@Url.Action("RegisterDatabase","Home")" type="submit" class="btn btn-default spaceForButton">@Resources.CommonTextResources.button_ok</button>
                 }
                 else
                 {
-                    <button id="AddDatabaseButton" type="submit" class="btn btn-default spaceForButton disabled">@Resources.MainPageAddDatabaseResources.button_AddDatabase</button>
+                    <button id="AddDatabaseButton" type="submit" class="btn btn-default spaceForButton disabled">@Resources.CommonTextResources.button_ok</button>
                 }
             </div>
         </form>
-
     </div>
 
 </div>

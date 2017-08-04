@@ -13,25 +13,3 @@
     padding: 25px;
     box-shadow: 10px 10px 5px black;
 }
-
-.errorMessage{
-    margin-top:10px;
-    padding-left:8px;
-}
-
-form{
-    width: 100%;
-}
-
-.spaceForButton{
-    margin-top:5px;
-}
-
-.succesfullRegistration{
-    padding-left: 8px;
-    padding-right:8px;
-}
-
-.colorRed{
-    color:red;
-}

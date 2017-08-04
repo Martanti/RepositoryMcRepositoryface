@@ -23,40 +23,29 @@ a:hover{
     box-shadow: 10px 10px 5px #888888;
 }
 
-.errorMessage {
-    margin-top: 10px;
-    padding-left: 8px;
-}
-
-form {
-    width: 100%;
-}
-
-.spaceForButton {
-    margin-top: 5px;
-}
-
-.succesfullRegistration {
-    padding-left: 8px;
-    padding-right: 8px;
-}
 body{
     background-color: #FFF;
 }
 
 /*AddDatabasePage*/
-
-#ConnectionSuccess{
-    word-break:break-all;
+#AddDatabaseButtonGroup {
+    width:25%;
+    margin:0 auto;
+}
+#ConnectionSuccess {
+    word-break: break-all;
     padding: 0% 3%;
 }
 #AddDatabaseButton{
     margin-top: 5px;
-    float: right;
     
 }
-/*AddDatabasePage*/
 
+#AddDatabaseErrorMessage{
+    text-align:center;
+    margin-bottom:10px;
+}
+/*AddDatabasePage*/
 @media(max-width:768px) {
     #SignedInAs{
         display:none;
@@ -84,3 +73,6 @@ body{
     box-sizing:unset;
 }
 
+.alert-danger{
+    display:inline-block;
+}

@@ -200,3 +200,4 @@ C:\Users\Student2\Documents\GitHub\RepositoryMcRepositoryface\ProjectyMcProjectf
 C:\Users\Student2\Documents\GitHub\RepositoryMcRepositoryface\ProjectyMcProjectface\ProjectyMcProjectface\bin\Microsoft.Owin.Host.SystemWeb.xml
 C:\Users\Student2\Documents\GitHub\RepositoryMcRepositoryface\ProjectyMcProjectface\ProjectyMcProjectface\bin\Microsoft.Owin.Security.xml
 C:\Users\Student2\Documents\GitHub\RepositoryMcRepositoryface\ProjectyMcProjectface\ProjectyMcProjectface\bin\Microsoft.Owin.Security.Cookies.xml
+C:\Users\Student2\Documents\GitHub\RepositoryMcRepositoryface\ProjectyMcProjectface\ProjectyMcProjectface\bin\Resources.dll.config
