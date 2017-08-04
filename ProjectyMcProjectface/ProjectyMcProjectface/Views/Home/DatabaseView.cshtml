@@ -1,4 +1,4 @@
-﻿
+﻿@model Dto.BaseModel
 @{
     ViewBag.Title = "DatabaseView";
     Layout = "~/Views/Shared/_PageMainLayout.cshtml";
@@ -8,18 +8,38 @@
 <div id="page-wrapper">
 
     <div class="container-fluid">
-
-        <!-- Page Heading -->
+        @if(Model.UserDatabases.Count() == 0) { 
         <div class="row">
             <div class="col-lg-12">
                 <h1 class="page-header">
-                    Lorum ipsum
+                    @Resources.MainPageDatabaseViewResources.noDatabases
                 </h1>
             </div>
         </div>
+        }
+        else
+        {
+            <div class="table-hover">
+                <table class="table table-bordered table-responsive table-hover">
+                    <thead>
+                        <tr>
+                            <th>@Resources.MainPageDatabaseViewResources.tableHeader_DatabaseName</th>
+                            <th>@Resources.MainPageDatabaseViewResources.tableHeader_ConnString</th>
+                            <th>@Resources.MainPageDatabaseViewResources.tabeleHeader_TablesInIt</th>
+                        </tr>
+                    </thead>
+                   @foreach (var item in Model.UserDatabases)
+                   {
+                       <tr>
+                           <td>@item.Name</td>
+                           <td>@item.OriginalConnectionString</td>
+                           <td>[here will be shown a number of tables in the database]</td>
+                       </tr>
+                   }
+                </table>
+
+            </div>
+        }
 
     </div>
-    <!-- /.container-fluid -->
-
 </div>
-<!-- /#page-wrapper -->

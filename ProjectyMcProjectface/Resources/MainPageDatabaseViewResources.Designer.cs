@@ -22,14 +22,14 @@ namespace Resources {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    public class CommonTextResources {
+    public class MainPageDatabaseViewResources {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal CommonTextResources() {
+        internal MainPageDatabaseViewResources() {
         }
         
         /// <summary>
@@ -39,7 +39,7 @@ namespace Resources {
         public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Resources.CommonTextResources", typeof(CommonTextResources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Resources.MainPageDatabaseViewResources", typeof(MainPageDatabaseViewResources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -61,20 +61,38 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Ok.
+        ///   Looks up a localized string similar to It appears you have no databases..
         /// </summary>
-        public static string button_ok {
+        public static string noDatabases {
             get {
-                return ResourceManager.GetString("button_ok", resourceCulture);
+                return ResourceManager.GetString("noDatabases", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to *.
+        ///   Looks up a localized string similar to Amount of tables in it.
         /// </summary>
-        public static string RequiredInputSymbol {
+        public static string tabeleHeader_TablesInIt {
             get {
-                return ResourceManager.GetString("RequiredInputSymbol", resourceCulture);
+                return ResourceManager.GetString("tabeleHeader_TablesInIt", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Connection String.
+        /// </summary>
+        public static string tableHeader_ConnString {
+            get {
+                return ResourceManager.GetString("tableHeader_ConnString", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Database name.
+        /// </summary>
+        public static string tableHeader_DatabaseName {
+            get {
+                return ResourceManager.GetString("tableHeader_DatabaseName", resourceCulture);
             }
         }
     }
