@@ -26,6 +26,7 @@ namespace ProjectyMcProjectface
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
+                      "~/Content/CommonStyles.css",
                       "~/Content/Site.css"));
 
             bundles.Add(new StyleBundle("~/Content/pluginCss").Include(
@@ -36,7 +37,6 @@ namespace ProjectyMcProjectface
                 ));
 
             bundles.Add(new StyleBundle("~/Content/LoginVisuals").Include(
-                "~/Content/bootstrap.css",
                 "~/Content/bootstrap.min.css",
                 "~/Content/LoginStyle.css"));
 
@@ -50,6 +50,9 @@ namespace ProjectyMcProjectface
                  ));
             bundles.Add(new ScriptBundle("~/bundles/MainPageCommonScripts").Include(
                 "~/Scripts/MainPageCommonScript.js"));
+
+            bundles.Add(new StyleBundle("~/Content/CommonStyles").Include(
+                "~/Content/CommonStyles.css"));
         }
     }
 }
