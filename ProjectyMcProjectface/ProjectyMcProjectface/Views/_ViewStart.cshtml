@@ -1,3 +1,12 @@
-﻿@{
-    Layout = "~/Views/Shared/_LoginLayout.cshtml";
+﻿
+@{
+    var model = ViewContext.ViewData.Model as Dto.BaseModel;
+    if (!model.IsPartial)
+    {
+        Layout = "~/Views/Shared/_LoginLayout.cshtml";
+    }
+    else
+    {
+        Layout = null;
+    }
 }

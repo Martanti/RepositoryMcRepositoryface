@@ -7,6 +7,9 @@
 .navbar-collapse{
     border-radius: 0px;
 }
+a:hover{
+    cursor:pointer;
+}
 
 .formInputWrapper {
     min-width: 240px;
