@@ -19,7 +19,7 @@
         <div class="form-group">
             <label for="UsernameInput">@Resources.RegistrationPageResources.label_Username<span class="colorRed">@Resources.CommonTextResources.RequiredInputSymbol</span></label>
             <div>
-                <input id="UsernameInput" type="text" name="Username" placeholder="@Resources.RegistrationPageResources.placeholder_Username" class="form-control valid_req valid_min_len_4 valid_max_len_36" value="@Model.Username" />
+                <input id="UsernameInput" type="text" name="Username" placeholder="@Resources.RegistrationPageResources.placeholder_Username" class="form-control valid_req valid_min_len_4 valid_max_len_36" value="@Model.UserName" />
             </div>
             <div class="alert-danger errorMesasge">
                 @Model.UsernameErrorMessage

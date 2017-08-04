@@ -40,13 +40,13 @@ namespace ProjectyMcProjectface.Controllers
             registrationModel.RePasswordErrorMessage = "";
 
             var inputValidation = InjectionKernel.Instance.Get<IUserManager>();
-            string[] errorMessages = inputValidation.ValidateRegisterData(registrationModel.Username, registrationModel.Password, registrationModel.RepeatedPassword, registrationModel.Email);
+            string[] errorMessages = inputValidation.ValidateRegisterData(registrationModel.UserName, registrationModel.Password, registrationModel.RepeatedPassword, registrationModel.Email);
 
             if (errorMessages[0] == "" && errorMessages[1] == "" && errorMessages[2] == "" && errorMessages[3] == "")
             {
                 IUserManager userRegistration = InjectionKernel.Instance.Get<UserManager>();
 
-                userRegistration.RegisterUser(registrationModel.Username, registrationModel.Password, registrationModel.Email);
+                userRegistration.RegisterUser(registrationModel.UserName, registrationModel.Password, registrationModel.Email);
 
                 return RedirectToAction("Login", "Login", new { RegistrationSuccessful = true });
             }
