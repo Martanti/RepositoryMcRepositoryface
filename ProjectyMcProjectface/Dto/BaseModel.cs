@@ -11,7 +11,9 @@ namespace Dto
         public BaseModel()
         {
             UserDatabases = new List<Database>();
+            IsPartial = false;
         }
+        public bool IsPartial { get; set; }
         public string UserName { get; set; }
         public List<Database> UserDatabases { get; set; }
     }

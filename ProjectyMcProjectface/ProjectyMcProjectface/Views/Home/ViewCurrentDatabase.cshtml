@@ -1,6 +1,13 @@
-﻿
-@{
-    Layout = "~/Views/Shared/_PageMainLayout.cshtml";
+﻿@{
+    var model = ViewContext.ViewData.Model as Dto.BaseModel;
+    if (!model.IsPartial)
+    {
+        Layout = "~/Views/Shared/_PageMainLayout.cshtml";
+    }
+    else
+    {
+        Layout = null;
+    }
 }
 
 <h2>ViewCurrentDatabase</h2>

@@ -15,6 +15,7 @@
     @Scripts.Render("~/bundles/bootstrap")
     @Scripts.Render("~/bundles/MainPageCommonScripts")
     @Styles.Render("~/Content/pluginCss")
+    @Scripts.Render("~/Scripts/AjaxRouting.js")
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -68,26 +69,28 @@
             <div class="collapse navbar-collapse navbar-ex1-collapse" aria-expanded="false">
                 <ul class="nav navbar-nav side-nav">
                     <li>
-                        @Html.ActionLink("Home", "Index")
+                        <a class="partial" value="/Home/Index">Home</a>
                     </li>
                     <li>
-                        @Html.ActionLink("Show all databases", "DatabaseView", "Home")
+                        <a class="partial" value="/Home/DatabaseView" >View all Databases</a>
                     </li>
                     <li>
-                        @Html.ActionLink("Add database", "AddDatabase", "Home")
+                        <a class="partial" value="/Home/AddDatabase" >Add Database</a>
                     </li>
                     <li>
-                        @Html.ActionLink("Edit a database", "DatabaseEdit", "Home")
+                        <a class="partial" value="/Home/DatabaseEdit" >Edit a Database</a>
                     </li>
                     <li>
-                        @Html.ActionLink("View selected database", "ViewCurrentDatabase", "Home")
+                        <a class="partial" value="/Home/ViewCurrentDatabase" >View selected Database</a>
                     </li>
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
         </nav>
-
-        @RenderBody()
+        <div id="bodyContent">
+            @RenderBody()
+        </div>
+        
 
     </div>
     <!-- /#wrapper -->
