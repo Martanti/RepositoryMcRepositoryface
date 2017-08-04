@@ -61,15 +61,6 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Add Database.
-        /// </summary>
-        public static string button_AddDatabase {
-            get {
-                return ResourceManager.GetString("button_AddDatabase", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Test Connection.
         /// </summary>
         public static string button_TestConnection {
@@ -106,7 +97,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Database Name (optional).
+        ///   Looks up a localized string similar to Database Name.
         /// </summary>
         public static string label_Databasename {
             get {
