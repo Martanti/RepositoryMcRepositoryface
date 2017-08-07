@@ -41,10 +41,12 @@ namespace Bussiness
         bool CheckDatabaseExistance(string id, string connString);
         void SaveDatabaseInCookies(string internalName, string email);
         Dto.Database GetDatabaseFromCookies();
+        Dto.Table GetTableByInternalName(string internaldbName, string schema, string tableName);
     }
     public interface ISmoManager
     {
         Dto.Database GetDatabaseByInternalConnString(string connString, string customName="");
         int GetTableCountByConnectionString(string connString);
+        Dto.Table GetCompleteTableData(string connString, string schema, string name);
     }
 }

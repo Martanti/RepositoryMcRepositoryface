@@ -1,0 +1,12 @@
+﻿@{
+    var model = ViewContext.ViewData.Model as Dto.BaseModel;
+    if (!model.IsPartial)
+    {
+        Layout = "~/Views/Shared/_PageMainLayout.cshtml";
+    }
+    else
+    {
+        Layout = null;
+    }
+}
+<h1>Home</h1>

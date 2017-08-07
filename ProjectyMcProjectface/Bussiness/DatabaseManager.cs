@@ -145,9 +145,8 @@ namespace Bussiness
                         (x => x.InternalDatabaseName == internalDbName && x.UserId == id).DatabaseName);
                     return dbModel;
                 }
-                catch(Exception ex)
+                catch
                 {
-                    throw (ex);
                     return null;
                 }
                 
@@ -156,6 +155,11 @@ namespace Bussiness
             {
                 return null;
             }
+        }
+        public Table GetTableByInternalName(string internaldbName, string schema, string tableName)
+        {
+            string connString = _internalDBContext.ConnectionStrings.Single(s => s.InternalDatabaseName == internaldbName).InternalConnString;
+            return _smoManager.GetCompleteTableData(connString, schema, tableName);
         }
     }
 }

@@ -2,6 +2,7 @@
 using Microsoft.SqlServer.Management.Common;
 using System.Data.SqlClient;
 using System.Collections.Generic;
+using System.Data;
 
 namespace Bussiness
 {
@@ -51,6 +52,47 @@ namespace Bussiness
             }
 
             return DtoDatabaseModel;
+        }
+        public Dto.Table GetCompleteTableData(string connString,string schema, string name)
+        {
+            Dto.Table tableModel = new Dto.Table();
+
+            SqlConnection targetConn = new SqlConnection(connString);
+            ServerConnection serverConn = new ServerConnection();
+            serverConn.ServerInstance = targetConn.DataSource;
+            serverConn.LoginSecure = true;
+
+            Server server = new Server(serverConn);
+            Database targetDb = server.Databases[targetConn.Database];
+
+            DataSet dataSet = targetDb.ExecuteWithResults("SELECT * FROM " + schema + "." + name);
+            tableModel.Name = name;
+            tableModel.Schema = schema;
+            foreach(DataTable sourceTable in dataSet.Tables)
+            {
+                foreach(DataColumn col in sourceTable.Columns)
+                {
+                    tableModel.Columns.Add(col.ColumnName);
+                }
+                for(int x = 0; x < sourceTable.Rows.Count; x++)
+                {
+                    Dto.Row row = new Dto.Row();
+                    foreach(var item in sourceTable.Rows[x].ItemArray)
+                    {
+                        if (item == null)
+                        {
+                            row.Values.Add("NULL");
+                        }
+                        else
+                        {
+                            row.Values.Add(item.ToString());
+                        }
+                    }
+                    tableModel.Rows.Add(row);
+                }
+            }
+
+            return tableModel;
         }
     }
 }

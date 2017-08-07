@@ -12,31 +12,23 @@ namespace Dto
         public List<Table> Tables { get; set; }
         public int TableCount { get; set; }
     }
-    public class RowPage : BaseModel
-    {
-        public List<Row> Rows { get; set; }
-        public readonly int RowsInPage = 20;
-        public RowPage()
-        {
-            Rows = new List<Row>();
-        }
-    }
+
     public class Table : BaseModel
     { 
         public Table()
         {
             Columns = new List<string>();
-            Pages = new List<RowPage>();
+            Rows = new List<Row>();
         }
         public string Name { get; set; }
         public string Schema { get; set; }
         public List<string> Columns { get; set; }
-        public List<RowPage> Pages { get; set; }
+        public List<Row> Rows { get; set; }
         public int RowCount { get; set; }
     }
     public class Row : BaseModel
     {
-        private Row()
+        public Row()
         {
             Values = new List<string>();
         }
