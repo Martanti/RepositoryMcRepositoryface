@@ -68,5 +68,59 @@ namespace Resources {
                 return ResourceManager.GetString("header_SignedIn", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to View all Databases.
+        /// </summary>
+        public static string nabraList_ShawAllDatabases {
+            get {
+                return ResourceManager.GetString("nabraList_ShawAllDatabases", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Add Database.
+        /// </summary>
+        public static string navbarList_AddDatabse {
+            get {
+                return ResourceManager.GetString("navbarList_AddDatabse", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Edit a Database.
+        /// </summary>
+        public static string navbarList_EditDatabase {
+            get {
+                return ResourceManager.GetString("navbarList_EditDatabase", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Home.
+        /// </summary>
+        public static string navbarList_Home {
+            get {
+                return ResourceManager.GetString("navbarList_Home", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to View selected Database.
+        /// </summary>
+        public static string navbarList_ViewSelectedDatabse {
+            get {
+                return ResourceManager.GetString("navbarList_ViewSelectedDatabse", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Toggle navigation.
+        /// </summary>
+        public static string span_ToggleNavigation {
+            get {
+                return ResourceManager.GetString("span_ToggleNavigation", resourceCulture);
+            }
+        }
     }
 }

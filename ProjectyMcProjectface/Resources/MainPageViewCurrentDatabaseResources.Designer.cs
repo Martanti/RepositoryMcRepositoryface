@@ -22,14 +22,14 @@ namespace Resources {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    public class MainPageVievCurrentDatabaseResources {
+    public class MainPageViewCurrentDatabaseResources {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal MainPageVievCurrentDatabaseResources() {
+        internal MainPageViewCurrentDatabaseResources() {
         }
         
         /// <summary>
@@ -39,7 +39,7 @@ namespace Resources {
         public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Resources.MainPageVievCurrentDatabaseResources", typeof(MainPageVievCurrentDatabaseResources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Resources.MainPageViewCurrentDatabaseResources", typeof(MainPageViewCurrentDatabaseResources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -66,6 +66,42 @@ namespace Resources {
         public static string NoTablesToShow {
             get {
                 return ResourceManager.GetString("NoTablesToShow", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Collum count.
+        /// </summary>
+        public static string theading_collumCount {
+            get {
+                return ResourceManager.GetString("theading_collumCount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Table name.
+        /// </summary>
+        public static string theading_name {
+            get {
+                return ResourceManager.GetString("theading_name", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Row count.
+        /// </summary>
+        public static string theading_rowCount {
+            get {
+                return ResourceManager.GetString("theading_rowCount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Schema.
+        /// </summary>
+        public static string theading_schema {
+            get {
+                return ResourceManager.GetString("theading_schema", resourceCulture);
             }
         }
     }
