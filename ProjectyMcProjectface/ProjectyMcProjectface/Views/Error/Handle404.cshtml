@@ -3,7 +3,11 @@
     Layout = "~/Views/Shared/Error.cshtml";
     ViewBag.Title = "Error: 404";
 }
-<div class="container">
-    <h1>Error: 404</h1>
-
+<div class="container errorPage">
+    <div class="row">
+        <div class="image-container clearfix">
+            <img id="kid404" src="~/Content/Images/404kid.jpg" class="img-responsive"/>
+        </div>
+        <div class="alert alert-danger text-center">@Resources.ErrorPageResources.body_404</div>
+    </div>
 </div>

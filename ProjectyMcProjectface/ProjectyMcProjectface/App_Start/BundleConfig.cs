@@ -53,6 +53,10 @@ namespace ProjectyMcProjectface
 
             bundles.Add(new StyleBundle("~/Content/CommonStyles").Include(
                 "~/Content/CommonStyles.css"));
+
+            bundles.Add(new StyleBundle("~/Content/ErrorSryles").Include(
+                "~/Content/bootstrap.min.css",
+                "~/Content/ErrorPages.css"));
         }
     }
 }
