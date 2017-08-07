@@ -1,4 +1,5 @@
-﻿@{
+﻿@model Dto.Table
+@{
     var model = ViewContext.ViewData.Model as Dto.BaseModel;
     if (!model.IsPartial)
     {
@@ -9,4 +10,38 @@
         Layout = null;
     }
 }
+<<<<<<< HEAD
 <h1>View table</h1>
+||||||| merged common ancestors
+<h1>Home</h1>
+=======
+<div id="page-wrapper">
+
+    <div class="container-fluid">
+        
+        <div class="table-hover">
+            <table class="table table-bordered table-responsive table-hover">
+                <thead>
+                    <tr>
+                        @foreach (var item in Model.Columns)
+                        {
+                            <th>@item</th>
+                        }
+                    </tr>
+                </thead>
+                @foreach(var row in Model.Rows)
+                {
+                    <tr>
+                        @foreach(var collumnValue in row.Values)
+                        {
+                            <td>@collumnValue</td>
+                        }
+                    </tr>
+                }
+
+            </table>
+
+        </div>     
+    </div>
+</div>
+>>>>>>> origin/master
