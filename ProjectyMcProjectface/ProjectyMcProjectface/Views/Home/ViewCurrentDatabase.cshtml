@@ -29,7 +29,7 @@
                 @foreach (var item in Model.Tables)
                 {
                     <tr>
-                        <td align="center"><a class="fa fa-list-alt" name="@item.Name"></a></td>
+                        <td align="center"><a class="fa fa-list-alt linkToTable" value="/Home/ViewTable" name="@item.Name" schema="@item.Schema" internalDbName="@Model.InternalName"></a></td>
                         <td>@item.Schema</td>
                         <td>@item.Name</td>
                         <td>@item.Columns.Count()</td>
