@@ -145,8 +145,9 @@ namespace Bussiness
                         (x => x.InternalDatabaseName == internalDbName && x.UserId == id).DatabaseName);
                     return dbModel;
                 }
-                catch
+                catch(Exception ex)
                 {
+                    throw (ex);
                     return null;
                 }
                 

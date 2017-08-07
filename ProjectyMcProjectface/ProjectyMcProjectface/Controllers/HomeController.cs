@@ -27,6 +27,7 @@ namespace ProjectyMcProjectface.Controllers
         public ActionResult ViewCurrentDatabase(bool isPartial = false)
         {
             var Database = _databaseManager.GetDatabaseFromCookies();
+            Database.IsPartial = isPartial;
             return PartialView("ViewCurrentDatabase", Database);
         }
         public ActionResult DatabaseEdit(bool isPartial = false)
@@ -37,7 +38,8 @@ namespace ProjectyMcProjectface.Controllers
 
         public ActionResult DatabaseView(bool isPartial = false)
         {
-            return View(new BaseModel() { IsPartial=isPartial});
+            var model = new BaseModel() { IsPartial = isPartial };
+            return View("DatabaseView", model);
         }
 
         [HttpGet]

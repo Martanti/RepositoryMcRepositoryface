@@ -120,4 +120,22 @@
   <data name="header_SignedIn" xml:space="preserve">
     <value>Signed in as</value>
   </data>
+  <data name="nabraList_ShawAllDatabases" xml:space="preserve">
+    <value>View all Databases</value>
+  </data>
+  <data name="navbarList_AddDatabse" xml:space="preserve">
+    <value>Add Database</value>
+  </data>
+  <data name="navbarList_EditDatabase" xml:space="preserve">
+    <value>Edit a Database</value>
+  </data>
+  <data name="navbarList_Home" xml:space="preserve">
+    <value>Home</value>
+  </data>
+  <data name="navbarList_ViewSelectedDatabse" xml:space="preserve">
+    <value>View selected Database</value>
+  </data>
+  <data name="span_ToggleNavigation" xml:space="preserve">
+    <value>Toggle navigation</value>
+  </data>
 </root>
