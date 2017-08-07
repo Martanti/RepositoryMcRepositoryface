@@ -74,6 +74,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>MainPageLayoutResources.resx</DependentUpon>
     </Compile>
+    <Compile Include="MainPageVievCurrentDatabaseResources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MainPageVievCurrentDatabaseResources.resx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RegistrationPageResources.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -106,6 +111,10 @@
     <EmbeddedResource Include="MainPageLayoutResources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>MainPageLayoutResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainPageVievCurrentDatabaseResources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>MainPageVievCurrentDatabaseResources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="RegistrationPageResources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>

@@ -20,7 +20,8 @@ namespace Bussiness
             Bind<IDatabaseCopy>().ToConstructor(x => new DatabaseCopy());
             Bind<IInternalDBModel>().ToConstructor(x => new InternalDBContext());
             Bind<IDatabaseManager>().ToConstructor(x => new DatabaseManager(x.Inject<IInternalDBModel>(),
-                x.Inject<IUserManager>(), x.Inject<IDatabaseCopy>()));
+                x.Inject<IUserManager>(), x.Inject<IDatabaseCopy>(), x.Inject<ISmoManager>()));
+            Bind<ISmoManager>().ToConstructor(x => new SmoManager());
         }
         
         public static InjectionKernel Instance

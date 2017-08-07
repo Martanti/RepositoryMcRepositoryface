@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
 using Bussiness;
 using System.Web;
@@ -13,6 +12,13 @@ namespace ProjectyMcProjectface.Controllers
 {
     public class HomeController : BaseController
     {
+        IDatabaseManager _databaseManager;
+        IUserManager _userManager;
+        public HomeController()
+        {
+            _databaseManager = InjectionKernel.Instance.Get<IDatabaseManager>();
+            _userManager = InjectionKernel.Instance.Get<IUserManager>();
+        }
         public ActionResult Index(bool isPartial = false)
         {
             var baseModel = new BaseModel() {IsPartial = isPartial };
@@ -20,8 +26,8 @@ namespace ProjectyMcProjectface.Controllers
         }
         public ActionResult ViewCurrentDatabase(bool isPartial = false)
         {
-            var baseModel = new BaseModel() { IsPartial = isPartial };
-            return PartialView("ViewCurrentDatabase", baseModel);
+            var Database = _databaseManager.GetDatabaseFromCookies();
+            return PartialView("ViewCurrentDatabase", Database);
         }
         public ActionResult DatabaseEdit(bool isPartial = false)
         {
@@ -56,8 +62,7 @@ namespace ProjectyMcProjectface.Controllers
             if (!String.IsNullOrWhiteSpace(model.ConnectionString))
             {
                 model.ConnectionString = model.ConnectionString.Trim();
-                IDatabaseManager DBManager = InjectionKernel.Instance.Get<IDatabaseManager>();
-                model.IsConnectionSuccessfull = DBManager.IsDatabaseAvailable(model.ConnectionString);
+                model.IsConnectionSuccessfull = _databaseManager.IsDatabaseAvailable(model.ConnectionString);
                 
                 
             }
@@ -75,13 +80,12 @@ namespace ProjectyMcProjectface.Controllers
         public ActionResult RegisterDatabase(DatabaseRegisterModel model)
         {
             model.IsHttpGet = false;
-            IDatabaseManager DBManager = InjectionKernel.Instance.Get<IDatabaseManager>();
 
             if (!String.IsNullOrWhiteSpace(model.ConnectionString))
             {
                 model.ConnectionString = model.ConnectionString.Trim();
                 
-                model.IsConnectionSuccessfull = DBManager.IsDatabaseAvailable(model.ConnectionString);
+                model.IsConnectionSuccessfull = _databaseManager.IsDatabaseAvailable(model.ConnectionString);
             }
             if (!String.IsNullOrWhiteSpace(model.Name))
             {
@@ -97,16 +101,16 @@ namespace ProjectyMcProjectface.Controllers
                 var identity = (ClaimsIdentity)User.Identity;
                 IEnumerable<Claim> claims = identity.Claims;
                 string email = claims.Single(c => c.Type == ClaimTypes.Email).Value.ToString();
-                IUserManager userManager = InjectionKernel.Instance.Get<IUserManager>();
-                string id = userManager.GetIdByEmail(email);
 
-                if(DBManager.CheckDatabaseExistance(id, model.ConnectionString))
+                string id = _userManager.GetIdByEmail(email);
+
+                if(_databaseManager.CheckDatabaseExistance(id, model.ConnectionString))
                 {
                     model.ErrorMessage = Resources.MainPageAddDatabaseResources.ErrorConnStringAlreadyRegistered;
                 }
                 else
                 {
-                    DBManager.RegisterDatabase(model.ConnectionString, ConfigurationManager.AppSettings["InternalDBConnectionString"].ToString(), int.Parse(id), model.Name);
+                    _databaseManager.RegisterDatabase(model.ConnectionString, ConfigurationManager.AppSettings["InternalDBConnectionString"].ToString(), int.Parse(id), model.Name);
                     return View("DatabaseRegisterSuccessful", new BaseModel() {IsPartial = model.IsPartial });
                 }
                 
@@ -124,7 +128,9 @@ namespace ProjectyMcProjectface.Controllers
         }
         public ActionResult AddDatabaseToCookies(string internalDbName)
         {
-            return RedirectToAction("Index", "Home");
+            var identity = (ClaimsIdentity)User.Identity;
+            _databaseManager.SaveDatabaseInCookies(internalDbName, identity.Claims.Single(x => x.Type == ClaimTypes.Email).Value.ToString());
+            return RedirectToAction("ViewCurrentDatabase", "Home");
         }
     }
 }
