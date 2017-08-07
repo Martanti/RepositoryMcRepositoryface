@@ -243,6 +243,7 @@
     <Content Include="Views\Registration\Register.cshtml" />
     <Content Include="Views\Home\AddDatabase.cshtml" />
     <Content Include="Views\Home\ViewCurrentDatabase.cshtml" />
+    <Content Include="Views\Home\ViewTable.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
