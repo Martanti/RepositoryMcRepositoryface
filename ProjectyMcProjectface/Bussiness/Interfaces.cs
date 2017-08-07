@@ -39,5 +39,11 @@ namespace Bussiness
             string internalConnectionString, int userId, string databaseName = "");
         List<Dto.Database> GetDatabasesByEmail(string email);
         bool CheckDatabaseExistance(string id, string connString);
+        void SaveDatabaseInCookies(string internalName, string email);
+        Dto.Database GetDatabaseFromCookies();
+    }
+    public interface ISmoManager
+    {
+        Dto.Database GetDatabaseByInternalConnString(string connString, string customName="");
     }
 }
