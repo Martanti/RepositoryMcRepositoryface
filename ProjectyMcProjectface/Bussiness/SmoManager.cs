@@ -22,11 +22,20 @@ namespace Bussiness
             DtoDatabaseModel.InternalConnectionString = connString;
             DtoDatabaseModel.Name = customName;
             DtoDatabaseModel.InternalName = targetConn.Database;
-            DtoDatabaseModel.TableNames = new List<string>();
+            DtoDatabaseModel.Tables = new List<Dto.Table>();
 
             foreach (Table table in targetDb.Tables)
             {
-                DtoDatabaseModel.TableNames.Add(table.Schema + "." + table.Name);
+                Dto.Table tableModel = new Dto.Table();
+                foreach(Column column in table.Columns)
+                {
+                    tableModel.Columns.Add(column.Name);
+                }
+                tableModel.Name = table.Name;
+                tableModel.Schema = table.Schema;
+                tableModel.RowCount = (int)table.RowCount;
+
+                DtoDatabaseModel.Tables.Add(tableModel);
             }
 
             return DtoDatabaseModel;
