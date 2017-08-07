@@ -80,6 +80,7 @@ namespace Bussiness
                 Database dbModel = new Database();
                 dbModel.InternalConnectionString = db.InternalConnString;
                 dbModel.Name = db.DatabaseName;
+                dbModel.TableCount = _smoManager.GetTableCountByConnectionString(db.InternalConnString);
                 dbModel.OriginalConnectionString = db.String;
                 dbModel.InternalName = new SqlConnectionStringBuilder(db.InternalConnString).InitialCatalog;
                 returnValues.Add(dbModel);

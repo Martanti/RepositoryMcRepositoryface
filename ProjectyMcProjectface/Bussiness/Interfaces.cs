@@ -45,5 +45,6 @@ namespace Bussiness
     public interface ISmoManager
     {
         Dto.Database GetDatabaseByInternalConnString(string connString, string customName="");
+        int GetTableCountByConnectionString(string connString);
     }
 }
