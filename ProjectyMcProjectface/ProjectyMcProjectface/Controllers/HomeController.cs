@@ -30,9 +30,9 @@ namespace ProjectyMcProjectface.Controllers
             Database.IsPartial = isPartial;
             return View("ViewCurrentDatabase", Database);
         }
-        public ActionResult ViewTable(string internalDbName,bool isPartial = true)
+        public ActionResult ViewTable(string internalDbName, string schema, string name, bool isPartial = true)
         {
-            Table table = _databaseManager.GetTableByInternalName(internalDbName, "", "");
+            //Table table = _databaseManager.GetTableByInternalName(internalDbName, "", "");
             return View("ViewTable", new BaseModel() { IsPartial = isPartial });
         }
         public ActionResult DatabaseEdit(bool isPartial = false)
