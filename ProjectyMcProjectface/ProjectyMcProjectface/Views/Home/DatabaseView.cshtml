@@ -37,13 +37,13 @@
                             <th>@Resources.MainPageDatabaseViewResources.tabeleHeader_TablesInIt</th>
                         </tr>
                     </thead>
-                   @foreach (var item in Model.UserDatabases)
+                   @foreach (Dto.Database item in Model.UserDatabases)
                    {
                        <tr>
                            <td align="center"><a class="fa fa-table"></a></td>
                            <td>@item.Name</td>
                            <td>@item.OriginalConnectionString</td>
-                           <td>[here will be shown a number of tables in the database]</td>
+                           <td>@item.Tables.Count()</td>
                        </tr>
                    }
                 </table>

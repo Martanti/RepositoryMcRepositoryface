@@ -7,6 +7,18 @@ namespace Bussiness
 {
     public class SmoManager : ISmoManager
     {
+        public int GetTableCountByConnectionString(string connString)
+        {
+            SqlConnection targetConn = new SqlConnection(connString);
+            ServerConnection serverConn = new ServerConnection();
+            serverConn.ServerInstance = targetConn.DataSource;
+            serverConn.LoginSecure = true;
+
+            Server server = new Server(serverConn);
+            Database targetDb = server.Databases[targetConn.Database];
+
+            return targetDb.Tables.Count;
+        }
         public Dto.Database GetDatabaseByInternalConnString(string connString, string customName="")
         {
             Dto.Database DtoDatabaseModel = new Dto.Database();

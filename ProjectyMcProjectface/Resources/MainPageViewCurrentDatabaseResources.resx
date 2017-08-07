@@ -120,4 +120,16 @@
   <data name="NoTablesToShow" xml:space="preserve">
     <value>Sorry, but it appears, that selected database has no tables to show</value>
   </data>
+  <data name="theading_collumCount" xml:space="preserve">
+    <value>Collum count</value>
+  </data>
+  <data name="theading_name" xml:space="preserve">
+    <value>Table name</value>
+  </data>
+  <data name="theading_rowCount" xml:space="preserve">
+    <value>Row count</value>
+  </data>
+  <data name="theading_schema" xml:space="preserve">
+    <value>Schema</value>
+  </data>
 </root>
