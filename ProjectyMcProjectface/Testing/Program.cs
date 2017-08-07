@@ -16,8 +16,9 @@ namespace Testing
         static void Main(string[] args)
         {
 
-            IDatabaseManager manager = InjectionKernel.Instance.Get<IDatabaseManager>();
-            manager.RegisterDatabase(@"Data Source=.\SQLEXPRESS;Database=Northwind;Integrated Security=True", @"Data Source=.\SQLEXPRESS;Database=InternalDB;Integrated Security=True", 3, "TestingTTTTTTTTT");
+            SmoManager manager = new SmoManager();
+            Dto.Database db = manager.GetDatabaseByInternalConnString(@"Data Source=.\SQLEXPRESS;Initial Catalog=3_Northwind;Integrated Security=True", "");
+            Dto.Table table = manager.GetCompleteTableData(@"Data Source=.\SQLEXPRESS;Database=3_Northwind;Integrated Security=True", "dbo", "Categories");
             Console.WriteLine(":)");
             Console.ReadKey();
         }

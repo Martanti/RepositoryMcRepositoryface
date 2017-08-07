@@ -28,7 +28,12 @@ namespace ProjectyMcProjectface.Controllers
         {
             var Database = _databaseManager.GetDatabaseFromCookies();
             Database.IsPartial = isPartial;
-            return PartialView("ViewCurrentDatabase", Database);
+            return View("ViewCurrentDatabase", Database);
+        }
+        public ActionResult ViewTable(string internalDbName,bool isPartial = true)
+        {
+            Table table = _databaseManager.GetTableByInternalName(internalDbName, "", "");
+            return View("ViewTable", new BaseModel() { IsPartial = isPartial });
         }
         public ActionResult DatabaseEdit(bool isPartial = false)
         {
