@@ -6,20 +6,29 @@ using Dto;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web;
 
 namespace Bussiness
 {
     public class DatabaseManager : IDatabaseManager
     {
+        public readonly string SelectedDatabaseCookieName;
+        public readonly string EmailCookieName;
+        public readonly int cookieExpirationTimeInYears = 15;
+
         private IInternalDBModel _internalDBContext;
         private IUserManager _userManager;
         private IDatabaseCopy _databaseCopy;
+        private ISmoManager _smoManager;
         public DatabaseManager(IInternalDBModel internalDBModel, IUserManager userManager,
-            IDatabaseCopy databaseCopy)
+            IDatabaseCopy databaseCopy, ISmoManager smoManager)
         {
+            SelectedDatabaseCookieName = "SelectedDatabase";
+            EmailCookieName = "UserEmail";
             _internalDBContext = internalDBModel;
             _userManager = userManager;
             _databaseCopy = databaseCopy;
+            _smoManager = smoManager;
         }
         public bool IsDatabaseAvailable(string connectionString)
         {
@@ -89,6 +98,62 @@ namespace Bussiness
                 return true;
             }
             return false;
+        }
+        public void SaveDatabaseInCookies(string internalName, string email)
+        {
+            if (HttpContext.Current.Request.Cookies[SelectedDatabaseCookieName] != null)
+            {
+                HttpContext.Current.Response.Cookies[SelectedDatabaseCookieName].Value = internalName;
+            }
+            else
+            {
+                HttpCookie cookie = new HttpCookie(SelectedDatabaseCookieName);
+                cookie.Value = internalName;
+                //cookie.Expires = cookie.Expires = DateTime.UtcNow.AddYears(cookieExpirationTimeInYears);
+                cookie.HttpOnly = true;
+                HttpContext.Current.Response.Cookies.Add(cookie);
+            }
+
+            if (HttpContext.Current.Request.Cookies[EmailCookieName] != null)
+            {
+                HttpContext.Current.Response.Cookies[EmailCookieName].Value = email;
+            }
+            else
+            {
+                HttpCookie cookie = new HttpCookie(EmailCookieName);
+                cookie.Value = email ;
+                //cookie.Expires = cookie.Expires = DateTime.UtcNow.AddYears(cookieExpirationTimeInYears);
+                cookie.HttpOnly = true;
+                HttpContext.Current.Response.Cookies.Add(cookie);
+            }
+        }
+
+        public Database GetDatabaseFromCookies()
+        {
+            Database dbModel = new Database();
+            if (HttpContext.Current.Request.Cookies[SelectedDatabaseCookieName] != null && HttpContext.Current.Request.Cookies[EmailCookieName] != null)
+            {
+                string internalDbName = HttpContext.Current.Request.Cookies[SelectedDatabaseCookieName].Value.ToString();
+                string email = HttpContext.Current.Request.Cookies[EmailCookieName].Value.ToString();
+                int id = int.Parse(_userManager.GetIdByEmail(email));
+
+                try {
+                    dbModel = _smoManager.GetDatabaseByInternalConnString(_internalDBContext.ConnectionStrings.Single
+                        (x => x.InternalDatabaseName == internalDbName && x.UserId == id).InternalConnString,
+                        _internalDBContext.ConnectionStrings.Single
+                        (x => x.InternalDatabaseName == internalDbName && x.UserId == id).DatabaseName);
+                    return dbModel;
+                }
+                catch
+                {
+                    return null;
+                }
+                
+            }
+            else
+            {
+                return null;
+            }
         }
     }
 }
