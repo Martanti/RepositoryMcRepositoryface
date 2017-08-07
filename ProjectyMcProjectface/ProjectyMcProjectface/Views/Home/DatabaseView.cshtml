@@ -15,7 +15,8 @@
 <div id="page-wrapper">
 
     <div class="container-fluid">
-        @if(Model.UserDatabases.Count() == 0) { 
+        @if(Model.UserDatabases.Count() == 0)
+        {
         <div class="row">
             <div class="col-lg-12">
                 <h1 class="page-header">
@@ -30,6 +31,7 @@
                 <table class="table table-bordered table-responsive table-hover">
                     <thead>
                         <tr>
+                            <th></th>
                             <th>@Resources.MainPageDatabaseViewResources.tableHeader_DatabaseName</th>
                             <th>@Resources.MainPageDatabaseViewResources.tableHeader_ConnString</th>
                             <th>@Resources.MainPageDatabaseViewResources.tabeleHeader_TablesInIt</th>
@@ -38,6 +40,7 @@
                    @foreach (var item in Model.UserDatabases)
                    {
                        <tr>
+                           <td align="center"><a class="fa fa-table"></a></td>
                            <td>@item.Name</td>
                            <td>@item.OriginalConnectionString</td>
                            <td>[here will be shown a number of tables in the database]</td>
