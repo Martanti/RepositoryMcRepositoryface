@@ -4,5 +4,13 @@
     ViewBag.Title = "Error: 500";
 }
 
-<h1>Error: 500</h1>
-<h2>Our castle is broken!</h2>
+
+<div class="container errorPage">
+    <h1>@Resources.ErrorPageResources.head_500</h1>
+    <div class="row">
+        <div class="image-container clearfix">
+            <img id="hamtaro" src="~/Content/Images/500hamster.jpg" class="img-responsive" />
+        </div>
+        <div class="alert alert-danger text-center">@Resources.ErrorPageResources.body_500</div>
+    </div>
+</div>

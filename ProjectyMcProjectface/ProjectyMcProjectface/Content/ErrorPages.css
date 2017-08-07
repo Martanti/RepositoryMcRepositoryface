@@ -1,2 +1,14 @@
-﻿body {
+﻿.errorPage {
+    max-width: 600px;
+    min-width: 100px;
+    font-size:24px;
+}
+@media(max-widh:786px) {
+    .image-container {
+        text-align: center
+    }
+}
+
+#hamtaro{
+    width:1000px;
 }

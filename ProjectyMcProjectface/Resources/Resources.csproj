@@ -54,6 +54,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>CommonTextResources.resx</DependentUpon>
     </Compile>
+    <Compile Include="ErrorPageResources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ErrorPageResources.resx</DependentUpon>
+    </Compile>
     <Compile Include="LoginPageResources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -95,6 +100,10 @@
     <EmbeddedResource Include="CommonTextResources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>CommonTextResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ErrorPageResources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ErrorPageResources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="LoginPageResources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
