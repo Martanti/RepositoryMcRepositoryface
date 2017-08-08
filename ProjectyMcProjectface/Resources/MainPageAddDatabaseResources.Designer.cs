@@ -104,5 +104,23 @@ namespace Resources {
                 return ResourceManager.GetString("label_Databasename", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Database was successfully added! Now you can view it&apos;s content!.
+        /// </summary>
+        public static string RegistrationWasASuccess {
+            get {
+                return ResourceManager.GetString("RegistrationWasASuccess", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Connection string test was a success! Now you can add it!.
+        /// </summary>
+        public static string TestSuccess {
+            get {
+                return ResourceManager.GetString("TestSuccess", resourceCulture);
+            }
+        }
     }
 }

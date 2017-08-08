@@ -132,4 +132,10 @@
   <data name="label_Databasename" xml:space="preserve">
     <value>Database Name</value>
   </data>
+  <data name="RegistrationWasASuccess" xml:space="preserve">
+    <value>Database was successfully added! Now you can view it's content!</value>
+  </data>
+  <data name="TestSuccess" xml:space="preserve">
+    <value>Connection string test was a success! Now you can add it!</value>
+  </data>
 </root>
