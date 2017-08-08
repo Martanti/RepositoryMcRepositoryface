@@ -34,8 +34,9 @@ namespace ProjectyMcProjectface.Controllers
         {
             try
             {
-                //Table table = _databaseManager.GetTableByInternalName(internalDbName, "", "");
-                return View("ViewTable", new Table() { IsPartial = isPartial });
+                Table table = _databaseManager.GetTableByInternalName(internalDbName, schema, name);
+                table.IsPartial = isPartial;
+                return View("ViewTable", table);
             }
             catch(Exception ex) {
                 throw (ex);

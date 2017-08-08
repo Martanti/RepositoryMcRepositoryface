@@ -79,7 +79,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to One of our server powering hamsters has gone to the farm. Please be patient we find a replacement.
+        ///   Looks up a localized string similar to One of our server powering hamsters has gone to the farm. Please be patient until we find a replacement.
         /// </summary>
         public static string body_500 {
             get {
