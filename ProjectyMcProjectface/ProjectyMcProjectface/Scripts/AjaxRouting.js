@@ -11,7 +11,7 @@ $(document).ready(function () {
             }
         });
     });
-    $(".linkToTable").on('click', function () {
+    $("#bodyContent").on('click', ".linkToTable", function () {
         $.ajax({
             type: "GET",
             url: $(this).attr("value") + "?internalDbName=" +
