@@ -76,3 +76,7 @@ body{
 .alert-danger{
     display:inline-block;
 }
+
+.whiteBorderFortables{
+    overflow-x:auto;
+}

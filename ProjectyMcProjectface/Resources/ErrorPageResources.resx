@@ -124,7 +124,7 @@
     <value>This fine gentleman could not find the page you were looking for and he looks pretty competent. Maybe it does not exist?</value>
   </data>
   <data name="body_500" xml:space="preserve">
-    <value>One of our server powering hamsters has gone to the farm. Please be patient we find a replacement</value>
+    <value>One of our server powering hamsters has gone to the farm. Please be patient until we find a replacement</value>
   </data>
   <data name="body_505" xml:space="preserve">
     <value>Our castle is broken!</value>
