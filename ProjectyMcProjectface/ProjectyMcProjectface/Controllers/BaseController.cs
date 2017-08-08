@@ -7,12 +7,22 @@ using System.Collections.Generic;
 using System.Linq;
 using Dto;
 using Bussiness;
-using System.Web.Routing;
+using System.Web;
 
 namespace ProjectyMcProjectface.Controllers
 {
+    public class AjaxOnlyAttribute : ActionFilterAttribute
+    {
+        public override void OnActionExecuting(ActionExecutingContext filterContext)
+        {
+            if (!filterContext.HttpContext.Request.IsAjaxRequest())
+                throw new HttpException(404, "HTTP/1.1 404 Not Found");
+        }
+    }
     public class BaseController : Controller
     {
+        public readonly string SelectedDatabaseCookieName = "SelectedDatabase";
+        public readonly string EmailCookieName = "UserEmail";
         public readonly string ReturnUrlCookieName = "returnUrl";
         public readonly int cookieExpirationTimeInYears = 15;
         protected override void OnException(ExceptionContext filterContext)

@@ -110,7 +110,6 @@ namespace Bussiness
             {
                 HttpCookie cookie = new HttpCookie(SelectedDatabaseCookieName);
                 cookie.Value = internalName;
-                //cookie.Expires = cookie.Expires = DateTime.UtcNow.AddYears(cookieExpirationTimeInYears);
                 cookie.HttpOnly = true;
                 HttpContext.Current.Response.Cookies.Add(cookie);
             }
@@ -123,7 +122,6 @@ namespace Bussiness
             {
                 HttpCookie cookie = new HttpCookie(EmailCookieName);
                 cookie.Value = email ;
-                //cookie.Expires = cookie.Expires = DateTime.UtcNow.AddYears(cookieExpirationTimeInYears);
                 cookie.HttpOnly = true;
                 HttpContext.Current.Response.Cookies.Add(cookie);
             }
@@ -160,6 +158,25 @@ namespace Bussiness
         {
             string connString = _internalDBContext.ConnectionStrings.Single(s => s.InternalDatabaseName == internaldbName).InternalConnString;
             return _smoManager.GetCompleteTableData(connString, schema, tableName);
+        }
+        public Database GetDatabaseByInternalDbName(string internalDbName)
+        {
+            Database dbModel = new Database();
+
+            try
+            {
+                dbModel = _smoManager.GetDatabaseByInternalConnString(_internalDBContext.ConnectionStrings.Single
+                    (x => x.InternalDatabaseName == internalDbName).InternalConnString,
+                    _internalDBContext.ConnectionStrings.Single
+                    (x => x.InternalDatabaseName == internalDbName).DatabaseName);
+                return dbModel;
+            }
+            catch
+            {
+                return null;
+            }
+
+            
         }
     }
 }
