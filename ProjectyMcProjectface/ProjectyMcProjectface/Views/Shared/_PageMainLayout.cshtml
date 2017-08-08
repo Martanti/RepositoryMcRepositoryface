@@ -48,11 +48,11 @@
                             <b class="caret"></b>
                         </a>
 
-                        <ul class="dropdown-menu">
+                        <ul class="dropdown-menu" id="dropDownDatabases">
                             @foreach(var db in Model.UserDatabases)
                             {
                                 <li>
-                                    <a href="/Home/AddDatabaseToCookies?internalDbName=@db.InternalName">@db.Name</a>
+                                    <a class="dropDownDatabaseItem" value="/Home/AddDatabaseToCookies?internalDbName=@db.InternalName">@db.Name</a>
                                 </li>
                             }
                         </ul>
@@ -70,7 +70,7 @@
             <div class="collapse navbar-collapse navbar-ex1-collapse" aria-expanded="false">
                 <ul class="nav navbar-nav side-nav">
                     <li>
-                        <a class="partial" value="/Home/Index">@Resources.MainPageLayoutResources.navbarList_Home</a>
+                        <a class="partial" value="">@Resources.MainPageLayoutResources.navbarList_Home</a>
                     </li>
                     <li>
                         <a class="partial" value="/Home/DatabaseView" >@Resources.MainPageLayoutResources.nabraList_ShawAllDatabases</a>

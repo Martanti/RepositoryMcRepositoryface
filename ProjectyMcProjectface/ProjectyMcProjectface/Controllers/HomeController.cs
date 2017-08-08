@@ -12,6 +12,8 @@ namespace ProjectyMcProjectface.Controllers
 {
     public class HomeController : BaseController
     {
+        
+
         IDatabaseManager _databaseManager;
         IUserManager _userManager;
 
@@ -27,13 +29,26 @@ namespace ProjectyMcProjectface.Controllers
             return View("Index", baseModel);
         }
 
-        public ActionResult ViewCurrentDatabase(bool isPartial = false)
+        [AjaxOnly]
+        public ActionResult ViewCurrentDatabase(bool isPartial = true, string internalDbName = null)
         {
-            var Database = _databaseManager.GetDatabaseFromCookies();
-            Database.IsPartial = isPartial;
-            return View("ViewCurrentDatabase", Database);
+            Database database;
+            if(internalDbName == null) {
+                database = _databaseManager.GetDatabaseFromCookies();
+            }
+            else
+            {
+                database = _databaseManager.GetDatabaseByInternalDbName(internalDbName);
+            }
+            if(database == null)
+            {
+                return DatabaseView();
+            }
+            database.IsPartial = isPartial;
+            return View("ViewCurrentDatabase", database);
         }
-
+        
+        [AjaxOnly]
         public ActionResult ViewTable(string internalDbName, string schema, string name, bool isPartial = true)
         {
             try
@@ -47,20 +62,23 @@ namespace ProjectyMcProjectface.Controllers
             }
         }
 
+        [AjaxOnly]
         public ActionResult DatabaseEdit(bool isPartial = false)
         {
             var baseModel = new BaseModel() { IsPartial = isPartial };
             return View(baseModel);
         }
-
-        public ActionResult DatabaseView(bool isPartial = false)
+        
+        [AjaxOnly]
+        public ActionResult DatabaseView(bool isPartial = true)
         {
             var model = new BaseModel() { IsPartial = isPartial };
             return View("DatabaseView", model);
         }
 
+        [AjaxOnly]
         [HttpGet]
-        public ActionResult AddDatabase(bool isPartial = false)
+        public ActionResult AddDatabase(bool isPartial = true)
         {
             DatabaseRegisterModel model = new DatabaseRegisterModel();
             model.ConnectionString = "";
@@ -75,7 +93,7 @@ namespace ProjectyMcProjectface.Controllers
         }
 
         [HttpPost]
-        public ActionResult AddDatabase(DatabaseRegisterModel model, bool isPartial=false)
+        public ActionResult AddDatabase(DatabaseRegisterModel model, bool isPartial=true)
         {
             model.IsPartial = isPartial;
             model.IsHttpGet = false;
@@ -142,6 +160,32 @@ namespace ProjectyMcProjectface.Controllers
 
         public ActionResult SignOut()
         {
+            if (HttpContext.Request.Cookies[SelectedDatabaseCookieName] != null)
+            {
+                HttpCookie currentUserCookie = HttpContext.Request.Cookies[SelectedDatabaseCookieName];
+                HttpContext.Response.Cookies.Remove(SelectedDatabaseCookieName);
+                currentUserCookie.Expires = DateTime.Now.AddDays(-10);
+                currentUserCookie.Value = null;
+                HttpContext.Response.SetCookie(currentUserCookie);
+            }
+            if (HttpContext.Request.Cookies[EmailCookieName] != null)
+            {
+                HttpCookie currentUserCookie = HttpContext.Request.Cookies[EmailCookieName];
+                HttpContext.Response.Cookies.Remove(EmailCookieName);
+                currentUserCookie.Expires = DateTime.Now.AddDays(-10);
+                currentUserCookie.Value = null;
+                HttpContext.Response.SetCookie(currentUserCookie);
+            }
+            if (HttpContext.Request.Cookies[ReturnUrlCookieName] != null)
+            {
+                HttpCookie currentUserCookie = HttpContext.Request.Cookies[ReturnUrlCookieName];
+                HttpContext.Response.Cookies.Remove(ReturnUrlCookieName);
+                currentUserCookie.Expires = DateTime.Now.AddDays(-10);
+                currentUserCookie.Value = null;
+                HttpContext.Response.SetCookie(currentUserCookie);
+            }
+            
+
             var owinContext = Request.GetOwinContext();
             var authManager = owinContext.Authentication;
 
@@ -149,11 +193,14 @@ namespace ProjectyMcProjectface.Controllers
             return RedirectToAction("Index", "Login");
         }
 
+        [AjaxOnly]
         public ActionResult AddDatabaseToCookies(string internalDbName)
         {
             var identity = (ClaimsIdentity)User.Identity;
             _databaseManager.SaveDatabaseInCookies(internalDbName, identity.Claims.Single(x => x.Type == ClaimTypes.Email).Value.ToString());
-            return RedirectToAction("ViewCurrentDatabase", "Home");
+            var db = _databaseManager.GetDatabaseFromCookies();
+            ActionResult result = ViewCurrentDatabase(true, internalDbName);
+            return result;
         }
     }
 }

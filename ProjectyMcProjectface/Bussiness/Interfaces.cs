@@ -42,6 +42,7 @@ namespace Bussiness
         void SaveDatabaseInCookies(string internalName, string email);
         Dto.Database GetDatabaseFromCookies();
         Dto.Table GetTableByInternalName(string internaldbName, string schema, string tableName);
+        Dto.Database GetDatabaseByInternalDbName(string internalDbName);
     }
     public interface ISmoManager
     {
