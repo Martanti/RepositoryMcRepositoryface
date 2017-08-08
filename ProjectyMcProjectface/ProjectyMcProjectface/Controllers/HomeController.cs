@@ -16,6 +16,7 @@ namespace ProjectyMcProjectface.Controllers
 
         IDatabaseManager _databaseManager;
         IUserManager _userManager;
+
         public HomeController()
         {
             _databaseManager = InjectionKernel.Instance.Get<IDatabaseManager>();
@@ -27,6 +28,7 @@ namespace ProjectyMcProjectface.Controllers
             var baseModel = new BaseModel() {IsPartial = isPartial };
             return View("Index", baseModel);
         }
+
         [AjaxOnly]
         public ActionResult ViewCurrentDatabase(bool isPartial = true, string internalDbName = null)
         {
@@ -45,6 +47,7 @@ namespace ProjectyMcProjectface.Controllers
             database.IsPartial = isPartial;
             return View("ViewCurrentDatabase", database);
         }
+        
         [AjaxOnly]
         public ActionResult ViewTable(string internalDbName, string schema, string name, bool isPartial = true)
         {
@@ -58,12 +61,14 @@ namespace ProjectyMcProjectface.Controllers
                 throw (ex);
             }
         }
+
         [AjaxOnly]
-        public ActionResult DatabaseEdit(bool isPartial = true)
+        public ActionResult DatabaseEdit(bool isPartial = false)
         {
             var baseModel = new BaseModel() { IsPartial = isPartial };
             return View(baseModel);
         }
+        
         [AjaxOnly]
         public ActionResult DatabaseView(bool isPartial = true)
         {
@@ -86,6 +91,7 @@ namespace ProjectyMcProjectface.Controllers
 
             return View("AddDatabase", model);
         }
+
         [HttpPost]
         public ActionResult AddDatabase(DatabaseRegisterModel model, bool isPartial=true)
         {
@@ -106,8 +112,10 @@ namespace ProjectyMcProjectface.Controllers
             {
                 model.ErrorMessage = Resources.MainPageAddDatabaseResources.ErrorConnStringInvalid;
             }
+
             return View("AddDatabase", model);
         }
+
         [HttpPost]
         public ActionResult RegisterDatabase(DatabaseRegisterModel model)
         {

@@ -80,3 +80,11 @@ body{
 .whiteBorderFortables{
     overflow-x:auto;
 }
+
+.alert-dismissable .close{
+    right:auto;
+}
+
+
+
+
