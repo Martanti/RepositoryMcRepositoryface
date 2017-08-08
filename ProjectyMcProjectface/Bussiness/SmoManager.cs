@@ -3,6 +3,7 @@ using Microsoft.SqlServer.Management.Common;
 using System.Data.SqlClient;
 using System.Collections.Generic;
 using System.Data;
+using System;
 
 namespace Bussiness
 {
@@ -65,7 +66,7 @@ namespace Bussiness
             Server server = new Server(serverConn);
             Database targetDb = server.Databases[targetConn.Database];
 
-            DataSet dataSet = targetDb.ExecuteWithResults("SELECT * FROM " + schema + "." + name);
+            DataSet dataSet = targetDb.ExecuteWithResults("SELECT * FROM [" + schema + "].[" + name+"]");
             tableModel.Name = name;
             tableModel.Schema = schema;
             foreach(DataTable sourceTable in dataSet.Tables)
@@ -85,7 +86,14 @@ namespace Bussiness
                         }
                         else
                         {
-                            row.Values.Add(item.ToString());
+                            try {
+                                row.Values.Add(System.Text.Encoding.UTF8.GetString((byte[])item));
+                            }
+                            catch
+                            {
+                                row.Values.Add(Convert.ToString(item));
+                            }
+                            
                         }
                     }
                     tableModel.Rows.Add(row);

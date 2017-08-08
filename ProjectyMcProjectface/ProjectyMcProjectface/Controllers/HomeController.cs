@@ -14,22 +14,26 @@ namespace ProjectyMcProjectface.Controllers
     {
         IDatabaseManager _databaseManager;
         IUserManager _userManager;
+
         public HomeController()
         {
             _databaseManager = InjectionKernel.Instance.Get<IDatabaseManager>();
             _userManager = InjectionKernel.Instance.Get<IUserManager>();
         }
+
         public ActionResult Index(bool isPartial = false)
         {
             var baseModel = new BaseModel() {IsPartial = isPartial };
             return View("Index", baseModel);
         }
+
         public ActionResult ViewCurrentDatabase(bool isPartial = false)
         {
             var Database = _databaseManager.GetDatabaseFromCookies();
             Database.IsPartial = isPartial;
             return View("ViewCurrentDatabase", Database);
         }
+
         public ActionResult ViewTable(string internalDbName, string schema, string name, bool isPartial = true)
         {
             try
@@ -42,6 +46,7 @@ namespace ProjectyMcProjectface.Controllers
                 throw (ex);
             }
         }
+
         public ActionResult DatabaseEdit(bool isPartial = false)
         {
             var baseModel = new BaseModel() { IsPartial = isPartial };
@@ -68,6 +73,7 @@ namespace ProjectyMcProjectface.Controllers
 
             return View("AddDatabase", model);
         }
+
         [HttpPost]
         public ActionResult AddDatabase(DatabaseRegisterModel model, bool isPartial=false)
         {
@@ -88,8 +94,10 @@ namespace ProjectyMcProjectface.Controllers
             {
                 model.ErrorMessage = Resources.MainPageAddDatabaseResources.ErrorConnStringInvalid;
             }
+
             return View("AddDatabase", model);
         }
+
         [HttpPost]
         public ActionResult RegisterDatabase(DatabaseRegisterModel model)
         {
@@ -140,6 +148,7 @@ namespace ProjectyMcProjectface.Controllers
             authManager.SignOut("ApplicationCookie");
             return RedirectToAction("Index", "Login");
         }
+
         public ActionResult AddDatabaseToCookies(string internalDbName)
         {
             var identity = (ClaimsIdentity)User.Identity;
