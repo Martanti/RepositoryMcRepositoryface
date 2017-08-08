@@ -87,7 +87,7 @@ namespace Bussiness
                         else
                         {
                             try {
-                                row.Values.Add(System.Text.Encoding.UTF8.GetString((byte[])item));
+                                row.Values.Add(System.Convert.ToBase64String((byte[])item));
                             }
                             catch
                             {
