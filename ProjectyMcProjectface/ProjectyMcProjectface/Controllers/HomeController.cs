@@ -86,6 +86,8 @@ namespace ProjectyMcProjectface.Controllers
             model.IsConnectionSuccessfull = false;
             model.IsHttpGet = true;
             model.ErrorMessage = "";
+            model.ConnectionTestSuccess = "";
+            model.DatabaseAddedSuccessfuly = "";
 
             model.IsPartial = isPartial;
 
@@ -111,6 +113,10 @@ namespace ProjectyMcProjectface.Controllers
             if (!model.IsConnectionSuccessfull)
             {
                 model.ErrorMessage = Resources.MainPageAddDatabaseResources.ErrorConnStringInvalid;
+            }
+            else
+            {
+                model.ConnectionTestSuccess = Resources.MainPageAddDatabaseResources.TestSuccess;
             }
 
             return View("AddDatabase", model);
@@ -150,6 +156,7 @@ namespace ProjectyMcProjectface.Controllers
                 }
                 else
                 {
+                    model.DatabaseAddedSuccessfuly = Resources.MainPageAddDatabaseResources.RegistrationWasASuccess;
                     _databaseManager.RegisterDatabase(model.ConnectionString, ConfigurationManager.AppSettings["InternalDBConnectionString"].ToString(), int.Parse(id), model.Name);
                     return View("DatabaseRegisterSuccessful", new BaseModel() {IsPartial = model.IsPartial });
                 }

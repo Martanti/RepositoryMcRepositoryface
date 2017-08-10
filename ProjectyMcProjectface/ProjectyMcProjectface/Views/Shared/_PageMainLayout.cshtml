@@ -10,7 +10,7 @@
     <meta name="author" content="">
 
     <title>PMcPf</title>
-
+    
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
 
@@ -28,7 +28,12 @@
 </head>
 
 <body>
-    <div class="LoadingOverlay"></div>
+    <div class="LoadingOverlay">
+        <div class="LoadingContentWrapper">
+            <div class="LoadingAnimation"></div>
+            <div class="LoadingText">@Resources.CommonTextResources.text_loading<span>@Resources.CommonTextResources.dot</span><span>@Resources.CommonTextResources.dot</span><span>@Resources.CommonTextResources.dot</span></div>
+        </div>
+    </div>
     <div id="wrapper">
         <!-- Navigation -->
         <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
