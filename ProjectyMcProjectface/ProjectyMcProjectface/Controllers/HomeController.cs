@@ -12,8 +12,6 @@ namespace ProjectyMcProjectface.Controllers
 {
     public class HomeController : BaseController
     {
-        
-
         IDatabaseManager _databaseManager;
         IUserManager _userManager;
 
@@ -83,7 +81,7 @@ namespace ProjectyMcProjectface.Controllers
             DatabaseRegisterModel model = new DatabaseRegisterModel();
             model.ConnectionString = "";
             model.Name = "";
-            model.IsConnectionSuccessfull = false;
+            model.IsConnectionSuccessful = false;
             model.IsHttpGet = true;
             model.ErrorMessage = "";
 
@@ -100,7 +98,7 @@ namespace ProjectyMcProjectface.Controllers
             if (!String.IsNullOrWhiteSpace(model.ConnectionString))
             {
                 model.ConnectionString = model.ConnectionString.Trim();
-                model.IsConnectionSuccessfull = _databaseManager.IsDatabaseAvailable(model.ConnectionString);
+                model.IsConnectionSuccessful = _databaseManager.IsDatabaseAvailable(model.ConnectionString);
                 
                 
             }
@@ -108,7 +106,7 @@ namespace ProjectyMcProjectface.Controllers
             {
                 model.Name = model.Name.Trim();
             }
-            if (!model.IsConnectionSuccessfull)
+            if (!model.IsConnectionSuccessful)
             {
                 model.ErrorMessage = Resources.MainPageAddDatabaseResources.ErrorConnStringInvalid;
             }
@@ -125,18 +123,18 @@ namespace ProjectyMcProjectface.Controllers
             {
                 model.ConnectionString = model.ConnectionString.Trim();
                 
-                model.IsConnectionSuccessfull = _databaseManager.IsDatabaseAvailable(model.ConnectionString);
+                model.IsConnectionSuccessful = _databaseManager.IsDatabaseAvailable(model.ConnectionString);
             }
             if (!String.IsNullOrWhiteSpace(model.Name))
             {
                 model.Name = model.Name.Trim();
             }
-            if (!model.IsConnectionSuccessfull)
+            if (!model.IsConnectionSuccessful)
             {
                 model.ErrorMessage = Resources.MainPageAddDatabaseResources.ErrorConnStringInvalid;
             }
 
-            if (model.IsConnectionSuccessfull)
+            if (model.IsConnectionSuccessful)
             {
                 var identity = (ClaimsIdentity)User.Identity;
                 IEnumerable<Claim> claims = identity.Claims;
