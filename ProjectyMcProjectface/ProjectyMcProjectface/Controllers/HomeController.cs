@@ -121,9 +121,10 @@ namespace ProjectyMcProjectface.Controllers
         }
 
         [HttpPost]
-        public ActionResult RegisterDatabase(DatabaseRegisterModel model)
+        public ActionResult RegisterDatabase(DatabaseRegisterModel model, bool isPartial = true)
         {
             model.IsHttpGet = false;
+            model.IsPartial = isPartial;
 
             if (!String.IsNullOrWhiteSpace(model.ConnectionString))
             {
