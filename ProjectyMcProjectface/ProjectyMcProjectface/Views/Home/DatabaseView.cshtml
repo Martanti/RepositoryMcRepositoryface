@@ -40,7 +40,7 @@
                    @foreach (Dto.Database item in Model.UserDatabases)
                    {
                        <tr>
-                           <td align="center"><a class="fa fa-table"></a></td>
+                           <td align="center"><a class="fa fa-table linkToDatabase" value="/Home/AddDatabaseToCookies?internalDbName=@item.InternalName"></a></td>
                            <td>@item.Name</td>
                            <td>@item.OriginalConnectionString</td>
                            <td>@item.TableCount</td>
