@@ -11,7 +11,9 @@ namespace Dto
         public string ConnectionString { get; set; }
         public string Name { get; set; }
         public string ErrorMessage { get; set; }
-        public bool IsConnectionSuccessful { get; set; }
+        public string ConnectionTestSuccess { get; set; }
+        public string DatabaseAddedSuccessfuly { get; set; }
+        public bool IsConnectionSuccessfull { get; set; }
         public bool IsHttpGet { get; set; }
     }
 }
