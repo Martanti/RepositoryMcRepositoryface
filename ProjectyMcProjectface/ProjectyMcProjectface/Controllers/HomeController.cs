@@ -157,9 +157,8 @@ namespace ProjectyMcProjectface.Controllers
                 {
                     model.DatabaseAddedSuccessfuly = Resources.MainPageAddDatabaseResources.RegistrationWasASuccess;
                     _databaseManager.RegisterDatabase(model.ConnectionString, ConfigurationManager.AppSettings["InternalDBConnectionString"].ToString(), int.Parse(id), model.Name);
-                    return View("DatabaseRegisterSuccessful", new BaseModel() {IsPartial = model.IsPartial });
-                }
-                
+                    return View("AddDatabase", model);
+                } 
             }
             return View("AddDatabase", model);
         }

@@ -118,5 +118,10 @@ $(document).ready(function () {
         });
     });
 
+    $("#bodyContent").on('click', ".refreshButton", function (e) {
+        e.preventDefault();
+        location.reload();
+    });
+
 });
 

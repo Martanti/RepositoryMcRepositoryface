@@ -133,7 +133,7 @@
     <value>Database Name</value>
   </data>
   <data name="RegistrationWasASuccess" xml:space="preserve">
-    <value>Database was successfully added! Now you can view it's content!</value>
+    <value>Database was successfully added! Now you can view it's content! Press the following button to refresh the page.</value>
   </data>
   <data name="TestSuccess" xml:space="preserve">
     <value>Connection string test was a success! Now you can add it!</value>
