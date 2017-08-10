@@ -106,7 +106,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Database was successfully added! Now you can view it&apos;s content!.
+        ///   Looks up a localized string similar to Database was successfully added! Now you can view it&apos;s content! Press the following button to refresh the page..
         /// </summary>
         public static string RegistrationWasASuccess {
             get {

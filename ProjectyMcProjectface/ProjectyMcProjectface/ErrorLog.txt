@@ -1234,3 +1234,85 @@ Parameter name: index
    at System.Web.Mvc.Async.AsyncControllerActionInvoker.BeginInvokeActionMethodWithFilters(ControllerContext controllerContext, IList`1 filters, ActionDescriptor actionDescriptor, IDictionary`2 parameters, AsyncCallback callback, Object state)
    at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass21.<BeginInvokeAction>b__19(AsyncCallback asyncCallback, Object asyncState)
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+2017-08-10 11:09:18,690 [5] ERROR ProjectyMcProjectface.Controllers.ErrorController System.Web.HttpException (0x80004005): HTTP/1.1 404 Not Found
+   at ProjectyMcProjectface.Controllers.AjaxOnlyAttribute.OnActionExecuting(ActionExecutingContext filterContext) in C:\Users\Student1\Documents\GitHub\RepositoryMcRepositoryface\ProjectyMcProjectface\ProjectyMcProjectface\Controllers\BaseController.cs:line 19
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.InvokeActionMethodFilterAsynchronouslyRecursive(Int32 filterIndex)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.InvokeActionMethodFilterAsynchronouslyRecursive(Int32 filterIndex)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass33.<BeginInvokeActionMethodWithFilters>b__31(AsyncCallback asyncCallback, Object asyncState)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.CallBeginDelegate(AsyncCallback callback, Object callbackState)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.Begin(AsyncCallback callback, Object state, Int32 timeout)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.BeginInvokeActionMethodWithFilters(ControllerContext controllerContext, IList`1 filters, ActionDescriptor actionDescriptor, IDictionary`2 parameters, AsyncCallback callback, Object state)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass21.<BeginInvokeAction>b__19(AsyncCallback asyncCallback, Object asyncState)
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+2017-08-10 11:12:32,956 [12] ERROR ProjectyMcProjectface.Controllers.ErrorController System.Web.HttpException (0x80004005): HTTP/1.1 404 Not Found
+   at ProjectyMcProjectface.Controllers.AjaxOnlyAttribute.OnActionExecuting(ActionExecutingContext filterContext) in C:\Users\Student1\Documents\GitHub\RepositoryMcRepositoryface\ProjectyMcProjectface\ProjectyMcProjectface\Controllers\BaseController.cs:line 19
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.InvokeActionMethodFilterAsynchronouslyRecursive(Int32 filterIndex)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.InvokeActionMethodFilterAsynchronouslyRecursive(Int32 filterIndex)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass33.<BeginInvokeActionMethodWithFilters>b__31(AsyncCallback asyncCallback, Object asyncState)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.CallBeginDelegate(AsyncCallback callback, Object callbackState)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.Begin(AsyncCallback callback, Object state, Int32 timeout)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.BeginInvokeActionMethodWithFilters(ControllerContext controllerContext, IList`1 filters, ActionDescriptor actionDescriptor, IDictionary`2 parameters, AsyncCallback callback, Object state)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass21.<BeginInvokeAction>b__19(AsyncCallback asyncCallback, Object asyncState)
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+2017-08-10 11:16:33,372 [9] ERROR ProjectyMcProjectface.Controllers.ErrorController System.NullReferenceException: Object reference not set to an instance of an object.
+   at Bussiness.SmoManager.GetTableCountByConnectionString(String connString) in C:\Users\Student1\Documents\GitHub\RepositoryMcRepositoryface\ProjectyMcProjectface\Bussiness\SmoManager.cs:line 22
+   at Bussiness.DatabaseManager.GetDatabasesByEmail(String email) in C:\Users\Student1\Documents\GitHub\RepositoryMcRepositoryface\ProjectyMcProjectface\Bussiness\DatabaseManager.cs:line 83
+   at ProjectyMcProjectface.Controllers.BaseController.OnActionExecuted(ActionExecutedContext filterContext) in C:\Users\Student1\Documents\GitHub\RepositoryMcRepositoryface\ProjectyMcProjectface\ProjectyMcProjectface\Controllers\BaseController.cs:line 55
+   at System.Web.Mvc.Controller.System.Web.Mvc.IActionFilter.OnActionExecuted(ActionExecutedContext filterContext)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.<>c__DisplayClass46.<InvokeActionMethodFilterAsynchronouslyRecursive>b__3f()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass33.<BeginInvokeActionMethodWithFilters>b__32(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.CallEndDelegate(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass21.<>c__DisplayClass2b.<BeginInvokeAction>b__1c()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass21.<BeginInvokeAction>b__1e(IAsyncResult asyncResult)
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+2017-08-10 11:16:38,920 [15] ERROR ProjectyMcProjectface.Controllers.ErrorController System.NullReferenceException: Object reference not set to an instance of an object.
+   at Bussiness.SmoManager.GetTableCountByConnectionString(String connString) in C:\Users\Student1\Documents\GitHub\RepositoryMcRepositoryface\ProjectyMcProjectface\Bussiness\SmoManager.cs:line 22
+   at Bussiness.DatabaseManager.GetDatabasesByEmail(String email) in C:\Users\Student1\Documents\GitHub\RepositoryMcRepositoryface\ProjectyMcProjectface\Bussiness\DatabaseManager.cs:line 83
+   at ProjectyMcProjectface.Controllers.BaseController.OnActionExecuted(ActionExecutedContext filterContext) in C:\Users\Student1\Documents\GitHub\RepositoryMcRepositoryface\ProjectyMcProjectface\ProjectyMcProjectface\Controllers\BaseController.cs:line 55
+   at System.Web.Mvc.Controller.System.Web.Mvc.IActionFilter.OnActionExecuted(ActionExecutedContext filterContext)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.<>c__DisplayClass46.<InvokeActionMethodFilterAsynchronouslyRecursive>b__3f()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass33.<BeginInvokeActionMethodWithFilters>b__32(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.CallEndDelegate(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass21.<>c__DisplayClass2b.<BeginInvokeAction>b__1c()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass21.<BeginInvokeAction>b__1e(IAsyncResult asyncResult)
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+2017-08-10 11:16:53,901 [9] ERROR ProjectyMcProjectface.Controllers.ErrorController System.NullReferenceException: Object reference not set to an instance of an object.
+   at Bussiness.SmoManager.GetTableCountByConnectionString(String connString) in C:\Users\Student1\Documents\GitHub\RepositoryMcRepositoryface\ProjectyMcProjectface\Bussiness\SmoManager.cs:line 22
+   at Bussiness.DatabaseManager.GetDatabasesByEmail(String email) in C:\Users\Student1\Documents\GitHub\RepositoryMcRepositoryface\ProjectyMcProjectface\Bussiness\DatabaseManager.cs:line 83
+   at ProjectyMcProjectface.Controllers.BaseController.OnActionExecuted(ActionExecutedContext filterContext) in C:\Users\Student1\Documents\GitHub\RepositoryMcRepositoryface\ProjectyMcProjectface\ProjectyMcProjectface\Controllers\BaseController.cs:line 55
+   at System.Web.Mvc.Controller.System.Web.Mvc.IActionFilter.OnActionExecuted(ActionExecutedContext filterContext)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.<>c__DisplayClass46.<InvokeActionMethodFilterAsynchronouslyRecursive>b__3f()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass33.<BeginInvokeActionMethodWithFilters>b__32(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.CallEndDelegate(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass21.<>c__DisplayClass2b.<BeginInvokeAction>b__1c()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass21.<BeginInvokeAction>b__1e(IAsyncResult asyncResult)
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+2017-08-10 11:17:01,507 [25] ERROR ProjectyMcProjectface.Controllers.ErrorController System.NullReferenceException: Object reference not set to an instance of an object.
+   at Bussiness.SmoManager.GetTableCountByConnectionString(String connString) in C:\Users\Student1\Documents\GitHub\RepositoryMcRepositoryface\ProjectyMcProjectface\Bussiness\SmoManager.cs:line 22
+   at Bussiness.DatabaseManager.GetDatabasesByEmail(String email) in C:\Users\Student1\Documents\GitHub\RepositoryMcRepositoryface\ProjectyMcProjectface\Bussiness\DatabaseManager.cs:line 83
+   at ProjectyMcProjectface.Controllers.BaseController.OnActionExecuted(ActionExecutedContext filterContext) in C:\Users\Student1\Documents\GitHub\RepositoryMcRepositoryface\ProjectyMcProjectface\ProjectyMcProjectface\Controllers\BaseController.cs:line 55
+   at System.Web.Mvc.Controller.System.Web.Mvc.IActionFilter.OnActionExecuted(ActionExecutedContext filterContext)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.<>c__DisplayClass46.<InvokeActionMethodFilterAsynchronouslyRecursive>b__3f()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass33.<BeginInvokeActionMethodWithFilters>b__32(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.CallEndDelegate(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass21.<>c__DisplayClass2b.<BeginInvokeAction>b__1c()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass21.<BeginInvokeAction>b__1e(IAsyncResult asyncResult)
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+2017-08-10 11:17:17,996 [7] ERROR ProjectyMcProjectface.Controllers.ErrorController System.Web.HttpException (0x80004005): HTTP/1.1 404 Not Found
+   at ProjectyMcProjectface.Controllers.AjaxOnlyAttribute.OnActionExecuting(ActionExecutingContext filterContext) in C:\Users\Student1\Documents\GitHub\RepositoryMcRepositoryface\ProjectyMcProjectface\ProjectyMcProjectface\Controllers\BaseController.cs:line 19
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.InvokeActionMethodFilterAsynchronouslyRecursive(Int32 filterIndex)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.InvokeActionMethodFilterAsynchronouslyRecursive(Int32 filterIndex)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass33.<BeginInvokeActionMethodWithFilters>b__31(AsyncCallback asyncCallback, Object asyncState)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.CallBeginDelegate(AsyncCallback callback, Object callbackState)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.Begin(AsyncCallback callback, Object state, Int32 timeout)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.BeginInvokeActionMethodWithFilters(ControllerContext controllerContext, IList`1 filters, ActionDescriptor actionDescriptor, IDictionary`2 parameters, AsyncCallback callback, Object state)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass21.<BeginInvokeAction>b__19(AsyncCallback asyncCallback, Object asyncState)
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
