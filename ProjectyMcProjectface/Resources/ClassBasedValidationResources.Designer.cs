@@ -22,14 +22,14 @@ namespace Resources {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    public class CommonTextResources {
+    public class ClassBasedValidationResources {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal CommonTextResources() {
+        internal ClassBasedValidationResources() {
         }
         
         /// <summary>
@@ -39,7 +39,7 @@ namespace Resources {
         public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Resources.CommonTextResources", typeof(CommonTextResources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Resources.ClassBasedValidationResources", typeof(ClassBasedValidationResources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -61,38 +61,38 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Ok.
+        ///   Looks up a localized string similar to Please, fill this field.
         /// </summary>
-        public static string button_ok {
+        public static string FieldRequired {
             get {
-                return ResourceManager.GetString("button_ok", resourceCulture);
+                return ResourceManager.GetString("FieldRequired", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to ..
+        ///   Looks up a localized string similar to Sorry, but it exeeded the {0} character limit.
         /// </summary>
-        public static string dot {
+        public static string InputTooLong {
             get {
-                return ResourceManager.GetString("dot", resourceCulture);
+                return ResourceManager.GetString("InputTooLong", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to *.
+        ///   Looks up a localized string similar to Sorry, but it should be at least {0} characters long.
         /// </summary>
-        public static string RequiredInputSymbol {
+        public static string InputTooShort {
             get {
-                return ResourceManager.GetString("RequiredInputSymbol", resourceCulture);
+                return ResourceManager.GetString("InputTooShort", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Loading.
+        ///   Looks up a localized string similar to It looks like this email is invalid.
         /// </summary>
-        public static string text_loading {
+        public static string InvalidEmail {
             get {
-                return ResourceManager.GetString("text_loading", resourceCulture);
+                return ResourceManager.GetString("InvalidEmail", resourceCulture);
             }
         }
     }

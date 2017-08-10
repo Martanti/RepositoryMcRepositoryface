@@ -12,8 +12,6 @@ namespace ProjectyMcProjectface.Controllers
 {
     public class HomeController : BaseController
     {
-        
-
         IDatabaseManager _databaseManager;
         IUserManager _userManager;
 
@@ -83,9 +81,11 @@ namespace ProjectyMcProjectface.Controllers
             DatabaseRegisterModel model = new DatabaseRegisterModel();
             model.ConnectionString = "";
             model.Name = "";
-            model.IsConnectionSuccessfull = false;
+            model.IsConnectionSuccessful = false;
             model.IsHttpGet = true;
             model.ErrorMessage = "";
+            model.ConnectionTestSuccess = "";
+            model.DatabaseAddedSuccessfuly = "";
 
             model.IsPartial = isPartial;
 
@@ -100,7 +100,7 @@ namespace ProjectyMcProjectface.Controllers
             if (!String.IsNullOrWhiteSpace(model.ConnectionString))
             {
                 model.ConnectionString = model.ConnectionString.Trim();
-                model.IsConnectionSuccessfull = _databaseManager.IsDatabaseAvailable(model.ConnectionString);
+                model.IsConnectionSuccessful = _databaseManager.IsDatabaseAvailable(model.ConnectionString);
                 
                 
             }
@@ -108,35 +108,40 @@ namespace ProjectyMcProjectface.Controllers
             {
                 model.Name = model.Name.Trim();
             }
-            if (!model.IsConnectionSuccessfull)
+            if (!model.IsConnectionSuccessful)
             {
                 model.ErrorMessage = Resources.MainPageAddDatabaseResources.ErrorConnStringInvalid;
+            }
+            else
+            {
+                model.ConnectionTestSuccess = Resources.MainPageAddDatabaseResources.TestSuccess;
             }
 
             return View("AddDatabase", model);
         }
 
         [HttpPost]
-        public ActionResult RegisterDatabase(DatabaseRegisterModel model)
+        public ActionResult RegisterDatabase(DatabaseRegisterModel model, bool isPartial = true)
         {
             model.IsHttpGet = false;
+            model.IsPartial = isPartial;
 
             if (!String.IsNullOrWhiteSpace(model.ConnectionString))
             {
                 model.ConnectionString = model.ConnectionString.Trim();
                 
-                model.IsConnectionSuccessfull = _databaseManager.IsDatabaseAvailable(model.ConnectionString);
+                model.IsConnectionSuccessful = _databaseManager.IsDatabaseAvailable(model.ConnectionString);
             }
             if (!String.IsNullOrWhiteSpace(model.Name))
             {
                 model.Name = model.Name.Trim();
             }
-            if (!model.IsConnectionSuccessfull)
+            if (!model.IsConnectionSuccessful)
             {
                 model.ErrorMessage = Resources.MainPageAddDatabaseResources.ErrorConnStringInvalid;
             }
 
-            if (model.IsConnectionSuccessfull)
+            if (model.IsConnectionSuccessful)
             {
                 var identity = (ClaimsIdentity)User.Identity;
                 IEnumerable<Claim> claims = identity.Claims;
@@ -150,6 +155,7 @@ namespace ProjectyMcProjectface.Controllers
                 }
                 else
                 {
+                    model.DatabaseAddedSuccessfuly = Resources.MainPageAddDatabaseResources.RegistrationWasASuccess;
                     _databaseManager.RegisterDatabase(model.ConnectionString, ConfigurationManager.AppSettings["InternalDBConnectionString"].ToString(), int.Parse(id), model.Name);
                     return View("DatabaseRegisterSuccessful", new BaseModel() {IsPartial = model.IsPartial });
                 }
